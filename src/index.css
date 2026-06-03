@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   T01 · Color Tokens — Primitivos
+   Fuente: Figma / Librería-Pruebas Claude / Theme (modo Base)
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Grayscale */
+  --color-black:       #000000;
+  --color-gs-10:       #000d1a;
+  --color-gs-15:       #001426;
+  --color-gs-20:       #001a33;
+  --color-gs-30:       #25394d;
+  --color-gs-40:       #4c5f70;
+  --color-gs-50:       #6b7b8a;
+  --color-gs-60:       #8796a3;
+  --color-gs-70:       #a0acb8;
+  --color-gs-80:       #c0c6cc;
+  --color-gs-90:       #e3e5e8;
+  --color-gs-97:       #f4f5f6;
+  --color-white:       #ffffff;
+
+  /* Primary-1 */
+  --color-p1-01:       #eef7ff;
+  --color-p1-02:       #d9edff;
+  --color-p1-03:       #b0d9ff;
+  --color-p1-04:       #0072f5;
+  --color-p1-05:       #003865;
+  --color-p1-06:       #001a33;
+
+  /* Secondary-1 (rosa/magenta) */
+  --color-s1-01:       #f8d5e0;
+  --color-s1-02:       #eca7bd;
+  --color-s1-03:       #cf2259;
+  --color-s1-04:       #92163d;
+  --color-s1-05:       #73123c;
+
+  /* Secondary-2 (verde) */
+  --color-s2-01:       #b4f8b1;
+  --color-s2-02:       #88e783;
+  --color-s2-03:       #024700;
+
+  /* Secondary-3 (cyan) */
+  --color-s3-01:       #d6f3f5;
+  --color-s3-02:       #8be1e9;
+  --color-s3-03:       #003033;
+
+  /* Secondary-4 (violeta) */
+  --color-s4-01:       #e2dff7;
+  --color-s4-02:       #a094ff;
+  --color-s4-03:       #350084;
+
+  /* Sistema */
+  --color-error-01:    #d9b8b9;
+  --color-error-02:    #d63838;
+  --color-error-03:    #850606;
+  --color-success-01:  #a2dbb3;
+  --color-success-02:  #6dc849;
+  --color-success-03:  #237210;
+  --color-warning-01:  #f9d999;
+  --color-warning-02:  #f7ba40;
+  --color-warning-03:  #7a5706;
+
+  /* ─── T02 · Colores Semánticos ──────────────────────────────────────────── */
+  --color-bg-01:                var(--color-white);
+  --color-bg-02:                var(--color-white);
+
+  --color-fill-white:           var(--color-white);
+  --color-fill-black:           var(--color-black);
+  --color-fill-gray-1:          var(--color-gs-97);
+  --color-fill-gray-2:          var(--color-gs-90);
+  --color-fill-gray-3:          var(--color-gs-80);
+  --color-fill-hover:           var(--color-p1-02);
+  --color-fill-p1:              var(--color-p1-02);
+  --color-fill-p2:              var(--color-p1-03);
+  --color-fill-p3:              var(--color-p1-04);
+  --color-fill-p4:              var(--color-p1-05);
+
+  --color-text-01:              var(--color-p1-06);
+  --color-text-02:              var(--color-gs-40);
+  --color-text-link:            var(--color-p1-04);
+  --color-text-hover:           var(--color-p1-04);
+  --color-text-primary:         var(--color-p1-04);
+  --color-text-error:           var(--color-error-03);
+  --color-text-success:         var(--color-success-03);
+  --color-text-warning:         var(--color-warning-03);
+  --color-text-disabled:        rgba(0,0,0,0.30);
+
+  --color-stroke-01:            var(--color-p1-06);
+  --color-stroke-02:            var(--color-gs-40);
+  --color-stroke-03:            var(--color-gs-80);
+
+  /* Button / Primary */
+  --btn-primary-fill:           var(--color-p1-04);
+  --btn-primary-stroke:         var(--color-p1-04);
+  --btn-primary-text:           var(--color-white);
+  --btn-primary-icon:           var(--color-white);
+  --btn-primary-hover-fill:     var(--color-p1-05);
+  --btn-primary-focused-stroke: var(--color-p1-05);
+  --btn-primary-disabled-fill:  rgba(0,0,0,0.07);
+  --btn-primary-disabled-text:  rgba(0,0,0,0.30);
+
+  /* Button / Secondary */
+  --btn-secondary-fill:         var(--color-gs-97);
+  --btn-secondary-text:         var(--color-p1-06);
+  --btn-secondary-hover-fill:   var(--color-p1-04);
+  --btn-secondary-hover-text:   var(--color-white);
+  --btn-secondary-selected-fill:var(--color-p1-02);
+  --btn-secondary-disabled-fill:rgba(0,0,0,0.07);
+
+  /* Forms */
+  --form-default-stroke:        var(--color-gs-70);
+  --form-hover-stroke:          var(--color-p1-03);
+  --form-focused-stroke:        var(--color-p1-03);
+  --form-focused-fill:          var(--color-p1-01);
+  --form-error-stroke:          var(--color-error-02);
+  --form-disabled-text:         rgba(0,0,0,0.30);
+
+  /* ─── T02 · Tipografía — valores base (XS-375) ─────────────────────────── */
+  --letter-spacing-body:   0em;
+  --letter-spacing-cta:    0em;
+  --letter-spacing-label:  0.031em;
+  --letter-spacing-title:  0em;
+  --letter-spacing-forms:  0em;
+
+  /* Títulos */
+  --sz-title6: 48px; --lh-title6: 56px;
+  --sz-title5: 40px; --lh-title5: 50px;
+  --sz-title4: 34px; --lh-title4: 40px;
+  --sz-title3: 32px; --lh-title3: 42px;
+  --sz-title2: 22px; --lh-title2: 30px;
+
+  /* Body */
+  --sz-body6: 20px; --lh-body6: 28px;
+  --sz-body5: 20px; --lh-body5: 28px;
+  --sz-body4: 18px; --lh-body4: 26px;
+  --sz-body3: 16px; --lh-body3: 24px;
+  --sz-body2: 14px; --lh-body2: 22px;
+  --sz-body1: 12px; --lh-body1: 18px;
+
+  /* Labels */
+  --sz-label2: 12px; --lh-label2: 16px;
+  --sz-label1: 10px; --lh-label1: 14px;
+
+  /* CTA */
+  --sz-cta-l: 18px; --sz-cta-m: 16px; --sz-cta-s: 14px; --sz-cta-xs: 12px;
+
+  /* ─── T04 · Spacing ─────────────────────────────────────────────────────── */
+  --corner-xxs: 2px;  --corner-xs: 4px;  --corner-sm: 6px;
+  --corner-md: 8px;   --corner-lg: 12px; --corner-xl: 16px;
+  --corner-rounded: 9999px;
+
+  --spacer-1: 4px;  --spacer-2: 8px;  --spacer-3: 12px; --spacer-4: 16px;
+  --spacer-5: 20px; --spacer-6: 20px; --spacer-7: 20px; --spacer-8: 24px;
+  --spacer-9: 32px; --spacer-10: 40px;
+
+  --grid-wrapper: 20px;
+  --grid-gutter: 12px;
+
+  /* ─── Breakpoints responsive (M-768) ────────────────────────────────────── */
+  @media (min-width: 768px) {
+    --sz-title6: 58px; --lh-title6: 68px;
+    --sz-title5: 50px; --lh-title5: 56px;
+    --sz-title4: 40px; --lh-title4: 46px;
+    --sz-title3: 34px; --lh-title3: 40px;
+    --sz-title2: 26px; --lh-title2: 32px;
+    --sz-body6: 22px;  --lh-body6: 32px;
+    --spacer-6: 24px; --spacer-7: 32px; --spacer-8: 36px;
+    --spacer-9: 40px; --spacer-10: 44px;
+    --grid-wrapper: 32px; --grid-gutter: 16px;
+  }
+
+  /* ─── Breakpoints responsive (XL-1440) ─────────────────────────────────── */
+  @media (min-width: 1440px) {
+    --sz-title6: 72px; --lh-title6: 86px;
+    --sz-title5: 60px; --lh-title5: 72px;
+    --sz-title4: 48px; --lh-title4: 56px;
+    --sz-title3: 40px; --lh-title3: 48px;
+    --sz-title2: 32px; --lh-title2: 40px;
+    --sz-body6: 26px;  --lh-body6: 38px;
+    --sz-body5: 22px;  --lh-body5: 32px;
+    --sz-body4: 20px;  --lh-body4: 28px;
+    --spacer-6: 24px; --spacer-7: 32px; --spacer-8: 40px;
+    --spacer-9: 48px; --spacer-10: 56px;
+    --grid-wrapper: 64px; --grid-gutter: 24px;
+  }
+}
