@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Tokens del design system Euro6000.
+ * Se irán poblando en la Fase 1 (colores primitivos, semánticos,
+ * tipografía, spacing) como CSS custom properties.
+ */
+:root {
+  /* placeholder — ver src/tokens/ */
+}
