@@ -18,7 +18,12 @@
 >    El **autolayout** se usa para **limpiar estructura y crear variantes**, no para
 >    cablear el responsive.
 >
-> 3. El resto del documento (tokenización *mode-per-module*, análisis de grid,
+> 3. **Sin rectángulos de fondo (R-TK1):** un componente/módulo NUNCA debe tener un
+>    rectángulo cuyo único fin sea aportar el color de fondo. Si se detecta, se
+>    **elimina** y se aplica el token de fondo (`Backgrounds/Base`) **al frame
+>    contenedor**. (Regla de Paco; validada en el Módulo 1 del banco de pruebas.)
+>
+> 4. El resto del documento (tokenización *mode-per-module*, análisis de grid,
 >    limpieza de estructura, creación de componentes/variantes y reglas) se mantiene
 >    como **especificación operativa** del gate «Ready to develop».
 >

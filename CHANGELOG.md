@@ -7,6 +7,9 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-19
 
+- **Regla R-TK1 (tokens/limpieza):** nunca un rectángulo de fondo; el color de fondo
+  se aplica al frame contenedor (`Backgrounds/Base`). Validada en el Módulo 1 del
+  banco de pruebas; documentada en `docs/stream-a-figma-workflow.md`.
 - **Skills / proceso.** Integrado el workflow de diseño en Figma del hilo paralelo
   como `docs/stream-a-figma-workflow.md` (especificación del gate «Ready to develop»),
   adaptado al stack de este proyecto (Tailwind, no CSS Grid puro). Decisiones:
