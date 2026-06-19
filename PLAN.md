@@ -26,7 +26,7 @@ lo que depende de ellas.
 
 ---
 
-## FASE 1 — TOKENS
+## FASE 1 — TOKENS  ✅
 
 > Validar el inventario contra Figma al iniciar la fase (`get_variable_defs`).
 
@@ -37,7 +37,7 @@ lo que depende de ellas.
       → `src/tokens/semantic-colors.ts`
 - [x] **T03 · Tipografía** — `Tipography/Letter-Spacing/*`, escalas de
       font-size / line-height → `src/tokens/typography.ts`
-- [ ] **T04 · Espaciado y breakpoints** — colección `Responsive`
+- [x] **T04 · Espaciado y breakpoints** — colección `Responsive`
       (`Layout/Button/{XS·S·M·L·XL}`) → `src/tokens/spacing.ts`
 
 ---
@@ -95,9 +95,9 @@ lo que depende de ellas.
 | Fase | Elementos | Hechos |
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
-| 1 · Tokens | 4 | 3 |
+| 1 · Tokens | 4 | 4 |
 | 2 · Componentes UI | 17 | 0 |
 | 3 · Módulos | 8 (a confirmar con Figma) | 0 |
 | 4 · Docs | 4 | 0 |
 
-_Última actualización: 2026-06-19 — T03 tipografía completado._
+_Última actualización: 2026-06-19 — T04 completado · FASE 1 (Tokens) cerrada._

@@ -63,6 +63,13 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
 
 ## Decisiones tomadas
 
+- **Espaciado/breakpoints:** breakpoints mobile-first (xs 375 base · sm 480 · m 768 ·
+  lg 1024 · xl 1440 · xxl 1620 · xxxl 1920) en `theme.screens`. Escala fija `fx-0..9`
+  (px) + radios (`rounded-*`). Spacers (0–18) y grids (wrappers/gutter) son
+  responsive: CSS vars `--space-*` / `--wrapper-*` con media queries mobile-first,
+  y utilidades Tailwind `sp-*`, `gutter`, `wrapper-*`. La escala de tipografía
+  responsive de Figma queda como dato en tokens (mejora futura, T03 fija el ramp base).
+
 - **Tipografía:** familia única **Geist** (importada vía Google Fonts en
   `index.css`; instalar localmente para edición). 28 text styles (Title 01–07,
   Body 01–06, Labels, CTA, CTA-Link-Footer, Forms Input-M/S) expuestos como

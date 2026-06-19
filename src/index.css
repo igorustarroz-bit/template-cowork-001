@@ -132,6 +132,51 @@
   --letter-spacing-cta: 0px;
   --letter-spacing-forms: 0px;
 
+  /* === Espaciado fijo + radios (constantes) — Figma === */
+  --fx-0: 2px;
+  --fx-1: 4px;
+  --fx-2: 8px;
+  --fx-3: 12px;
+  --fx-4: 16px;
+  --fx-5: 20px;
+  --fx-6: 24px;
+  --fx-7: 28px;
+  --fx-8: 32px;
+  --fx-9: 40px;
+  --radius-xxs: 2px;
+  --radius-xs: 4px;
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-xl: 16px;
+  --radius-rounded: 9999px;
+  --radius-none: 0px;
+  /* === Espaciadores y grids responsive (base = xs) — Figma === */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 20px;
+  --space-7: 20px;
+  --space-8: 24px;
+  --space-9: 32px;
+  --space-10: 40px;
+  --space-11: 40px;
+  --space-12: 40px;
+  --space-13: 40px;
+  --space-14: 40px;
+  --space-15: 48px;
+  --space-16: 56px;
+  --space-17: 56px;
+  --space-18: 64px;
+  --wrapper-default: 20px;
+  --wrapper-header: 16px;
+  --wrapper-modal: 16px;
+  --wrapper-full: 0px;
+  --gutter: 12px;
+
   /* === Colores semánticos (tema por defecto: light-white) — Figma === */
   --sem-backgrounds-base: var(--color-neutral-white);
   --sem-backgrounds-neutral-1: var(--color-neutral-96);
@@ -1636,3 +1681,67 @@
   line-height: 12px;
   letter-spacing: 0px;
 }
+
+/* === Breakpoints responsive (mobile-first) — generado desde Figma === */
+@media (min-width: 768px) {
+  :root {
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 36px;
+    --space-9: 40px;
+    --space-10: 44px;
+    --space-11: 52px;
+    --space-12: 64px;
+    --space-13: 72px;
+    --space-14: 80px;
+    --space-15: 92px;
+    --space-16: 112px;
+    --space-17: 132px;
+    --space-18: 156px;
+    --wrapper-default: 32px;
+    --wrapper-header: 32px;
+    --wrapper-modal: 32px;
+    --gutter: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --wrapper-modal: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --space-8: 40px;
+    --space-9: 48px;
+    --space-10: 56px;
+    --space-11: 64px;
+    --space-12: 72px;
+    --space-13: 80px;
+    --space-14: 92px;
+    --space-15: 104px;
+    --space-16: 132px;
+    --space-17: 156px;
+    --space-18: 184px;
+    --wrapper-modal: 32px;
+    --gutter: 24px;
+  }
+}
+
+@media (min-width: 1620px) {
+  :root {
+    --space-6: 20px;
+    --wrapper-default: 64px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --wrapper-default: 84px;
+    --wrapper-header: 56px;
+    --wrapper-modal: 56px;
+    --gutter: 32px;
+  }
+}
+
