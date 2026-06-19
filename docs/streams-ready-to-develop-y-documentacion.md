@@ -80,9 +80,12 @@ Atlassian — ver `docs/ds-doc-comparison.md` y `docs/carbon-doc-analysis.md`).
 
 ## Decisiones tomadas
 
-- **Autolayouts: sí**, pero para **limpiar estructura y crear variantes**. El
+- **Autolayouts: sí** — para **limpiar estructura, crear variantes y optimizar/
+  estandarizar espaciados y distancias** (con tokens `Layout/Spacers`). El
   **responsive se documenta en Figma e se implementa en código**; las variables
   responsive en Figma son opcionales (no requisito del gate).
+- **Validación previa a la skill:** antes de automatizar, se validan a mano los
+  pasos del gate sobre componentes aún no trabajados.
 - **Stack = el de este proyecto** (React + Vite + Tailwind + GSAP + Storybook). Se
   adapta el workflow original: el análisis de grid se mantiene pero se expresa con
   Tailwind (`grid grid-cols-12`, `col-span-*`), no con CSS Grid puro ni "sin Tailwind".
