@@ -7,6 +7,13 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-19
 
+- **Skills / proceso.** Integrado el workflow de diseño en Figma del hilo paralelo
+  como `docs/stream-a-figma-workflow.md` (especificación del gate «Ready to develop»),
+  adaptado al stack de este proyecto (Tailwind, no CSS Grid puro). Decisiones:
+  autolayout para estructura/variantes; responsive se documenta en Figma e implementa
+  en código (variables responsive en Figma opcionales). Análisis comparativo de
+  documentación de 6 design systems (`docs/ds-doc-comparison.md`,
+  `docs/carbon-doc-analysis.md`) y plan de streams (`docs/streams-...md`).
 - **Storybook — selectores de modo en la toolbar (estilo Carbon).** «Modo de color»
   (6 temas semánticos) y «Marca» (Euro6000/Bankinter) ahora son *globals* en la barra
   superior, aplicados a todas las stories vía decorator (`data-theme`/`data-brand`,

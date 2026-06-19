@@ -41,14 +41,19 @@ cada chequeo produce **pasa / falla + informe** y la puerta solo se abre si todo
    Revisa la rejilla y cómo se comporta el componente en los breakpoints definidos
    (xs…xxxl), detectando incoherencias o medidas fuera de sistema.
 
-3. **Autolayout + variables responsive** (`autolayout-variables`)
-   Genera autolayouts y enlaza las variables responsive correspondientes.
-   · **Decisión abierta:** valorar si los autolayouts son realmente necesarios o si
-   se puede prescindir de ellos en ciertos casos.
+3. **Estructura (autolayout) + análisis responsive** (`structure-and-responsive`)
+   Limpia la estructura y aplica **autolayout para organizar y permitir variantes**.
+   El **comportamiento responsive se analiza y documenta** aquí (columnas, anclajes,
+   breakpoints) pero **se implementa en código**, no como variables responsive en
+   Figma (esas quedan opcionales). La salida es una **especificación de grid/anclajes**
+   que consume el desarrollo.
 
 4. **Componentes y variantes** (`variants-builder`)
    Crea el *component set* y sus variantes (tipos, tamaños, estados) de forma
    consistente con el resto del sistema.
+
+> Especificación operativa detallada de este stream (tokenización mode-per-module,
+> reglas de grid, limpieza, autolayout, variantes): `docs/stream-a-figma-workflow.md`.
 
 ### Resultado
 La skill paraguas reúne los informes y emite el estado **Ready to develop ✅/❌**.
@@ -73,10 +78,17 @@ Atlassian — ver `docs/ds-doc-comparison.md` y `docs/carbon-doc-analysis.md`).
 
 ---
 
+## Decisiones tomadas
+
+- **Autolayouts: sí**, pero para **limpiar estructura y crear variantes**. El
+  **responsive se documenta en Figma e se implementa en código**; las variables
+  responsive en Figma son opcionales (no requisito del gate).
+- **Stack = el de este proyecto** (React + Vite + Tailwind + GSAP + Storybook). Se
+  adapta el workflow original: el análisis de grid se mantiene pero se expresa con
+  Tailwind (`grid grid-cols-12`, `col-span-*`), no con CSS Grid puro ni "sin Tailwind".
+
 ## Decisiones abiertas
 
-- **Autolayouts: ¿sí o no?** y, si sí, cómo se enlazan las variables responsive a
-  las variantes.
 - **¿Skill única o grupo?** para «Ready to develop» (preferencia inicial: grupo
   orquestado por una skill paraguas).
 - Alcance mínimo viable de cada skill antes de declararlas requisito.
