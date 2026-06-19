@@ -56,8 +56,6 @@ lo que depende de ellas.
 
 - [ ] **C01 · Action Button** — `UI01 - Action-Button` (Action, Navigation, Icon Only; estados default/hover/focus/disabled)
 - [ ] **C02 · Action Link Button** — `UI02 - Action Link-Button`
-- [ ] **C03 · Transaction Button** — `UI02 - Transaction Button`
-- [ ] **C04 · Navigation Button** — `UI01 - Navigation-Button`
 - [ ] **C05 · Icon Only Button** — `UI01 - Icon Only`
 - [ ] **C06 · Input de texto** — `UI02 - Input` (default/focus/error/disabled)
 - [ ] **C07 · Checkbox + Label** — `UI03 - Checkbox + Label`
@@ -104,7 +102,7 @@ lo que depende de ellas.
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
-| 2 · Componentes UI | 17 | 0 |
+| 2 · Componentes UI | 15 | 0 |
 | 3 · Módulos | 8 (a confirmar con Figma) | 0 |
 | 4 · Docs | 4 | 0 |
 
