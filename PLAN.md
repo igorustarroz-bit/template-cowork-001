@@ -36,9 +36,17 @@ lo que depende de ellas.
       (Button/Primary, Tertiary, etc.) mapeados sobre primitivos
       → `src/tokens/semantic-colors.ts`
 - [x] **T03 · Tipografía** — `Tipography/Letter-Spacing/*`, escalas de
-      font-size / line-height → `src/tokens/typography.ts`
+      font-size / line-height → `src/tokens/typography.ts`. Los text styles
+      están enlazados a variables: tamaño/interlineado son responsive (colección
+      `Responsive`), familia/peso/letter-spacing son primitivos. La story debe
+      documentar **todos** los estilos e incluir un **selector de breakpoint**
+      (control select xs…xxxl) para previsualizar cada uno, igual que el selector
+      de modo en colores semánticos.
 - [x] **T04 · Espaciado y breakpoints** — colección `Responsive`
-      (`Layout/Button/{XS·S·M·L·XL}`) → `src/tokens/spacing.ts`
+      (`Layout/Button/{XS·S·M·L·XL}`) → `src/tokens/spacing.ts`. La story debe
+      **listar** spacers, grids y cols responsive e incluir un **selector de
+      breakpoint** (xs…xxxl) para ver sus valores en cada uno; la escala fija
+      (`fx`), radios y anchos de viewport se muestran como constantes.
 
 ---
 

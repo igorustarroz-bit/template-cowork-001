@@ -53,6 +53,12 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   de valores hardcodeados que existan como token.
 - **Alias** → `@/` apunta a `src/`.
 - **Animaciones** → GSAP, encapsuladas en hooks/efectos dentro del componente.
+- **Documentación en Storybook** → toda story de tokens con varios *modos*
+  (marca, tema) o valores *responsive* (breakpoints) debe incluir un **selector**
+  (arg `control: "select"`) para previsualizar cada modo/breakpoint, igual que el
+  selector de tema en colores semánticos. Aplica a: T02 (tema + marca), T03
+  (tipografía → selector de breakpoint, listando todos los estilos) y T04
+  (spacing/grids/cols → selector de breakpoint). Resaltar el valor activo.
 
 ## Flujo de trabajo
 
