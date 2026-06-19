@@ -54,10 +54,10 @@ lo que depende de ellas.
 
 > Prefijo Figma: `UIxx`. Primero los que son base de otros.
 
-- [ ] **C01 · Action Button** — `UI01 - Action-Button` (Action, Navigation, Icon Only; estados default/hover/focus/disabled)
-- [ ] **C02 · Action Link Button** — `UI02 - Action Link-Button`
-- [ ] **C05 · Icon Only Button** — `UI01 - Icon Only`
-- [ ] **C06 · Input de texto** — `UI02 - Input` (default/focus/error/disabled)
+- [x] **C01 · Action Button** — `UI01 - Action-Button` (Primary/Secondary/Terciary · L/M/S/XS · default/hover/focus/selected/disabled · iconos)
+- [x] **C02 · Action Link Button** — `UI02 - Action Link-Button` (L/M/S/XS · default/hover/focus/disabled)
+- [x] **C05 · Icon Only Button** — `UI01 - Icon Only` (Primary/Secondary/Terciary · XL/L/M/S/XS)
+- [x] **C06 · Input de texto** — `UI02 - Input` (Big/Small · default/hover/focus/filled/error/validated/disabled, label-in + message)
 - [ ] **C07 · Checkbox + Label** — `UI03 - Checkbox + Label`
 - [ ] **C08 · Radio Button + Label** — `UI04 - Radio Button + Label`
 - [ ] **C09 · Tag** — `UI07 - Tag`
@@ -102,8 +102,8 @@ lo que depende de ellas.
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
-| 2 · Componentes UI | 15 | 0 |
+| 2 · Componentes UI | 15 | 4 |
 | 3 · Módulos | 8 (a confirmar con Figma) | 0 |
 | 4 · Docs | 4 | 0 |
 
-_Última actualización: 2026-06-19 — T04 completado · FASE 1 (Tokens) cerrada._
+_Última actualización: 2026-06-19 — Fase 2: C01, C02, C05, C06 completados._

@@ -1,0 +1,36 @@
+/* IconButton — botón solo icono (Figma UI01 - Icon Only). Tokens Button/<Type>/<State>. NO editar a mano. */
+
+.eb-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+  cursor: pointer; border: 1px solid transparent; border-radius: var(--radius-m);
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.eb-icon-btn:focus-visible { outline: 2px solid var(--color-secondary-1-50); outline-offset: 2px; }
+.eb-icon-btn:disabled, .eb-icon-btn[aria-disabled="true"] { cursor: not-allowed; }
+.eb-icon-btn__icon { display: inline-flex; }
+.eb-icon-btn__icon svg { width: 100%; height: 100%; display: block; }
+.eb-icon-btn--xl { width: 104px; height: 104px; }
+.eb-icon-btn--xl .eb-icon-btn__icon { width: 32px; height: 32px; }
+.eb-icon-btn--l { width: 64px; height: 64px; }
+.eb-icon-btn--l .eb-icon-btn__icon { width: 24px; height: 24px; }
+.eb-icon-btn--m { width: 56px; height: 56px; }
+.eb-icon-btn--m .eb-icon-btn__icon { width: 24px; height: 24px; }
+.eb-icon-btn--s { width: 48px; height: 48px; }
+.eb-icon-btn--s .eb-icon-btn__icon { width: 20px; height: 20px; }
+.eb-icon-btn--xs { width: 40px; height: 40px; }
+.eb-icon-btn--xs .eb-icon-btn__icon { width: 16px; height: 16px; }
+.eb-icon-btn--primary { background: var(--sem-button-primary-default-fill); border-color: var(--sem-button-primary-default-stroke); color: var(--sem-button-primary-default-icon); }
+.eb-icon-btn--primary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-primary-hover-fill); border-color: var(--sem-button-primary-hover-stroke); color: var(--sem-button-primary-hover-icon); }
+.eb-icon-btn--primary:focus-visible { background: var(--sem-button-primary-focused-fill); border-color: var(--sem-button-primary-focused-stroke); color: var(--sem-button-primary-focused-icon); }
+.eb-icon-btn--primary[data-selected="true"] { background: var(--sem-button-primary-selected-fill); border-color: var(--sem-button-primary-selected-stroke); color: var(--sem-button-primary-selected-icon); }
+.eb-icon-btn--primary:disabled, .eb-icon-btn--primary[aria-disabled="true"] { background: var(--sem-button-primary-disabled-fill); border-color: var(--sem-button-primary-disabled-stroke); color: var(--sem-button-primary-disabled-icon); }
+.eb-icon-btn--secondary { background: var(--sem-button-secondary-default-fill); border-color: var(--sem-button-secondary-default-stroke); color: var(--sem-button-secondary-default-icon); }
+.eb-icon-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-secondary-hover-fill); border-color: var(--sem-button-secondary-hover-stroke); color: var(--sem-button-secondary-hover-icon); }
+.eb-icon-btn--secondary:focus-visible { background: var(--sem-button-secondary-focused-fill); border-color: var(--sem-button-secondary-focused-stroke); color: var(--sem-button-secondary-focused-icon); }
+.eb-icon-btn--secondary[data-selected="true"] { background: var(--sem-button-secondary-selected-fill); border-color: var(--sem-button-secondary-selected-stroke); color: var(--sem-button-secondary-selected-icon); }
+.eb-icon-btn--secondary:disabled, .eb-icon-btn--secondary[aria-disabled="true"] { background: var(--sem-button-secondary-disabled-fill); border-color: var(--sem-button-secondary-disabled-stroke); color: var(--sem-button-secondary-disabled-icon); }
+.eb-icon-btn--terciary { background: var(--sem-button-terciary-default-fill); border-color: var(--sem-button-terciary-default-stroke); color: var(--sem-button-terciary-default-icon); }
+.eb-icon-btn--terciary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-terciary-hover-fill); border-color: var(--sem-button-terciary-hover-stroke); color: var(--sem-button-terciary-hover-icon); }
+.eb-icon-btn--terciary:focus-visible { background: var(--sem-button-terciary-focused-fill); border-color: var(--sem-button-terciary-focused-stroke); color: var(--sem-button-terciary-focused-icon); }
+.eb-icon-btn--terciary[data-selected="true"] { background: var(--sem-button-terciary-selected-fill); border-color: var(--sem-button-terciary-selected-stroke); color: var(--sem-button-terciary-selected-icon); }
+.eb-icon-btn--terciary:disabled, .eb-icon-btn--terciary[aria-disabled="true"] { background: var(--sem-button-terciary-disabled-fill); border-color: var(--sem-button-terciary-disabled-stroke); color: var(--sem-button-terciary-disabled-icon); }

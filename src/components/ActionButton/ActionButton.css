@@ -1,0 +1,62 @@
+/* ActionButton — colores desde tokens semánticos Button/* (Figma UI01 - Action-Button). */
+/* Generado: estados mapeados a pseudo-clases reales. NO editar a mano. */
+
+.eb-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; box-sizing: border-box; cursor: pointer; text-decoration: none;
+  font-family: var(--font-family-base);
+  border: 1px solid transparent; border-radius: var(--radius-rounded);
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.eb-btn:focus-visible { outline: 2px solid var(--color-secondary-1-50); outline-offset: 2px; }
+.eb-btn:disabled, .eb-btn[aria-disabled="true"] { cursor: not-allowed; }
+.eb-btn__icon { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.eb-btn__icon svg { width: 100%; height: 100%; display: block; }
+
+/* Tamaños (buttonLayout) */
+.eb-btn--l { height: 64px; padding: 0 32px; min-width: 168px; font-size: 18px; line-height: 18px; font-weight: 500; letter-spacing: var(--letter-spacing-cta); }
+.eb-btn--l .eb-btn__icon { width: 24px; height: 24px; }
+.eb-btn--m { height: 56px; padding: 0 24px; min-width: 110px; font-size: 16px; line-height: 16px; font-weight: 600; letter-spacing: var(--letter-spacing-cta); }
+.eb-btn--m .eb-btn__icon { width: 24px; height: 24px; }
+.eb-btn--s { height: 48px; padding: 0 20px; min-width: 96px; font-size: 14px; line-height: 14px; font-weight: 600; letter-spacing: var(--letter-spacing-cta); }
+.eb-btn--s .eb-btn__icon { width: 20px; height: 20px; }
+.eb-btn--xs { height: 40px; padding: 0 16px; min-width: 56px; font-size: 12px; line-height: 12px; font-weight: 600; letter-spacing: var(--letter-spacing-cta); }
+.eb-btn--xs .eb-btn__icon { width: 20px; height: 20px; }
+
+/* Variantes y estados (tokens Button/<Type>/<State>) */
+/* primary */
+.eb-btn--primary { background: var(--sem-button-primary-default-fill); border-color: var(--sem-button-primary-default-stroke); color: var(--sem-button-primary-default-text); }
+.eb-btn--primary .eb-btn__icon { color: var(--sem-button-primary-default-icon); }
+.eb-btn--primary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-primary-hover-fill); border-color: var(--sem-button-primary-hover-stroke); color: var(--sem-button-primary-hover-text); }
+.eb-btn--primary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) .eb-btn__icon { color: var(--sem-button-primary-hover-icon); }
+.eb-btn--primary:focus-visible { background: var(--sem-button-primary-focused-fill); border-color: var(--sem-button-primary-focused-stroke); color: var(--sem-button-primary-focused-text); }
+.eb-btn--primary:focus-visible .eb-btn__icon { color: var(--sem-button-primary-focused-icon); }
+.eb-btn--primary[data-selected="true"] { background: var(--sem-button-primary-selected-fill); border-color: var(--sem-button-primary-selected-stroke); color: var(--sem-button-primary-selected-text); }
+.eb-btn--primary[data-selected="true"] .eb-btn__icon { color: var(--sem-button-primary-selected-icon); }
+.eb-btn--primary:disabled, .eb-btn--primary[aria-disabled="true"] { background: var(--sem-button-primary-disabled-fill); border-color: var(--sem-button-primary-disabled-stroke); color: var(--sem-button-primary-disabled-text); }
+.eb-btn--primary:disabled .eb-btn__icon, .eb-btn--primary[aria-disabled="true"] .eb-btn__icon { color: var(--sem-button-primary-disabled-icon); }
+
+/* secondary */
+.eb-btn--secondary { background: var(--sem-button-secondary-default-fill); border-color: var(--sem-button-secondary-default-stroke); color: var(--sem-button-secondary-default-text); }
+.eb-btn--secondary .eb-btn__icon { color: var(--sem-button-secondary-default-icon); }
+.eb-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-secondary-hover-fill); border-color: var(--sem-button-secondary-hover-stroke); color: var(--sem-button-secondary-hover-text); }
+.eb-btn--secondary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) .eb-btn__icon { color: var(--sem-button-secondary-hover-icon); }
+.eb-btn--secondary:focus-visible { background: var(--sem-button-secondary-focused-fill); border-color: var(--sem-button-secondary-focused-stroke); color: var(--sem-button-secondary-focused-text); }
+.eb-btn--secondary:focus-visible .eb-btn__icon { color: var(--sem-button-secondary-focused-icon); }
+.eb-btn--secondary[data-selected="true"] { background: var(--sem-button-secondary-selected-fill); border-color: var(--sem-button-secondary-selected-stroke); color: var(--sem-button-secondary-selected-text); }
+.eb-btn--secondary[data-selected="true"] .eb-btn__icon { color: var(--sem-button-secondary-selected-icon); }
+.eb-btn--secondary:disabled, .eb-btn--secondary[aria-disabled="true"] { background: var(--sem-button-secondary-disabled-fill); border-color: var(--sem-button-secondary-disabled-stroke); color: var(--sem-button-secondary-disabled-text); }
+.eb-btn--secondary:disabled .eb-btn__icon, .eb-btn--secondary[aria-disabled="true"] .eb-btn__icon { color: var(--sem-button-secondary-disabled-icon); }
+
+/* terciary */
+.eb-btn--terciary { background: var(--sem-button-terciary-default-fill); border-color: var(--sem-button-terciary-default-stroke); color: var(--sem-button-terciary-default-text); }
+.eb-btn--terciary .eb-btn__icon { color: var(--sem-button-terciary-default-icon); }
+.eb-btn--terciary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) { background: var(--sem-button-terciary-hover-fill); border-color: var(--sem-button-terciary-hover-stroke); color: var(--sem-button-terciary-hover-text); }
+.eb-btn--terciary:hover:not(:disabled):not([aria-disabled="true"]):not([data-selected="true"]) .eb-btn__icon { color: var(--sem-button-terciary-hover-icon); }
+.eb-btn--terciary:focus-visible { background: var(--sem-button-terciary-focused-fill); border-color: var(--sem-button-terciary-focused-stroke); color: var(--sem-button-terciary-focused-text); }
+.eb-btn--terciary:focus-visible .eb-btn__icon { color: var(--sem-button-terciary-focused-icon); }
+.eb-btn--terciary[data-selected="true"] { background: var(--sem-button-terciary-selected-fill); border-color: var(--sem-button-terciary-selected-stroke); color: var(--sem-button-terciary-selected-text); }
+.eb-btn--terciary[data-selected="true"] .eb-btn__icon { color: var(--sem-button-terciary-selected-icon); }
+.eb-btn--terciary:disabled, .eb-btn--terciary[aria-disabled="true"] { background: var(--sem-button-terciary-disabled-fill); border-color: var(--sem-button-terciary-disabled-stroke); color: var(--sem-button-terciary-disabled-text); }
+.eb-btn--terciary:disabled .eb-btn__icon, .eb-btn--terciary[aria-disabled="true"] .eb-btn__icon { color: var(--sem-button-terciary-disabled-icon); }
+

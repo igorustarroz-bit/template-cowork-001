@@ -48,7 +48,12 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   en `:root` (vía `src/index.css`). Primero primitivos/globales, después
   semánticos/específicos.
 - **Componentes** → un directorio por componente en `src/components/<Nombre>/`
-  con `Nombre.tsx`, `Nombre.stories.tsx` e `index.ts`.
+  con `Nombre.tsx`, `Nombre.stories.tsx`, `Nombre.css` (cuando aplica) e `index.ts`.
+  Los colores/estados se resuelven con CSS co-localizado que referencia los tokens
+  semánticos (`var(--sem-...)`); los estados Hover/Focus/Disabled usan pseudo-clases
+  nativas (`:hover`, `:focus-visible`/`:focus-within`, `:disabled`) y Selected/estados
+  de validación van por prop (`data-*`). Así el variant→token no depende del escaneo
+  JIT de Tailwind. Tailwind se usa para layout/utilidades.
 - **Estilos** → utilidades Tailwind referenciando tokens (`var(--token)`); nada
   de valores hardcodeados que existan como token.
 - **Alias** → `@/` apunta a `src/`.

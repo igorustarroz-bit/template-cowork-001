@@ -1,0 +1,29 @@
+/* ActionLinkButton — tokens Button/Link Primary/* (Figma UI02-Action Link-Button). NO editar a mano. */
+
+.eb-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  box-sizing: border-box; cursor: pointer; background: transparent; border: 0; padding: 0;
+  font-family: var(--font-family-base); letter-spacing: var(--letter-spacing-cta);
+  border-radius: var(--radius-xxs);
+  transition: color .15s ease;
+}
+.eb-link:focus-visible { outline: 2px solid var(--color-secondary-1-50); outline-offset: 2px; }
+.eb-link:disabled, .eb-link[aria-disabled="true"] { cursor: not-allowed; }
+.eb-link__icon { display: inline-flex; flex: 0 0 auto; }
+.eb-link__icon svg { width: 100%; height: 100%; display: block; }
+.eb-link--l { font-size: 18px; line-height: 18px; font-weight: 500; }
+.eb-link--l .eb-link__icon { width: 24px; height: 24px; }
+.eb-link--m { font-size: 16px; line-height: 16px; font-weight: 600; }
+.eb-link--m .eb-link__icon { width: 24px; height: 24px; }
+.eb-link--s { font-size: 14px; line-height: 14px; font-weight: 600; }
+.eb-link--s .eb-link__icon { width: 20px; height: 20px; }
+.eb-link--xs { font-size: 12px; line-height: 12px; font-weight: 600; }
+.eb-link--xs .eb-link__icon { width: 20px; height: 20px; }
+.eb-link { color: var(--sem-button-link-primary-default-text); }
+.eb-link .eb-link__icon { color: var(--sem-button-link-primary-default-icon); }
+.eb-link:hover:not(:disabled):not([aria-disabled="true"]) { color: var(--sem-button-link-primary-hover-text); }
+.eb-link:hover:not(:disabled):not([aria-disabled="true"]) .eb-link__icon { color: var(--sem-button-link-primary-hover-icon); }
+.eb-link:focus-visible { color: var(--sem-button-link-primary-focused-text); }
+.eb-link:focus-visible .eb-link__icon { color: var(--sem-button-link-primary-focused-icon); }
+.eb-link:disabled, .eb-link[aria-disabled="true"] { color: var(--sem-button-link-primary-disabled-text); }
+.eb-link:disabled .eb-link__icon, .eb-link[aria-disabled="true"] .eb-link__icon { color: var(--sem-button-link-primary-disabled-icon); }

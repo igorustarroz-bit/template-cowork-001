@@ -1,0 +1,67 @@
+/* Input — Figma `UI02 - Input`. Colores desde tokens Forms/<State>/*. NO editar a mano. */
+
+.eb-input { display: inline-flex; flex-direction: column; font-family: var(--font-family-base); width: 320px; max-width: 100%; }
+.eb-input__label-out { color: var(--sem-forms-default-label-out); margin-bottom: var(--font-weight-regular, 0); }
+
+.eb-input__field {
+  display: flex; align-items: center; gap: 8px; box-sizing: border-box;
+  border: 1px solid var(--sem-forms-default-stroke); border-radius: var(--radius-s);
+  background: var(--sem-forms-default-fill);
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.eb-input__text { display: flex; flex-direction: column; justify-content: center; gap: var(--space-1); flex: 1 1 auto; min-width: 0; }
+.eb-input__label { color: var(--sem-forms-default-label-in); }
+.eb-input__control {
+  border: 0; background: transparent; outline: none; width: 100%; padding: 0; margin: 0;
+  font-family: inherit; color: var(--sem-forms-default-text);
+}
+.eb-input__control::placeholder { color: var(--sem-forms-default-label-in); opacity: 1; }
+.eb-input__icon { display: inline-flex; flex: 0 0 auto; color: var(--sem-forms-default-icon); }
+.eb-input__icon svg { width: 100%; height: 100%; display: block; }
+.eb-input__message { color: var(--sem-forms-default-message); }
+
+.eb-input--big .eb-input__field { height: 72px; padding: 0 20px; }
+.eb-input--big .eb-input__control { font-size: 18px; line-height: 18px; }
+.eb-input--big .eb-input__label { font-size: 10px; line-height: 14px; }
+.eb-input--big .eb-input__label-out { font-size: 16px; line-height: 16px; }
+.eb-input--big .eb-input__message { font-size: 14px; line-height: 14px; margin-top: 8px; }
+.eb-input--big .eb-input__icon { width: 24px; height: 24px; }
+.eb-input--small .eb-input__field { height: 56px; padding: 0 16px; }
+.eb-input--small .eb-input__control { font-size: 14px; line-height: 14px; }
+.eb-input--small .eb-input__label { font-size: 10px; line-height: 14px; }
+.eb-input--small .eb-input__label-out { font-size: 14px; line-height: 14px; }
+.eb-input--small .eb-input__message { font-size: 12px; line-height: 12px; margin-top: 6px; }
+.eb-input--small .eb-input__icon { width: 20px; height: 20px; }
+
+.eb-input[data-state="filled"] .eb-input__field { background: var(--sem-forms-filled-fill); border-color: var(--sem-forms-filled-stroke); }
+.eb-input[data-state="filled"] .eb-input__control { color: var(--sem-forms-filled-text); }
+.eb-input[data-state="filled"] .eb-input__control::placeholder { color: var(--sem-forms-filled-label-in); }
+.eb-input[data-state="filled"] .eb-input__label { color: var(--sem-forms-filled-label-in); }
+.eb-input[data-state="filled"] .eb-input__label-out { color: var(--sem-forms-filled-label-out); }
+.eb-input[data-state="filled"] .eb-input__icon { color: var(--sem-forms-filled-icon); }
+.eb-input[data-state="filled"] .eb-input__message { color: var(--sem-forms-filled-message); }
+.eb-input[data-state="error"] .eb-input__field { background: var(--sem-forms-error-fill); border-color: var(--sem-forms-error-stroke); }
+.eb-input[data-state="error"] .eb-input__control { color: var(--sem-forms-error-text); }
+.eb-input[data-state="error"] .eb-input__control::placeholder { color: var(--sem-forms-error-label-in); }
+.eb-input[data-state="error"] .eb-input__label { color: var(--sem-forms-error-label-in); }
+.eb-input[data-state="error"] .eb-input__label-out { color: var(--sem-forms-error-label-out); }
+.eb-input[data-state="error"] .eb-input__icon { color: var(--sem-forms-error-icon); }
+.eb-input[data-state="error"] .eb-input__message { color: var(--sem-forms-error-message); }
+.eb-input[data-state="validated"] .eb-input__field { background: var(--sem-forms-validated-fill); border-color: var(--sem-forms-validated-stroke); }
+.eb-input[data-state="validated"] .eb-input__control { color: var(--sem-forms-validated-text); }
+.eb-input[data-state="validated"] .eb-input__control::placeholder { color: var(--sem-forms-validated-label-in); }
+.eb-input[data-state="validated"] .eb-input__label { color: var(--sem-forms-validated-label-in); }
+.eb-input[data-state="validated"] .eb-input__label-out { color: var(--sem-forms-validated-label-out); }
+.eb-input[data-state="validated"] .eb-input__icon { color: var(--sem-forms-validated-icon); }
+.eb-input[data-state="validated"] .eb-input__message { color: var(--sem-forms-validated-message); }
+.eb-input[data-state="disabled"] .eb-input__field { background: var(--sem-forms-disabled-fill); border-color: var(--sem-forms-disabled-stroke); }
+.eb-input[data-state="disabled"] .eb-input__control { color: var(--sem-forms-disabled-text); }
+.eb-input[data-state="disabled"] .eb-input__control::placeholder { color: var(--sem-forms-disabled-label-in); }
+.eb-input[data-state="disabled"] .eb-input__label { color: var(--sem-forms-disabled-label-in); }
+.eb-input[data-state="disabled"] .eb-input__label-out { color: var(--sem-forms-disabled-label-out); }
+.eb-input[data-state="disabled"] .eb-input__icon { color: var(--sem-forms-disabled-icon); }
+.eb-input[data-state="disabled"] .eb-input__message { color: var(--sem-forms-disabled-message); }
+.eb-input[data-state="default"] .eb-input__field:hover, .eb-input[data-state="filled"] .eb-input__field:hover { background: var(--sem-forms-hover-fill); border-color: var(--sem-forms-hover-stroke); }
+.eb-input[data-state="default"] .eb-input__field:focus-within, .eb-input[data-state="filled"] .eb-input__field:focus-within { background: var(--sem-forms-focused-fill); border-color: var(--sem-forms-focused-stroke); }
+.eb-input[data-state="disabled"] { cursor: not-allowed; }
+.eb-input[data-state="disabled"] .eb-input__control { cursor: not-allowed; }
