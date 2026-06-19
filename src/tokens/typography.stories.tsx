@@ -1,37 +1,72 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { textStyles, type TextStyle } from "./typography";
+import { textStyles, allTextStyles, type TextStyle, type Breakpoint } from "./typography";
 
-function Row({ name, s }: { name: string; s: TextStyle }) {
+const BPS: Breakpoint[] = ["xs", "sm", "m", "lg", "xl", "xxl", "xxxl"];
+const mono = { fontFamily: "monospace", fontSize: 11 } as const;
+
+function ValuesTable({ s }: { s: TextStyle }) {
   return (
-    <div style={{ borderBottom: "1px solid #eee", padding: "12px 0" }}>
-      <div style={{ fontFamily: "monospace", fontSize: 11, color: "#888", marginBottom: 6 }}>
-        {name} · {s.fontSize}/{s.lineHeight}px · w{s.fontWeight} · ls {s.letterSpacing}px
+    <table style={{ ...mono, borderCollapse: "collapse", marginTop: 8 }}>
+      <thead>
+        <tr style={{ color: "#888" }}>
+          <th style={{ textAlign: "left", padding: "2px 10px 2px 0" }} />
+          {BPS.map((b) => (
+            <th key={b} style={{ padding: "2px 8px", textAlign: "right" }}>{b}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style={{ color: "#888", paddingRight: 10 }}>size</td>
+          {BPS.map((b) => (
+            <td key={b} style={{ padding: "2px 8px", textAlign: "right" }}>{s.fontSize[b]}</td>
+          ))}
+        </tr>
+        <tr>
+          <td style={{ color: "#888", paddingRight: 10 }}>line-h</td>
+          {BPS.map((b) => (
+            <td key={b} style={{ padding: "2px 8px", textAlign: "right" }}>{s.lineHeight[b]}</td>
+          ))}
+        </tr>
+      </tbody>
+    </table>
+  );
+}
+
+function StyleRow({ s }: { s: TextStyle }) {
+  return (
+    <div style={{ borderBottom: "1px solid #eee", padding: "18px 0" }}>
+      <div style={{ ...mono, color: "#888", marginBottom: 6 }}>
+        {s.name} · <code>.{s.className}</code> · w{s.fontWeight} · ls {s.letterSpacing}px
       </div>
-      <div
-        style={{
-          fontFamily: s.fontFamily,
-          fontWeight: s.fontWeight,
-          fontSize: s.fontSize,
-          lineHeight: `${s.lineHeight}px`,
-          letterSpacing: s.letterSpacing,
-        }}
-      >
-        Euro6000 — El cajero de tu banco
+      <div className={s.className}>Euro6000 — El cajero de tu banco</div>
+      <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
+        <ValuesTable s={s} />
+        <div style={{ ...mono, color: "#aaa", marginTop: 8 }}>
+          <div>↳ size: {s.boundTo.fontSize}</div>
+          <div>↳ line-height: {s.boundTo.lineHeight}</div>
+        </div>
       </div>
     </div>
   );
 }
 
 function Typography() {
-  const groups = textStyles as unknown as Record<string, Record<string, TextStyle>>;
   return (
-    <div style={{ padding: 24, fontFamily: "system-ui, sans-serif" }}>
-      <h2>Tipografía · Geist</h2>
-      {Object.entries(groups).map(([g, styles]) => (
-        <section key={g} style={{ marginBottom: 28 }}>
-          <h3 style={{ fontSize: 13, color: "#555" }}>{g}</h3>
-          {Object.entries(styles).map(([step, s]) => (
-            <Row key={`${g}/${step}`} name={`${g}/${step}`} s={s} />
+    <div style={{ padding: 24, fontFamily: "system-ui, sans-serif", maxWidth: 1100 }}>
+      <h2>Estilos tipográficos · Geist</h2>
+      <p style={{ color: "#666", fontSize: 14, maxWidth: 680 }}>
+        Los estilos están definidos a través de variables de Figma. El tamaño y el
+        interlineado se enlazan a la colección <code>Responsive</code> (cambian por
+        breakpoint), y familia/peso/letter-spacing a los primitivos <code>Tipography/*</code>.
+        Cada muestra usa su clase <code>.type-*</code> responsive: redimensiona la
+        ventana para ver el escalado. Total: {allTextStyles.length} estilos.
+      </p>
+      {Object.entries(textStyles).map(([group, styles]) => (
+        <section key={group} style={{ marginBottom: 28 }}>
+          <h3 style={{ fontSize: 13, color: "#444", textTransform: "uppercase", letterSpacing: 1 }}>{group}</h3>
+          {Object.values(styles).map((s) => (
+            <StyleRow key={(s as TextStyle).name} s={s as TextStyle} />
           ))}
         </section>
       ))}

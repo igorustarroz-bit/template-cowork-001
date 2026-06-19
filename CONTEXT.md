@@ -70,12 +70,13 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   y utilidades Tailwind `sp-*`, `gutter`, `wrapper-*`. La escala de tipografía
   responsive de Figma queda como dato en tokens (mejora futura, T03 fija el ramp base).
 
-- **Tipografía:** familia única **Geist** (importada vía Google Fonts en
-  `index.css`; instalar localmente para edición). 28 text styles (Title 01–07,
-  Body 01–06, Labels, CTA, CTA-Link-Footer, Forms Input-M/S) expuestos como
-  clases `.type-<slug>` y como escala `fontSize` en Tailwind (ej. `text-title-04`).
-  Valores en px tal cual el Figma.
-
+- **Tipografía:** familia única **Geist**. Los 28 text styles de Figma están
+  ENLAZADOS a variables: tamaño/interlineado → colección `Responsive` (varían por
+  breakpoint), y familia/peso/letter-spacing → primitivos `Tipography/*`. Por eso
+  las clases `.type-<slug>` son **responsive** (base xs + media queries) y replican
+  el estilo de Figma. `typography.ts` expone cada estilo con sus valores por
+  breakpoint y las variables a las que se enlaza. Documentados en Storybook
+  (Tokens/Tipografía).
 - **Temas semánticos:** la colección `Semantic-Color` define 6 temas —
   `light-white` (por defecto), `light-grey`, `dark-red-primary`,
   `dark-secondary-blue`, `dark-black-brand`, `dark-black-neutral`. Cada token

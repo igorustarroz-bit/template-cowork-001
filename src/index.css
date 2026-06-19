@@ -1484,75 +1484,76 @@
   --sem-forms-undefined-message: var(--color-neutral-50);
 }
 
-/* === Clases de text style (Figma) — generado === */
+/* === Clases de text style (Figma, RESPONSIVE) — generado === */
+/* Base = breakpoint xs; los media queries replican el escalado del estilo. */
 .type-title-07 {
   font-family: var(--font-family-base);
   font-weight: 900;
-  font-size: 104px;
-  line-height: 132px;
+  font-size: 40px;
+  line-height: 52px;
   letter-spacing: -0.8px;
 }
 .type-title-06 {
   font-family: var(--font-family-base);
   font-weight: 900;
-  font-size: 72px;
-  line-height: 72px;
+  font-size: 45px;
+  line-height: 44px;
   letter-spacing: -0.8px;
 }
 .type-title-05 {
   font-family: var(--font-family-base);
   font-weight: 900;
-  font-size: 60px;
-  line-height: 60px;
+  font-size: 40px;
+  line-height: 40px;
   letter-spacing: -0.8px;
 }
 .type-title-04 {
   font-family: var(--font-family-base);
   font-weight: 900;
-  font-size: 48px;
-  line-height: 48px;
+  font-size: 34px;
+  line-height: 34px;
   letter-spacing: -0.8px;
 }
 .type-title-03 {
   font-family: var(--font-family-base);
   font-weight: 700;
-  font-size: 42px;
-  line-height: 40px;
+  font-size: 32px;
+  line-height: 32px;
   letter-spacing: -0.8px;
 }
 .type-title-02 {
   font-family: var(--font-family-base);
   font-weight: 700;
-  font-size: 32px;
-  line-height: 40px;
+  font-size: 22px;
+  line-height: 30px;
   letter-spacing: -0.8px;
 }
 .type-title-01 {
   font-family: var(--font-family-base);
   font-weight: 700;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: -0.8px;
 }
 .type-body-06 {
   font-family: var(--font-family-base);
   font-weight: 400;
-  font-size: 26px;
-  line-height: 38px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: 0px;
 }
 .type-body-05 {
   font-family: var(--font-family-base);
   font-weight: 400;
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: 0px;
 }
 .type-body-04 {
   font-family: var(--font-family-base);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 26px;
   letter-spacing: 0px;
 }
 .type-body-03 {
@@ -1601,7 +1602,7 @@
   font-family: var(--font-family-base);
   font-weight: 600;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 22px;
   letter-spacing: 0px;
 }
 .type-cta-01 {
@@ -1615,7 +1616,7 @@
   font-family: var(--font-family-base);
   font-weight: 400;
   font-size: 16px;
-  line-height: 16px;
+  line-height: 22px;
   letter-spacing: 0px;
 }
 .type-cta-link-footer-01 {
@@ -1636,7 +1637,7 @@
   font-family: var(--font-family-base);
   font-weight: 400;
   font-size: 10px;
-  line-height: 14px;
+  line-height: 12px;
   letter-spacing: 0px;
 }
 .type-forms-input-m-label-out {
@@ -1680,6 +1681,222 @@
   font-size: 12px;
   line-height: 12px;
   letter-spacing: 0px;
+}
+
+@media (min-width: 480px) {
+  .type-title-07 {
+    font-size: 64px;
+    line-height: 72px;
+  }
+  .type-title-06 {
+    font-size: 44px;
+  }
+  .type-title-05 {
+    line-height: 50px;
+  }
+  .type-title-04 {
+    line-height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .type-title-07 {
+    font-size: 74px;
+    line-height: 84px;
+  }
+  .type-title-06 {
+    font-size: 58px;
+    line-height: 68px;
+  }
+  .type-title-05 {
+    font-size: 50px;
+    line-height: 56px;
+  }
+  .type-title-04 {
+    font-size: 40px;
+    line-height: 46px;
+  }
+  .type-title-03 {
+    font-size: 34px;
+    line-height: 36px;
+  }
+  .type-title-02 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+  .type-title-01 {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  .type-body-06 {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .type-title-04 {
+    line-height: 48px;
+  }
+  .type-title-01 {
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .type-title-07 {
+    font-size: 104px;
+    line-height: 132px;
+  }
+  .type-title-06 {
+    font-size: 72px;
+    line-height: 72px;
+  }
+  .type-title-05 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .type-title-04 {
+    font-size: 48px;
+  }
+  .type-title-03 {
+    font-size: 42px;
+    line-height: 40px;
+  }
+  .type-title-02 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .type-title-01 {
+    font-size: 24px;
+    line-height: 34px;
+  }
+  .type-body-06 {
+    font-size: 26px;
+    line-height: 38px;
+  }
+  .type-body-05 {
+    font-size: 22px;
+    line-height: 32px;
+  }
+  .type-body-04 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .type-cta-02 {
+    line-height: 16px;
+  }
+  .type-cta-link-footer-02 {
+    line-height: 16px;
+  }
+  .type-forms-input-m-label-in {
+    line-height: 14px;
+  }
+}
+
+@media (min-width: 1620px) {
+  .type-title-07 {
+    font-size: 94px;
+    line-height: 110px;
+  }
+  .type-title-06 {
+    font-size: 78px;
+    line-height: 94px;
+  }
+  .type-title-05 {
+    font-size: 70px;
+    line-height: 80px;
+  }
+  .type-title-04 {
+    font-size: 60px;
+    line-height: 64px;
+  }
+  .type-title-03 {
+    line-height: 44px;
+  }
+  .type-title-02 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+  .type-title-01 {
+    line-height: 32px;
+  }
+  .type-body-06 {
+    font-size: 28px;
+    line-height: 40px;
+  }
+  .type-body-05 {
+    font-size: 24px;
+  }
+  .type-body-04 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  .type-cta-02 {
+    line-height: 21px;
+  }
+  .type-cta-link-footer-02 {
+    line-height: 21px;
+  }
+  .type-forms-input-m-label-in {
+    line-height: 12px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .type-title-07 {
+    font-size: 108px;
+    line-height: 124px;
+  }
+  .type-title-06 {
+    font-size: 92px;
+    line-height: 108px;
+  }
+  .type-title-05 {
+    font-size: 84px;
+    line-height: 96px;
+  }
+  .type-title-04 {
+    font-size: 72px;
+    line-height: 76px;
+  }
+  .type-title-03 {
+    font-size: 44px;
+  }
+  .type-title-02 {
+    font-size: 42px;
+    line-height: 56px;
+  }
+  .type-title-01 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+  .type-body-06 {
+    font-size: 32px;
+    line-height: 48px;
+  }
+  .type-body-05 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+  .type-body-04 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .type-body-03 {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .type-body-02 {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .type-cta-02 {
+    line-height: 16px;
+  }
+  .type-cta-link-footer-02 {
+    line-height: 16px;
+  }
 }
 
 /* === Breakpoints responsive (mobile-first) — generado desde Figma === */
