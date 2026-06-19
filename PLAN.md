@@ -32,7 +32,7 @@ lo que depende de ellas.
 
 - [x] **T01 · Colores primitivos** — `Color/Grayscale/*`, `Color/Primary-1/*`
       → `src/tokens/colors.ts` + custom properties en `:root`
-- [ ] **T02 · Colores semánticos** — colección `Semantic-Color`
+- [x] **T02 · Colores semánticos** — colección `Semantic-Color`
       (Button/Primary, Tertiary, etc.) mapeados sobre primitivos
       → `src/tokens/semantic-colors.ts`
 - [ ] **T03 · Tipografía** — `Tipography/Letter-Spacing/*`, escalas de
@@ -95,9 +95,9 @@ lo que depende de ellas.
 | Fase | Elementos | Hechos |
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
-| 1 · Tokens | 4 | 1 |
+| 1 · Tokens | 4 | 2 |
 | 2 · Componentes UI | 17 | 0 |
 | 3 · Módulos | 8 (a confirmar con Figma) | 0 |
 | 4 · Docs | 4 | 0 |
 
-_Última actualización: 2026-06-19 — T01 colores primitivos completado._
+_Última actualización: 2026-06-19 — T02 colores semánticos completado._

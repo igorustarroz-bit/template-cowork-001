@@ -63,6 +63,13 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
 
 ## Decisiones tomadas
 
+- **Temas semánticos:** la colección `Semantic-Color` define 6 temas —
+  `light-white` (por defecto), `light-grey`, `dark-red-primary`,
+  `dark-secondary-blue`, `dark-black-brand`, `dark-black-neutral`. Cada token
+  semántico (`--sem-*`) referencia un primitivo o a otro semántico, así que
+  marca (`data-brand`) y tema (`data-theme`) se componen. En Tailwind viven bajo
+  el namespace `sem-` (ej. `bg-sem-backgrounds-base`).
+
 - **Multi-marca:** la colección `Primitives` de Figma tiene dos modos —
   `Euro600` (por defecto) y `Bankinter`. Se exponen como CSS custom
   properties; Bankinter solo redefine `--color-primary-1-50`. Cambiar de
