@@ -63,6 +63,11 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
 
 ## Decisiones tomadas
 
+- **Multi-marca:** la colección `Primitives` de Figma tiene dos modos —
+  `Euro600` (por defecto) y `Bankinter`. Se exponen como CSS custom
+  properties; Bankinter solo redefine `--color-primary-1-50`. Cambiar de
+  marca con `<html data-brand="bankinter">`.
+
 - Proyecto reconstruido desde cero (2026-06-19): scaffold limpio, `node_modules`
   fuera de git (`.gitignore`), `CONTEXT.md` + `PLAN.md` añadidos.
 - `postcss.config.cjs` (CommonJS) para evitar warnings de tipo de módulo.

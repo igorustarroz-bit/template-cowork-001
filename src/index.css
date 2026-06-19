@@ -3,10 +3,121 @@
 @tailwind utilities;
 
 /*
- * Tokens del design system Euro6000.
- * Se irán poblando en la Fase 1 (colores primitivos, semánticos,
- * tipografía, spacing) como CSS custom properties.
+ * Tokens del design system Euro6000 (CSS custom properties).
+ * Fase 1 · T01 — Colores primitivos. Fuente: colección "Primitives" (Figma).
+ * Marca por defecto: Euro600. Para Bankinter: <html data-brand="bankinter">.
  */
 :root {
-  /* placeholder — ver src/tokens/ */
+  /* === Colores primitivos (marca Euro600) — generado desde Figma === */
+  --color-neutral-white: #FFFFFF;
+  --color-neutral-98: #FAF9F9;
+  --color-neutral-96: #F7F7F7;
+  --color-neutral-94: #F0F0F0;
+  --color-neutral-90: #E5E5E5;
+  --color-neutral-80: #CCCCCC;
+  --color-neutral-70: #B3B3B3;
+  --color-neutral-60: #999999;
+  --color-neutral-50: #808080;
+  --color-neutral-40: #666666;
+  --color-neutral-30: #4D4D4D;
+  --color-neutral-20: #2B2B2B;
+  --color-neutral-10: #1A1A1A;
+  --color-neutral-black: #000000;
+  --color-primary-1-100: #FFFFFF;
+  --color-primary-1-98: #FFF5F6;
+  --color-primary-1-96: #FFEBED;
+  --color-primary-1-94: #FFE0E4;
+  --color-primary-1-90: #FFCCD3;
+  --color-primary-1-80: #FF99A6;
+  --color-primary-1-70: #FF667A;
+  --color-primary-1-60: #FF334E;
+  --color-primary-1-50: #FF0D2D;
+  --color-primary-1-40: #CC001B;
+  --color-primary-1-30: #990014;
+  --color-primary-1-20: #48151D;
+  --color-primary-1-10: #260000;
+  --color-primary-1-0: #000000;
+  --color-secondary-1-100: #FFFFFF;
+  --color-secondary-1-98: #F5F8FF;
+  --color-secondary-1-96: #EBF1FF;
+  --color-secondary-1-94: #E0E9FF;
+  --color-secondary-1-90: #CCDBFF;
+  --color-secondary-1-80: #99B6FF;
+  --color-secondary-1-70: #6692FF;
+  --color-secondary-1-60: #2563FF;
+  --color-secondary-1-50: #0049FF;
+  --color-secondary-1-40: #003ACC;
+  --color-secondary-1-30: #002C99;
+  --color-secondary-1-20: #001D66;
+  --color-secondary-1-10: #0E1E2B;
+  --color-secondary-1-0: #000000;
+  --color-secondary-2-100: #FFFFFF;
+  --color-secondary-2-98: #F5FFFB;
+  --color-secondary-2-96: #EBFFF6;
+  --color-secondary-2-94: #E0FFF2;
+  --color-secondary-2-90: #CCFFEA;
+  --color-secondary-2-80: #9BFDD4;
+  --color-secondary-2-70: #68FDBE;
+  --color-secondary-2-60: #36FCA9;
+  --color-secondary-2-50: #04FB93;
+  --color-secondary-2-40: #00C875;
+  --color-secondary-2-30: #00995A;
+  --color-secondary-2-20: #00663C;
+  --color-secondary-2-10: #063320;
+  --color-secondary-2-0: #000000;
+  --color-secondary-3-100: #FFFFFF;
+  --color-secondary-3-98: #FFFCF5;
+  --color-secondary-3-96: #FFF9EB;
+  --color-secondary-3-94: #FFF6E0;
+  --color-secondary-3-90: #FFF0CC;
+  --color-secondary-3-80: #FFE199;
+  --color-secondary-3-70: #FFD366;
+  --color-secondary-3-60: #FFC433;
+  --color-secondary-3-50: #FFB800;
+  --color-secondary-3-40: #CC9300;
+  --color-secondary-3-30: #996E00;
+  --color-secondary-3-20: #664A00;
+  --color-secondary-3-10: #372800;
+  --color-secondary-3-0: #000000;
+  --color-opacity-black-100: #00000000;
+  --color-opacity-black-98: #00000005;
+  --color-opacity-black-96: #0000000A;
+  --color-opacity-black-94: #0000000F;
+  --color-opacity-black-90: #0000001A;
+  --color-opacity-black-80: #00000033;
+  --color-opacity-black-70: #0000004D;
+  --color-opacity-black-60: #00000066;
+  --color-opacity-black-50: #00000080;
+  --color-opacity-black-40: #00000099;
+  --color-opacity-black-30: #000000B2;
+  --color-opacity-black-20: #000000CC;
+  --color-opacity-black-10: #000000E5;
+  --color-opacity-black-0: #000000;
+  --color-opacity-white-100: #FFFFFF00;
+  --color-opacity-white-98: #FFFFFF05;
+  --color-opacity-white-96: #FFFFFF0A;
+  --color-opacity-white-94: #FFFFFF0F;
+  --color-opacity-white-90: #FFFFFF1A;
+  --color-opacity-white-80: #FFFFFF33;
+  --color-opacity-white-70: #FFFFFF4D;
+  --color-opacity-white-60: #FFFFFF66;
+  --color-opacity-white-50: #FFFFFF80;
+  --color-opacity-white-40: #FFFFFF99;
+  --color-opacity-white-30: #FFFFFFB2;
+  --color-opacity-white-20: #FFFFFFCC;
+  --color-opacity-white-10: #FFFFFFE5;
+  --color-opacity-white-0: #FFFFFF;
+  --color-system-error-01: #D9B8B9;
+  --color-system-error-02: #D63838;
+  --color-system-error-03: #850606;
+  --color-system-success-01: #A2DBB3;
+  --color-system-success-02: #6DC849;
+  --color-system-success-03: #237210;
+  --color-system-warning-01: #F9D999;
+  --color-system-warning-02: #F7BA40;
+  --color-system-warning-03: #7A5706;
+}
+
+[data-brand="bankinter"] {
+  --color-primary-1-50: #FF7300;
 }
