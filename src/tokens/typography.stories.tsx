@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { textStyles, allTextStyles, type TextStyle, type Breakpoint } from "./typography";
-import { semanticThemes, type SemanticTheme } from "./semantic-colors";
 
-type Brand = "euro600" | "bankinter";
 const BPS: Breakpoint[] = ["xs", "sm", "m", "lg", "xl", "xxl", "xxxl"];
 const BP_LABEL: Record<Breakpoint, string> = {
   xs: "XS · 375", sm: "SM · 480", m: "M · 768", lg: "LG · 1024",
@@ -10,6 +8,7 @@ const BP_LABEL: Record<Breakpoint, string> = {
 };
 const mono = { fontFamily: "monospace", fontSize: 11 } as const;
 const muted = { color: "var(--sem-texts-neutral-1)" };
+const accent = "var(--sem-texts-accent-base)";
 
 function ValuesTable({ s, bp }: { s: TextStyle; bp: Breakpoint }) {
   return (
@@ -17,20 +16,12 @@ function ValuesTable({ s, bp }: { s: TextStyle; bp: Breakpoint }) {
       <thead>
         <tr>
           <th />
-          {BPS.map((b) => (
-            <th key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? "var(--sem-texts-accent-base)" : undefined, fontWeight: b === bp ? 700 : 400 }}>{b}</th>
-          ))}
+          {BPS.map((b) => (<th key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? accent : undefined, fontWeight: b === bp ? 700 : 400 }}>{b}</th>))}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td style={{ paddingRight: 10 }}>size</td>
-          {BPS.map((b) => (<td key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? "var(--sem-texts-accent-base)" : undefined, fontWeight: b === bp ? 700 : 400 }}>{s.fontSize[b]}</td>))}
-        </tr>
-        <tr>
-          <td style={{ paddingRight: 10 }}>line-h</td>
-          {BPS.map((b) => (<td key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? "var(--sem-texts-accent-base)" : undefined, fontWeight: b === bp ? 700 : 400 }}>{s.lineHeight[b]}</td>))}
-        </tr>
+        <tr><td style={{ paddingRight: 10 }}>size</td>{BPS.map((b) => (<td key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? accent : undefined, fontWeight: b === bp ? 700 : 400 }}>{s.fontSize[b]}</td>))}</tr>
+        <tr><td style={{ paddingRight: 10 }}>line-h</td>{BPS.map((b) => (<td key={b} style={{ padding: "2px 8px", textAlign: "right", color: b === bp ? accent : undefined, fontWeight: b === bp ? 700 : 400 }}>{s.lineHeight[b]}</td>))}</tr>
       </tbody>
     </table>
   );
@@ -43,7 +34,7 @@ function StyleRow({ s, bp }: { s: TextStyle; bp: Breakpoint }) {
         {s.name} · <code>.{s.className}</code> · w{s.fontWeight} · ls {s.letterSpacing}px ·{" "}
         <strong style={{ color: "var(--sem-texts-base)" }}>{s.fontSize[bp]}/{s.lineHeight[bp]}px</strong> @ {bp}
       </div>
-      <div style={{ fontFamily: "var(--font-family-base)", fontWeight: s.fontWeight, fontSize: s.fontSize[bp], lineHeight: `${s.lineHeight[bp]}px`, letterSpacing: s.letterSpacing, color: "var(--sem-texts-base)" }}>
+      <div style={{ fontFamily: "var(--font-family-base)", fontWeight: s.fontWeight, fontSize: s.fontSize[bp], lineHeight: `${s.lineHeight[bp]}px`, letterSpacing: s.letterSpacing }}>
         Euro6000 — El cajero de tu banco
       </div>
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
@@ -57,19 +48,17 @@ function StyleRow({ s, bp }: { s: TextStyle; bp: Breakpoint }) {
   );
 }
 
-function Typography({ breakpoint, theme, brand }: { breakpoint: Breakpoint; theme: SemanticTheme; brand: Brand }) {
+function Typography({ breakpoint }: { breakpoint: Breakpoint }) {
   return (
-    <div data-theme={theme} data-brand={brand} style={{ padding: 24, fontFamily: "system-ui, sans-serif", background: "var(--sem-backgrounds-base)", color: "var(--sem-texts-base)", minHeight: "100vh" }}>
+    <div style={{ padding: 24, fontFamily: "system-ui, sans-serif" }}>
       <h2 style={{ marginBottom: 4 }}>Estilos tipográficos · Geist</h2>
       <div style={{ ...mono, ...muted, marginBottom: 8 }}>
-        Breakpoint: <strong style={{ color: "var(--sem-texts-accent-base)" }}>{BP_LABEL[breakpoint]}</strong>{" · "}
-        Modo de color: <strong style={{ color: "var(--sem-texts-accent-base)" }}>{semanticThemes.find((t) => t.slug === theme)?.label}</strong>{" · "}
-        Marca: <strong style={{ color: "var(--sem-texts-accent-base)" }}>{brand}</strong>
+        Breakpoint: <strong style={{ color: accent }}>{BP_LABEL[breakpoint]}</strong>
+        {" · "}Cambia «Modo de color» y «Marca» en la barra superior para ver los colores.
       </div>
       <p style={{ ...muted, fontSize: 14, maxWidth: 680 }}>
-        Usa los controles «Breakpoint», «Modo de color» y «Marca» para ver los estilos en
-        cada combinación. El fondo y el texto usan tokens semánticos (<code>--sem-backgrounds-base</code> /
-        <code>--sem-texts-base</code>), así compruebas que los colores funcionan. {allTextStyles.length} estilos.
+        Estilos definidos vía variables de Figma (tamaño/interlineado responsive; familia/peso/ls
+        primitivos). Fondo y texto usan tokens semánticos. {allTextStyles.length} estilos.
       </p>
       {Object.entries(textStyles).map(([group, styles]) => (
         <section key={group} style={{ marginBottom: 28 }}>
@@ -85,12 +74,8 @@ const meta = {
   title: "Tokens/Tipografía",
   component: Typography,
   parameters: { layout: "fullscreen" },
-  args: { breakpoint: "xl", theme: "light-white", brand: "euro600" },
-  argTypes: {
-    breakpoint: { name: "Breakpoint", control: "select", options: BPS },
-    theme: { name: "Modo de color", control: "select", options: semanticThemes.map((t) => t.slug) },
-    brand: { name: "Marca (primitivas)", control: "inline-radio", options: ["euro600", "bankinter"] },
-  },
+  args: { breakpoint: "xl" },
+  argTypes: { breakpoint: { name: "Breakpoint", control: "select", options: BPS } },
 } satisfies Meta<typeof Typography>;
 
 export default meta;
