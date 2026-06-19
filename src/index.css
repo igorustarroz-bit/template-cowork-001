@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -117,6 +118,19 @@
   --color-system-warning-02: #F7BA40;
   --color-system-warning-03: #7A5706;
 
+
+  /* === Tipografía (Geist) — generado desde Figma === */
+  --font-family-base: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-weight-black: 900;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --letter-spacing-title: -0.8px;
+  --letter-spacing-body: 0px;
+  --letter-spacing-label: 0.5px;
+  --letter-spacing-cta: 0px;
+  --letter-spacing-forms: 0px;
 
   /* === Colores semánticos (tema por defecto: light-white) — Figma === */
   --sem-backgrounds-base: var(--color-neutral-white);
@@ -1425,3 +1439,200 @@
   --sem-forms-undefined-message: var(--color-neutral-50);
 }
 
+/* === Clases de text style (Figma) — generado === */
+.type-title-07 {
+  font-family: var(--font-family-base);
+  font-weight: 900;
+  font-size: 104px;
+  line-height: 132px;
+  letter-spacing: -0.8px;
+}
+.type-title-06 {
+  font-family: var(--font-family-base);
+  font-weight: 900;
+  font-size: 72px;
+  line-height: 72px;
+  letter-spacing: -0.8px;
+}
+.type-title-05 {
+  font-family: var(--font-family-base);
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -0.8px;
+}
+.type-title-04 {
+  font-family: var(--font-family-base);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -0.8px;
+}
+.type-title-03 {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 40px;
+  letter-spacing: -0.8px;
+}
+.type-title-02 {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.8px;
+}
+.type-title-01 {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: -0.8px;
+}
+.type-body-06 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 38px;
+  letter-spacing: 0px;
+}
+.type-body-05 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
+.type-body-04 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+.type-body-03 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+.type-body-02 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0px;
+}
+.type-body-01 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0px;
+}
+.type-labels-01 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+}
+.type-labels-02 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+.type-cta-03 {
+  font-family: var(--font-family-base);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0px;
+}
+.type-cta-02 {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+.type-cta-01 {
+  font-family: var(--font-family-base);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0px;
+}
+.type-cta-link-footer-02 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+.type-cta-link-footer-01 {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}
+.type-forms-input-m-text {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+.type-forms-input-m-label-in {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0px;
+}
+.type-forms-input-m-label-out {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0px;
+}
+.type-forms-input-m-info {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0px;
+}
+.type-forms-input-s-text {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0px;
+}
+.type-forms-input-s-label-in {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}
+.type-forms-input-s-label-out {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0px;
+}
+.type-forms-input-s-info {
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0px;
+}

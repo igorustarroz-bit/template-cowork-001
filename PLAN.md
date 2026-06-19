@@ -35,7 +35,7 @@ lo que depende de ellas.
 - [x] **T02 · Colores semánticos** — colección `Semantic-Color`
       (Button/Primary, Tertiary, etc.) mapeados sobre primitivos
       → `src/tokens/semantic-colors.ts`
-- [ ] **T03 · Tipografía** — `Tipography/Letter-Spacing/*`, escalas de
+- [x] **T03 · Tipografía** — `Tipography/Letter-Spacing/*`, escalas de
       font-size / line-height → `src/tokens/typography.ts`
 - [ ] **T04 · Espaciado y breakpoints** — colección `Responsive`
       (`Layout/Button/{XS·S·M·L·XL}`) → `src/tokens/spacing.ts`
@@ -95,9 +95,9 @@ lo que depende de ellas.
 | Fase | Elementos | Hechos |
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
-| 1 · Tokens | 4 | 2 |
+| 1 · Tokens | 4 | 3 |
 | 2 · Componentes UI | 17 | 0 |
 | 3 · Módulos | 8 (a confirmar con Figma) | 0 |
 | 4 · Docs | 4 | 0 |
 
-_Última actualización: 2026-06-19 — T02 colores semánticos completado._
+_Última actualización: 2026-06-19 — T03 tipografía completado._
