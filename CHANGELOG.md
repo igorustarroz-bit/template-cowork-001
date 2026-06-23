@@ -7,6 +7,11 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Módulo Image+Texto en código.** Dos zonas (texto ≈4 col anclado izq. + imagen 6
+  col cuadrada anclada dcha.), mobile-first apilado → grid 12 col en `lg`. Imagen
+  `object-cover` que crece cuadrada; `CashbackCard` overlay (nuevo componente: fondo
+  acento, barras, botón circular) tamaño fijo anclado abajo-derecha; CTA fit-content.
+  Sin estados interactivos (solo CTAs). Reutiliza `ActionButton`.
 - **Cards: comportamiento + Storybook.** Estado expand/collapse (una sola card
   expandida a la vez: 6 col + descripción + icono −; las demás 3 col + icono +),
   click para alternar. Storybook: selector de **breakpoint** en la toolbar
