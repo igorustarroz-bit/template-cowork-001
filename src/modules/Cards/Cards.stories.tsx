@@ -2,19 +2,20 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Cards } from "./Cards";
 import { semanticThemes, type SemanticTheme } from "../../tokens/semantic-colors";
 
-const THEME_OPTIONS = ["inherit", ...semanticThemes.map((t) => t.slug)] as const;
-const themeCtrl = { control: "select" as const, options: THEME_OPTIONS };
-const norm = (v: string): SemanticTheme | undefined => (v === "inherit" ? undefined : (v as SemanticTheme));
+const THEME_OPTIONS: string[] = ["inherit", ...semanticThemes.map((t) => t.slug)];
+const norm = (v?: string): SemanticTheme | undefined => (!v || v === "inherit" ? undefined : (v as SemanticTheme));
 
-type Args = {
-  heading: string; buttonLabel: string;
+interface Args {
+  heading: string;
+  buttonLabel: string;
   card1Title: string; card1Desc: string; card1Theme: string;
   card2Title: string; card2Desc: string; card2Theme: string;
   card3Title: string; card3Desc: string; card3Theme: string;
-};
+}
 
-const meta = {
+const meta: Meta<Args> = {
   title: "Módulos/Cards",
+  component: Cards as unknown as React.ComponentType<Args>,
   parameters: { layout: "fullscreen" },
   args: {
     heading: "Tarjetas y soluciones de pago",
@@ -26,17 +27,17 @@ const meta = {
   argTypes: {
     heading: { control: "text", name: "Texto · cabecera" },
     buttonLabel: { control: "text", name: "Texto · botón" },
-    card1Theme: { ...themeCtrl, name: "Modo · card 1" },
+    card1Theme: { control: "select", options: THEME_OPTIONS, name: "Modo · card 1" },
     card1Title: { control: "text", name: "Texto · card 1 título" },
     card1Desc: { control: "text", name: "Texto · card 1 desc" },
-    card2Theme: { ...themeCtrl, name: "Modo · card 2" },
+    card2Theme: { control: "select", options: THEME_OPTIONS, name: "Modo · card 2" },
     card2Title: { control: "text", name: "Texto · card 2 título" },
     card2Desc: { control: "text", name: "Texto · card 2 desc" },
-    card3Theme: { ...themeCtrl, name: "Modo · card 3" },
+    card3Theme: { control: "select", options: THEME_OPTIONS, name: "Modo · card 3" },
     card3Title: { control: "text", name: "Texto · card 3 título" },
     card3Desc: { control: "text", name: "Texto · card 3 desc" },
   },
-  render: (a: Args) => (
+  render: (a) => (
     <Cards
       heading={a.heading}
       buttonLabel={a.buttonLabel}
@@ -47,9 +48,26 @@ const meta = {
       ]}
     />
   ),
-} satisfies Meta<Args>;
+};
 
 export default meta;
 type Story = StoryObj<Args>;
 
 export const Default: Story = {};
+
+/** Demostración estática: módulo en Dark·Red, cada card en un modo distinto. */
+export const ModosMezclados: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div data-theme="dark-red-primary" style={{ background: "var(--sem-backgrounds-base)" }}>
+      <Cards
+        heading="Módulo rojo · cards con su propio modo"
+        cards={[
+          { title: "Light · White", description: "Panel en modo claro.", theme: "light-white" },
+          { title: "Dark · Secondary", description: "Panel en azul.", theme: "dark-secondary-blue" },
+          { title: "Light · Grey", description: "Panel en gris claro.", theme: "light-grey" },
+        ]}
+      />
+    </div>
+  ),
+};
