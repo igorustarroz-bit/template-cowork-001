@@ -5,6 +5,14 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ## [No publicado]
 
+### 2026-06-20
+
+- **Módulo Cards en código (prueba design-to-code sin autolayout).** Validado que se
+  puede derivar el spacing midiendo geometría en Figma y aplicando los tokens
+  (`Spacers`/`Gutter`/`Wrapper`) directo en código — sin construir autolayout. Nuevo
+  `src/modules/Cards` (grid 12 col, card destacada 6 col + 2 de 3 col, panel overlay)
+  reutilizando `ActionButton` e `IconButton`. Autolayout pasa a opcional en el gate.
+
 ### 2026-06-19
 
 - **Regla R-TK1 (tokens/limpieza):** nunca un rectángulo de fondo; el color de fondo
