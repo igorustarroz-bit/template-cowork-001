@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Convención «modo por componente» consolidada.** Retrofit de `Image+Texto`:
+  `CashbackCard` ahora es *mode-driven* (tokens `Base`, su `data-theme` la colorea;
+  default Dark-Red-Primary) con prop `theme`; el módulo lleva su modo (toolbar) y la
+  card su propio modo (control `Modo · CashbackCard`). Documentado en `CONTEXT.md`
+  (Convenciones → «Modo por componente»). Modos fieles a Figma: módulo Light-Grey,
+  CashbackCard Dark-Red-Primary.
 - **Fix tokens: modo claro anidable.** Añadido bloque `[data-theme="light-white"]`
   (antes light-white solo estaba en `:root`, así que un contenedor light-white dentro
   de un módulo oscuro heredaba el modo oscuro). Ahora funciona el patrón módulo en un

@@ -58,6 +58,16 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   de valores hardcodeados que existan como token.
 - **Alias** → `@/` apunta a `src/`.
 - **Animaciones** → GSAP, encapsuladas en hooks/efectos dentro del componente.
+- **Modo por componente (multi-modo anidado)** → cada módulo lleva su modo (en
+  Storybook lo controla el **selector global de la toolbar**); los sub-componentes
+  con contenedor tokenizado aceptan una prop `theme` que aplica `data-theme` y
+  **sobrescribe** el modo del módulo (ej. módulo `Cards` rojo + paneles `light-white`;
+  `Image+Texto` gris + `CashbackCard` rojo). Los componentes deben ser **mode-driven**
+  (usar tokens `Backgrounds/Base`/`Texts/Base`, nunca un color fijo): es su *modo* el
+  que los colorea. **Requisito**: cada modo necesita su bloque `[data-theme="…"]` en
+  `index.css` (incluido `light-white`, que además vive en `:root`), si no, un modo
+  anidado hereda el del ancestro. En las stories: toolbar = modo del módulo · controles
+  = un selector de modo por componente interior (+ textos editables).
 - **Documentación en Storybook** → toda story de tokens con varios *modos*
   (marca, tema) o valores *responsive* (breakpoints) debe incluir un **selector**
   (arg `control: "select"`) para previsualizar cada modo/breakpoint, igual que el
