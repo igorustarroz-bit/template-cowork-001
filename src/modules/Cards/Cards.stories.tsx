@@ -7,7 +7,6 @@ const themeCtrl = { control: "select" as const, options: THEME_OPTIONS };
 const norm = (v: string): SemanticTheme | undefined => (v === "inherit" ? undefined : (v as SemanticTheme));
 
 type Args = {
-  sectionTheme: string;
   heading: string; buttonLabel: string;
   card1Title: string; card1Desc: string; card1Theme: string;
   card2Title: string; card2Desc: string; card2Theme: string;
@@ -17,8 +16,10 @@ type Args = {
 const meta = {
   title: "Módulos/Cards",
   parameters: { layout: "fullscreen" },
+  // El modo del MÓDULO se controla con el selector global de la toolbar.
+  // Aquí lo dejamos en rojo por defecto para mostrar el patrón módulo+contenedores.
+  globals: { theme: "dark-red-primary" },
   args: {
-    sectionTheme: "dark-red-primary",
     heading: "Tarjetas y soluciones de pago",
     buttonLabel: "Ver todo",
     card1Title: "Solución destacada", card1Desc: "Descripción de la tarjeta destacada con más detalle.", card1Theme: "light-white",
@@ -26,7 +27,6 @@ const meta = {
     card3Title: "Título de la card", card3Desc: "Detalle de la tercera tarjeta.", card3Theme: "light-white",
   },
   argTypes: {
-    sectionTheme: { ...themeCtrl, name: "Modo · módulo" },
     heading: { control: "text" }, buttonLabel: { control: "text" },
     card1Title: { control: "text" }, card1Desc: { control: "text" }, card1Theme: { ...themeCtrl, name: "Modo · card 1" },
     card2Title: { control: "text" }, card2Desc: { control: "text" }, card2Theme: { ...themeCtrl, name: "Modo · card 2" },
@@ -34,7 +34,6 @@ const meta = {
   },
   render: (a: Args) => (
     <Cards
-      theme={norm(a.sectionTheme)}
       heading={a.heading}
       buttonLabel={a.buttonLabel}
       cards={[
