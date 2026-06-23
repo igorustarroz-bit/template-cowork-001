@@ -18,12 +18,12 @@ const meta = {
   title: "Módulos/Cards",
   parameters: { layout: "fullscreen" },
   args: {
-    sectionTheme: "inherit",
+    sectionTheme: "dark-red-primary",
     heading: "Tarjetas y soluciones de pago",
     buttonLabel: "Ver todo",
-    card1Title: "Solución destacada", card1Desc: "Descripción de la tarjeta destacada con más detalle.", card1Theme: "inherit",
-    card2Title: "Título de la card", card2Desc: "Detalle de la segunda tarjeta.", card2Theme: "inherit",
-    card3Title: "Título de la card", card3Desc: "Detalle de la tercera tarjeta.", card3Theme: "inherit",
+    card1Title: "Solución destacada", card1Desc: "Descripción de la tarjeta destacada con más detalle.", card1Theme: "light-white",
+    card2Title: "Título de la card", card2Desc: "Detalle de la segunda tarjeta.", card2Theme: "light-white",
+    card3Title: "Título de la card", card3Desc: "Detalle de la tercera tarjeta.", card3Theme: "light-white",
   },
   argTypes: {
     sectionTheme: { ...themeCtrl, name: "Modo · módulo" },

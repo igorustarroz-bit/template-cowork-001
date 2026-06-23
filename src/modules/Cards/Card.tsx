@@ -31,7 +31,6 @@ export function Card({ title, description, expanded = false, onToggle, image, th
     <article
       onClick={onToggle}
       aria-expanded={expanded}
-      data-theme={theme}
       className={[
         "relative h-[598px] min-w-0 basis-0 cursor-pointer overflow-hidden rounded-[var(--radius-l)] transition-[flex-grow] duration-500 ease-out",
         expanded ? "grow-[2]" : "grow",
@@ -42,7 +41,7 @@ export function Card({ title, description, expanded = false, onToggle, image, th
         style={image ? { backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
         aria-hidden="true"
       />
-      <div className="absolute inset-x-[var(--space-6)] bottom-[var(--space-6)] flex min-h-[254px] flex-col justify-between gap-[var(--space-7)] rounded-[var(--radius-m)] bg-sem-backgrounds-base p-[var(--space-7)]">
+      <div data-theme={theme} className="absolute inset-x-[var(--space-6)] bottom-[var(--space-6)] flex min-h-[254px] flex-col justify-between gap-[var(--space-7)] rounded-[var(--radius-m)] bg-sem-backgrounds-base p-[var(--space-7)]">
         <div className="flex flex-col gap-[var(--space-2)]">
           <h3 className="type-title-01 text-sem-texts-base">{title}</h3>
           {expanded && description && (
