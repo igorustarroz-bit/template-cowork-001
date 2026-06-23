@@ -16,9 +16,6 @@ type Args = {
 const meta = {
   title: "Módulos/Cards",
   parameters: { layout: "fullscreen" },
-  // El modo del MÓDULO se controla con el selector global de la toolbar.
-  // Aquí lo dejamos en rojo por defecto para mostrar el patrón módulo+contenedores.
-  globals: { theme: "dark-red-primary" },
   args: {
     heading: "Tarjetas y soluciones de pago",
     buttonLabel: "Ver todo",
@@ -27,10 +24,17 @@ const meta = {
     card3Title: "Título de la card", card3Desc: "Detalle de la tercera tarjeta.", card3Theme: "light-white",
   },
   argTypes: {
-    heading: { control: "text" }, buttonLabel: { control: "text" },
-    card1Title: { control: "text" }, card1Desc: { control: "text" }, card1Theme: { ...themeCtrl, name: "Modo · card 1" },
-    card2Title: { control: "text" }, card2Desc: { control: "text" }, card2Theme: { ...themeCtrl, name: "Modo · card 2" },
-    card3Title: { control: "text" }, card3Desc: { control: "text" }, card3Theme: { ...themeCtrl, name: "Modo · card 3" },
+    heading: { control: "text", name: "Texto · cabecera" },
+    buttonLabel: { control: "text", name: "Texto · botón" },
+    card1Theme: { ...themeCtrl, name: "Modo · card 1" },
+    card1Title: { control: "text", name: "Texto · card 1 título" },
+    card1Desc: { control: "text", name: "Texto · card 1 desc" },
+    card2Theme: { ...themeCtrl, name: "Modo · card 2" },
+    card2Title: { control: "text", name: "Texto · card 2 título" },
+    card2Desc: { control: "text", name: "Texto · card 2 desc" },
+    card3Theme: { ...themeCtrl, name: "Modo · card 3" },
+    card3Title: { control: "text", name: "Texto · card 3 título" },
+    card3Desc: { control: "text", name: "Texto · card 3 desc" },
   },
   render: (a: Args) => (
     <Cards
