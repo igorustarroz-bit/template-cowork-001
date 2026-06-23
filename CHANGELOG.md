@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Fix tokens: modo claro anidable.** Añadido bloque `[data-theme="light-white"]`
+  (antes light-white solo estaba en `:root`, así que un contenedor light-white dentro
+  de un módulo oscuro heredaba el modo oscuro). Ahora funciona el patrón módulo en un
+  modo + contenedores internos en otro (p.ej. módulo Cards rojo + paneles blancos).
+- **Cards: modo por componente** aplicado al Panel (fiel a Figma) + selector por
+  componente en Storybook y animación de expand con `ease-out`.
 - **Módulo Image+Texto en código.** Dos zonas (texto ≈4 col anclado izq. + imagen 6
   col cuadrada anclada dcha.), mobile-first apilado → grid 12 col en `lg`. Imagen
   `object-cover` que crece cuadrada; `CashbackCard` overlay (nuevo componente: fondo
