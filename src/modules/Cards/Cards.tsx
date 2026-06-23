@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { ActionButton } from "../../components/ActionButton";
 import { Card } from "./Card";
+import type { SemanticTheme } from "../../tokens/semantic-colors";
 
-export interface CardData { title: string; description?: string; }
+export interface CardData { title: string; description?: string; theme?: SemanticTheme; }
 export interface CardsProps {
   heading?: string;
   buttonLabel?: string;
   /** Exactamente 3 cards. Una está expandida a la vez. */
   cards?: CardData[];
+  /** Modo de color del módulo (override del global). */
+  theme?: SemanticTheme;
 }
 
 const DEFAULT_CARDS: CardData[] = [
@@ -21,11 +24,11 @@ const DEFAULT_CARDS: CardData[] = [
  * Comportamiento: una sola card expandida (6 col); las demás colapsadas (3 col).
  * Al pulsar una card colapsada, se expande y la anterior se colapsa.
  */
-export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel = "Ver todo", cards = DEFAULT_CARDS }: CardsProps) {
+export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel = "Ver todo", cards = DEFAULT_CARDS, theme }: CardsProps) {
   const list = cards.slice(0, 3);
   const [expanded, setExpanded] = useState(0);
   return (
-    <section className="flex flex-col gap-[var(--space-9)] bg-sem-backgrounds-base px-[var(--wrapper-default)] py-[var(--space-13)]">
+    <section data-theme={theme} className="flex flex-col gap-[var(--space-9)] bg-sem-backgrounds-base px-[var(--wrapper-default)] py-[var(--space-13)]">
       <header className="flex items-center justify-between gap-[var(--gutter)]">
         <h2 className="type-title-02 text-sem-texts-base">{heading}</h2>
         <ActionButton variant="primary" size="s">{buttonLabel}</ActionButton>
@@ -38,6 +41,7 @@ export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel =
             description={c.description}
             expanded={i === expanded}
             onToggle={() => setExpanded(i)}
+            theme={c.theme}
           />
         ))}
       </div>

@@ -1,5 +1,6 @@
 import type { ReactNode, MouseEvent } from "react";
 import { IconButton } from "../../components/IconButton";
+import type { SemanticTheme } from "../../tokens/semantic-colors";
 
 const Plus: ReactNode = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg>
@@ -16,18 +17,21 @@ export interface CardProps {
   /** Se llama al pulsar la card o su botón (selecciona esta como expandida). */
   onToggle?: () => void;
   image?: string;
+  /** Modo de color propio de la card (override del global). */
+  theme?: SemanticTheme;
 }
 
 /**
  * Card del módulo Cards (Figma `CardSolutions`, variantes State=Collapsed/Expanded).
  * Expandida = 6 columnas con descripción e icono −; colapsada = 3 columnas e icono +.
  */
-export function Card({ title, description, expanded = false, onToggle, image }: CardProps) {
+export function Card({ title, description, expanded = false, onToggle, image, theme }: CardProps) {
   const handleBtn = (e: MouseEvent) => { e.stopPropagation(); onToggle?.(); };
   return (
     <article
       onClick={onToggle}
       aria-expanded={expanded}
+      data-theme={theme}
       className={[
         "relative h-[598px] min-w-0 basis-0 cursor-pointer overflow-hidden rounded-[var(--radius-l)] transition-[flex-grow] duration-500 ease-out",
         expanded ? "grow-[2]" : "grow",
