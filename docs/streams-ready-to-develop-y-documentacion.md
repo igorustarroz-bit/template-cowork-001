@@ -52,6 +52,12 @@ cada chequeo produce **pasa / falla + informe** y la puerta solo se abre si todo
    Crea el *component set* y sus variantes (tipos, tamaños, estados) de forma
    consistente con el resto del sistema.
 
+> **Detectar comportamiento ANTES de construir:** en el análisis hay que leer las
+> variantes del *component set* (p.ej. `State=Collapsed/Expanded`) e inferir el
+> comportamiento interactivo (toggle, selección única, etc.) para reflejarlo en el
+> código del componente. Ejemplo validado: el módulo Cards (una sola card expandida
+> a la vez).
+
 > Especificación operativa detallada de este stream (tokenización mode-per-module,
 > reglas de grid, limpieza, autolayout, variantes): `docs/stream-a-figma-workflow.md`.
 

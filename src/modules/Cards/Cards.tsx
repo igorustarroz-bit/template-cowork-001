@@ -1,29 +1,45 @@
+import { useState } from "react";
 import { ActionButton } from "../../components/ActionButton";
 import { Card } from "./Card";
 
+export interface CardData { title: string; description?: string; }
+export interface CardsProps {
+  heading?: string;
+  buttonLabel?: string;
+  /** Exactamente 3 cards. Una está expandida a la vez. */
+  cards?: CardData[];
+}
+
+const DEFAULT_CARDS: CardData[] = [
+  { title: "Solución destacada", description: "Descripción de la tarjeta destacada con un poco más de detalle." },
+  { title: "Título de la card", description: "Detalle de la segunda tarjeta." },
+  { title: "Título de la card", description: "Detalle de la tercera tarjeta." },
+];
+
 /**
- * Módulo Cards — Figma `Cards` (Euro6000). Estructura y spacing derivados por
- * medición geométrica → tokens (sin autolayout en Figma):
- *  - root vertical: px Wrapper-Default, py Spacers/13 (80), gap Spacers/9 (48)
- *  - cabecera: space-between (título + Action Button)
- *  - fila: grid 12 col, gap Gutter (24) → card destacada 6 col + 2 cards 3 col
+ * Módulo Cards — grid 12 col, spacing por tokens medidos (sin autolayout).
+ * Comportamiento: una sola card expandida (6 col); las demás colapsadas (3 col).
+ * Al pulsar una card colapsada, se expande y la anterior se colapsa.
  */
-export function Cards() {
+export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel = "Ver todo", cards = DEFAULT_CARDS }: CardsProps) {
+  const list = cards.slice(0, 3);
+  const [expanded, setExpanded] = useState(0);
   return (
     <section className="flex flex-col gap-[var(--space-9)] bg-sem-backgrounds-base px-[var(--wrapper-default)] py-[var(--space-13)]">
       <header className="flex items-center justify-between gap-[var(--gutter)]">
-        <h2 className="type-title-02 text-sem-texts-base">Tarjetas y soluciones de pago</h2>
-        <ActionButton variant="primary" size="s">Ver todo</ActionButton>
+        <h2 className="type-title-02 text-sem-texts-base">{heading}</h2>
+        <ActionButton variant="primary" size="s">{buttonLabel}</ActionButton>
       </header>
-
       <div className="grid grid-cols-12 gap-[var(--gutter)]">
-        <Card
-          size="big"
-          title="Solución destacada"
-          description="Descripción de la tarjeta destacada con un poco más de detalle."
-        />
-        <Card size="small" title="Título de la card" />
-        <Card size="small" title="Título de la card" />
+        {list.map((c, i) => (
+          <Card
+            key={i}
+            title={c.title}
+            description={c.description}
+            expanded={i === expanded}
+            onToggle={() => setExpanded(i)}
+          />
+        ))}
       </div>
     </section>
   );

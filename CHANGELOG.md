@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Cards: comportamiento + Storybook.** Estado expand/collapse (una sola card
+  expandida a la vez: 6 col + descripción + icono −; las demás 3 col + icono +),
+  click para alternar. Storybook: selector de **breakpoint** en la toolbar
+  (viewports xs…xxxl) y **textos editables** por controles. Aprendizaje para el gate:
+  los **estados/comportamientos interactivos** (variantes `State` del component set)
+  deben **detectarse en el análisis, antes de construir** el componente.
 - **Módulo Cards en código (prueba design-to-code sin autolayout).** Validado que se
   puede derivar el spacing midiendo geometría en Figma y aplicando los tokens
   (`Spacers`/`Gutter`/`Wrapper`) directo en código — sin construir autolayout. Nuevo
