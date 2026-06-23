@@ -29,8 +29,8 @@ export function Card({ title, description, expanded = false, onToggle, image }: 
       onClick={onToggle}
       aria-expanded={expanded}
       className={[
-        "relative h-[598px] cursor-pointer overflow-hidden rounded-[var(--radius-l)] transition-all duration-300",
-        expanded ? "col-span-6" : "col-span-3",
+        "relative h-[598px] min-w-0 basis-0 cursor-pointer overflow-hidden rounded-[var(--radius-l)] transition-[flex-grow] duration-500 ease-out",
+        expanded ? "grow-[2]" : "grow",
       ].join(" ")}
     >
       <div

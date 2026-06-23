@@ -30,7 +30,7 @@ export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel =
         <h2 className="type-title-02 text-sem-texts-base">{heading}</h2>
         <ActionButton variant="primary" size="s">{buttonLabel}</ActionButton>
       </header>
-      <div className="grid grid-cols-12 gap-[var(--gutter)]">
+      <div className="flex gap-[var(--gutter)]">
         {list.map((c, i) => (
           <Card
             key={i}
