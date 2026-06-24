@@ -30,8 +30,7 @@ const Caret = ({ open }: { open?: boolean }): ReactNode => (
   </svg>
 );
 
-/** Ítem de menú (placeholder del futuro componente Navigation): texto transparente,
- *  caret si tiene submenú, y pill gris (Backgrounds/Neutral-1) cuando está activo. */
+/** Ítem de menú (placeholder del futuro componente Navigation). */
 function NavItem({ label, hasCaret, active, expanded, onClick }: {
   label: string; hasCaret?: boolean; active?: boolean; expanded?: boolean; onClick?: () => void;
 }) {
@@ -71,10 +70,11 @@ function useHideOnScroll(enabled: boolean) {
 }
 
 /**
- * Navegación principal (desktop) — Figma `Navigation`. Ítems de texto con dropdown
- * (megamenú) al click (uno a la vez, `aria-expanded`, cierra con Esc/clic fuera);
- * ítem activo con pill gris. Barra sticky que se oculta al bajar y reaparece al subir.
- * Mode-driven (`Backgrounds/Base`).
+ * Navegación principal (desktop) — Figma `Navegación` (component set).
+ * Barra en forma de **pill** (`radius rounded`, `Backgrounds/Base`, padding Spacers/4),
+ * flotante con margen lateral (`Wrapper-Default`). Ítems de texto con dropdown al click
+ * (uno a la vez, `aria-expanded`, Esc/clic fuera); ítem activo con pill gris.
+ * Sticky: se oculta al bajar y reaparece al subir. Mode-driven.
  */
 export function Nav({
   items = DEFAULT_ITEMS,
@@ -101,51 +101,51 @@ export function Nav({
   const open = openIndex !== null ? items[openIndex] : null;
 
   return (
-    <nav
+    <header
       ref={ref}
       data-theme={theme}
-      className="sticky top-0 z-50 w-full bg-sem-backgrounds-base transition-transform duration-300 ease-out"
-      style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)" }}
+      className="sticky top-0 z-50 w-full px-[var(--wrapper-default)] pt-[var(--space-4)] transition-transform duration-300 ease-out"
+      style={{ transform: hidden ? "translateY(calc(-100% - 16px))" : "translateY(0)" }}
     >
-      <div className="flex h-[72px] items-center justify-between gap-[var(--gutter)] px-[var(--wrapper-default)]">
-        <div className="flex items-center gap-[var(--space-5)]">
-          <span className="type-title-01 select-none text-sem-texts-accent-base" aria-label="EURO 6000">EURO 6000</span>
-          <ul className="flex items-center gap-[var(--space-1)]">
-            {items.map((it, i) => (
-              <li key={it.label}>
-                <NavItem
-                  label={it.label}
-                  hasCaret={!!it.submenu}
-                  active={it.label === activeLabel}
-                  expanded={openIndex === i}
-                  onClick={() => (it.submenu ? setOpenIndex((c) => (c === i ? null : i)) : setOpenIndex(null))}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <ul className="flex items-center gap-[var(--space-2)]">
-          {utility.map((u) => (
-            <li key={u.label}>
-              <ActionButton variant="secondary" size="xs">{u.label}</ActionButton>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {open?.submenu && (
-        <div className="absolute inset-x-0 top-[72px] border-t border-sem-strokes-icons-neutral-2 bg-sem-backgrounds-base shadow-lg">
-          <div className="flex gap-[var(--gutter)] px-[var(--wrapper-default)] py-[var(--space-7)]">
-            <ul className="flex flex-col gap-[var(--space-2)]">
-              {open.submenu.map((s) => (
-                <li key={s.label}>
-                  <ActionLinkButton size="s">{s.label}</ActionLinkButton>
+      <nav className="relative">
+        {/* Barra pill */}
+        <div className="flex items-center justify-between gap-[var(--gutter)] rounded-[var(--radius-rounded)] bg-sem-backgrounds-base p-[var(--space-4)] shadow-sm">
+          <div className="flex items-center gap-[var(--space-5)]">
+            <span className="type-title-01 select-none text-sem-texts-accent-base" aria-label="EURO 6000">EURO 6000</span>
+            <ul className="flex items-center gap-[var(--space-1)]">
+              {items.map((it, i) => (
+                <li key={it.label}>
+                  <NavItem
+                    label={it.label}
+                    hasCaret={!!it.submenu}
+                    active={it.label === activeLabel}
+                    expanded={openIndex === i}
+                    onClick={() => (it.submenu ? setOpenIndex((c) => (c === i ? null : i)) : setOpenIndex(null))}
+                  />
                 </li>
               ))}
             </ul>
           </div>
+          <ul className="flex items-center gap-[var(--space-2)]">
+            {utility.map((u) => (
+              <li key={u.label}>
+                <ActionButton variant="secondary" size="xs">{u.label}</ActionButton>
+              </li>
+            ))}
+          </ul>
         </div>
-      )}
-    </nav>
+
+        {/* Dropdown / megamenú */}
+        {open?.submenu && (
+          <div className="absolute left-0 right-0 top-[calc(100%+var(--space-2))] rounded-[var(--radius-l)] bg-sem-backgrounds-base p-[var(--space-7)] shadow-lg">
+            <ul className="flex flex-col gap-[var(--space-2)] pl-[var(--space-9)]">
+              {open.submenu.map((s) => (
+                <li key={s.label}><ActionLinkButton size="s">{s.label}</ActionLinkButton></li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </nav>
+    </header>
   );
 }
