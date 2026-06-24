@@ -32,17 +32,17 @@ export const space = {
   "fx-9": 40,
 } as const;
 
-/** Radios de esquina (px). rounded = pill. */
-export const radii = {
-  xxs: 2,
-  xs: 4,
-  s: 6,
-  m: 8,
-  l: 12,
-  xl: 16,
-  rounded: 9999,
-  none: 0,
-} as const;
+/** Radios de esquina (px), responsive por breakpoint. rounded = pill. */
+export const radii: Record<string, Record<Breakpoint, number>> = {
+  xxs: { xs: 2, sm: 2, m: 2, lg: 2, xl: 2, xxl: 2, xxxl: 2 },
+  xs: { xs: 4, sm: 4, m: 4, lg: 4, xl: 4, xxl: 4, xxxl: 4 },
+  s: { xs: 6, sm: 6, m: 6, lg: 6, xl: 6, xxl: 6, xxxl: 6 },
+  m: { xs: 8, sm: 8, m: 8, lg: 8, xl: 8, xxl: 8, xxxl: 8 },
+  l: { xs: 12, sm: 12, m: 12, lg: 12, xl: 18, xxl: 12, xxxl: 12 },
+  xl: { xs: 24, sm: 24, m: 16, lg: 16, xl: 36, xxl: 36, xxxl: 40 },
+  rounded: { xs: 9999, sm: 9999, m: 9999, lg: 9999, xl: 9999, xxl: 9999, xxxl: 9999 },
+  none: { xs: 0, sm: 0, m: 0, lg: 0, xl: 0, xxl: 0, xxxl: 0 },
+};
 
 /** Espaciadores responsive: valor por breakpoint (px). */
 export const spacers: Record<string, Record<Breakpoint, number>> = {

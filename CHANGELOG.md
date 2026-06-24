@@ -7,6 +7,11 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Radios actualizados (ahora responsive).** `Layout/Corners` cambió en Figma: `L` y
+  `XL` varían por breakpoint (`L` 12, 18 en XL-1440; `XL` 24 base → 16 M/LG, 36 XL/XXL,
+  40 XXXL); el resto constantes. Actualizado `radii` en `spacing.ts` (responsive),
+  `--radius-l`/`--radius-xl` con media queries en `index.css`, y la story usa el
+  breakpoint activo.
 - **Convención «modo por componente» consolidada.** Retrofit de `Image+Texto`:
   `CashbackCard` ahora es *mode-driven* (tokens `Base`, su `data-theme` la colorea;
   default Dark-Red-Primary) con prop `theme`; el módulo lleva su modo (toolbar) y la

@@ -86,13 +86,13 @@ function Spacing({ breakpoint }: { breakpoint: Breakpoint }) {
         ))}
       </div>
 
-      <h3 style={{ fontSize: 13, color: "#555" }}>Radios (constante)</h3>
+      <h3 style={{ fontSize: 13, color: "#555" }}>Radios @ {bp}</h3>
       <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-        {Object.entries(radii).map(([k, v]) => (
+        {Object.entries(radii).map(([k, vals]) => (
           <div key={k} style={{ textAlign: "center" }}>
-            <div style={{ width: 64, height: 64, background: "var(--color-neutral-90)", borderRadius: Math.min(v, 32) }} />
+            <div style={{ width: 64, height: 64, background: "var(--color-neutral-90)", borderRadius: Math.min(vals[bp], 32) }} />
             <div style={mono}>{k}</div>
-            <div style={{ ...mono, color: "#888" }}>{v}px</div>
+            <div style={{ ...mono, color: "#888" }}>{vals[bp]}px</div>
           </div>
         ))}
       </div>
