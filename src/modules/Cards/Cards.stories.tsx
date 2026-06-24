@@ -55,23 +55,6 @@ type Story = StoryObj<Args>;
 
 export const Default: Story = {};
 
-/** Demo con ancho fijo de 1440 (para ver bien el comportamiento en la página de docs). */
-export const Demo1440: Story = {
-  name: "Demo (1440)",
-  render: (a) => (
-    <div style={{ width: 1440 }}>
-      <Cards
-        heading={a.heading}
-        buttonLabel={a.buttonLabel}
-        cards={[
-          { title: a.card1Title, description: a.card1Desc, theme: norm(a.card1Theme) },
-          { title: a.card2Title, description: a.card2Desc, theme: norm(a.card2Theme) },
-          { title: a.card3Title, description: a.card3Desc, theme: norm(a.card3Theme) },
-        ]}
-      />
-    </div>
-  ),
-};
 
 /** Demostración estática: módulo en Dark·Red, cada card en un modo distinto. */
 export const ModosMezclados: Story = {
