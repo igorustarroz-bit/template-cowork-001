@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Doc Stream B — PoC.** Página de documentación MDX (autodocs) del módulo Cards
+  (`src/modules/Cards/Cards.mdx`) siguiendo el esquema consolidado: overview, anatomía,
+  comportamiento, variantes, **tabla de tokens**, modo por componente, props/API,
+  controles y accesibilidad. Aparece como *Docs* bajo *Módulos/Cards*.
+- **Fix:** corregido `index.css` (media queries de radios tenían `}}` dobles que
+  rompían el build de Storybook).
 - **Radios actualizados (ahora responsive).** `Layout/Corners` cambió en Figma: `L` y
   `XL` varían por breakpoint (`L` 12, 18 en XL-1440; `XL` 24 base → 16 M/LG, 36 XL/XXL,
   40 XXXL); el resto constantes. Actualizado `radii` en `spacing.ts` (responsive),

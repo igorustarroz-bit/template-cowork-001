@@ -1,0 +1,106 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as CardsStories from "./Cards.stories";
+
+<Meta of={CardsStories} />
+
+# Cards
+
+Módulo de tres tarjetas para destacar soluciones o contenidos. Una tarjeta está
+**expandida** (ancho destacado, con descripción) y las otras dos **colapsadas**.
+
+> Fuente de diseño: Figma `Cards` (Euro6000). Documentación generada con el esquema
+> de documentación del design system (ver `docs/ds-doc-comparison.md`).
+
+## Demo
+
+<Canvas of={CardsStories.Default} />
+
+## Anatomía
+
+1. **Cabecera** — título de sección + `ActionButton` (primary, S) alineado a la derecha.
+2. **Fila de cards** — 3 tarjetas en rejilla de 12 columnas.
+3. **Card** — imagen de fondo + **panel** superpuesto (abajo) con título, descripción
+   (solo si está expandida) y un `IconButton` (terciary, S).
+
+## Comportamiento
+
+- **Una sola tarjeta expandida a la vez.** Al pulsar una tarjeta colapsada, se expande
+  y la anterior se colapsa (selección única).
+- El icono del botón refleja el estado: **−** (expandida) / **+** (colapsada).
+- La expansión se anima con `flex-grow` + `ease-out`.
+- _Detectado de las variantes Figma `State=Collapsed/Expanded` del component set._
+
+## Variantes y tamaños
+
+| Estado | Ancho | Contenido |
+| --- | --- | --- |
+| Expandida | 6 columnas (`grow-[2]`) | título + descripción + icono − |
+| Colapsada | 3 columnas (`grow`) | título + icono + |
+
+Rejilla responsive de 12 columnas; las tres suman 6 + 3 + 3.
+
+## Estilo (tokens)
+
+Espaciado (medido del Figma → tokens, sin valores fijos):
+
+| Zona | Propiedad | Token |
+| --- | --- | --- |
+| Módulo | padding lateral | `Wrapper-Default` (32) |
+| Módulo | padding sup/inf | `Spacers/13` (80) |
+| Módulo | gap cabecera ↔ fila | `Spacers/9` (48) |
+| Fila | gap entre cards | `Gutter` (24) |
+| Panel | margen (izq/dcha/abajo) | `Spacers/6` (24) |
+| Panel | padding | `Spacers/7` (32) |
+
+Color (semántico):
+
+| Elemento | Token | Nota |
+| --- | --- | --- |
+| Fondo del módulo | `Backgrounds/Base` | toma el **modo del módulo** |
+| Panel | `Backgrounds/Base` | toma su **modo propio** (`data-theme`) |
+| Texto | `Texts/Base` | |
+| Fondo de la card | imagen | placeholder gris si no hay imagen |
+
+## Modo por componente
+
+El **modo del módulo** se controla con el selector global de la toolbar. Cada **card**
+acepta su propio `theme` (prop `data-theme`) que **sobrescribe** el del módulo — p.ej.
+módulo en *Dark · Red Primary* con paneles en *Light · White*. Ver story
+`ModosMezclados` y la convención en `CONTEXT.md`.
+
+## Props / API
+
+**`Cards`**
+
+| Prop | Tipo | Default | Descripción |
+| --- | --- | --- | --- |
+| `heading` | `string` | "Tarjetas y soluciones de pago" | Título de la cabecera |
+| `buttonLabel` | `string` | "Ver todo" | Texto del `ActionButton` |
+| `cards` | `CardData[]` | 3 cards | Datos de las tarjetas (3) |
+| `theme` | `SemanticTheme?` | — | Modo del módulo (override del global) |
+
+**`Card`** (`CardData`: `{ title, description?, theme? }`)
+
+| Prop | Tipo | Default | Descripción |
+| --- | --- | --- | --- |
+| `title` | `string` | — | Título |
+| `description` | `string?` | — | Descripción (visible si expandida) |
+| `expanded` | `boolean` | `false` | Estado expandido |
+| `onToggle` | `() => void` | — | Al pulsar la card o su botón |
+| `image` | `string?` | — | URL de imagen de fondo |
+| `theme` | `SemanticTheme?` | — | Modo propio del panel |
+
+## Controles (story)
+
+<Controls of={CardsStories.Default} />
+
+## Accesibilidad
+
+- Cada card es interactiva y expone `aria-expanded`.
+- El `IconButton` lleva `aria-label` ("Expandir/Colapsar …").
+- Foco visible nativo (`:focus-visible`) en cards y botones.
+- Contraste: depende del modo activo; verificar AA al combinar modos anidados.
+
+## Componentes relacionados
+
+`ActionButton` (cabecera) · `IconButton` (acción de cada card).

@@ -2185,21 +2185,21 @@
 @media (min-width: 768px) {
   :root {
     --radius-xl: 16px;
-  }}
-}}
+  }
+}
 @media (min-width: 1440px) {
   :root {
     --radius-l: 18px;
     --radius-xl: 36px;
-  }}
-}}
+  }
+}
 @media (min-width: 1620px) {
   :root {
     --radius-l: 12px;
-  }}
-}}
+  }
+}
 @media (min-width: 1920px) {
   :root {
     --radius-xl: 40px;
-  }}
-}}
+  }
+}
