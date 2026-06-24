@@ -59,18 +59,16 @@ export const Default: Story = {};
 export const Demo1440: Story = {
   name: "Demo (1440)",
   render: (a) => (
-    <div style={{ overflowX: "auto", width: "100%" }}>
-      <div style={{ width: 1440 }}>
-        <Cards
-          heading={a.heading}
-          buttonLabel={a.buttonLabel}
-          cards={[
-            { title: a.card1Title, description: a.card1Desc, theme: norm(a.card1Theme) },
-            { title: a.card2Title, description: a.card2Desc, theme: norm(a.card2Theme) },
-            { title: a.card3Title, description: a.card3Desc, theme: norm(a.card3Theme) },
-          ]}
-        />
-      </div>
+    <div style={{ width: 1440 }}>
+      <Cards
+        heading={a.heading}
+        buttonLabel={a.buttonLabel}
+        cards={[
+          { title: a.card1Title, description: a.card1Desc, theme: norm(a.card1Theme) },
+          { title: a.card2Title, description: a.card2Desc, theme: norm(a.card2Theme) },
+          { title: a.card3Title, description: a.card3Desc, theme: norm(a.card3Theme) },
+        ]}
+      />
     </div>
   ),
 };
