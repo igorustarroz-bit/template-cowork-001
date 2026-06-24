@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ImageTexto } from "./ImageTexto";
+import { SearchBar } from "./SearchBar";
 import { semanticThemes, type SemanticTheme } from "../../tokens/semantic-colors";
 
 const THEME_OPTIONS: string[] = ["inherit", ...semanticThemes.map((t) => t.slug)];
@@ -34,3 +35,16 @@ export default meta;
 type Story = StoryObj<Args>;
 
 export const Default: Story = {};
+
+export const Invertido: Story = {
+  name: "Invertido (SearchBar)",
+  render: () => (
+    <ImageTexto
+      reverse
+      title="Un cajero siempre cerca de ti"
+      description="Con la red de cajeros EURO 6000 puedes retirar dinero y realizar operaciones diarias desde miles de puntos distribuidos por toda España."
+      buttonLabel="Localizar cajeros"
+      overlay={<SearchBar placeholder="Buscar un cajero…" />}
+    />
+  ),
+};
