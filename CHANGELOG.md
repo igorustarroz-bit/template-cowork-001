@@ -7,6 +7,11 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Módulo Navegación (desktop) en código.** `src/modules/Nav`: barra sticky que se
+  oculta al bajar y reaparece al subir; ítems con dropdown/megamenú **al click** (uno
+  a la vez, `aria-expanded`, cierra con Esc/clic fuera); ítem activo resaltado.
+  Mode-driven (`Backgrounds/Base`). Ítems con `ActionButton` como placeholder (se
+  sustituirán por `Navigation`). Pendiente: versión móvil (hamburguesa).
 - **Doc Stream B — PoC.** Página de documentación MDX (autodocs) del módulo Cards
   (`src/modules/Cards/Cards.mdx`) siguiendo el esquema consolidado: overview, anatomía,
   comportamiento, variantes, **tabla de tokens**, modo por componente, props/API,
