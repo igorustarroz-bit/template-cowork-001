@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ActionButton } from "../../components/ActionButton";
 import { ActionLinkButton } from "../../components/ActionLinkButton";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
@@ -10,7 +10,7 @@ export interface NavProps {
   items?: NavEntry[];
   utility?: NavLink[];
   activeLabel?: string;
-  /** Comportamiento sticky: ocultar al bajar, mostrar al subir. */
+  /** Sticky: ocultar al bajar, mostrar al subir. */
   hideOnScroll?: boolean;
   theme?: SemanticTheme;
 }
@@ -23,7 +23,36 @@ const DEFAULT_ITEMS: NavEntry[] = [
 ];
 const DEFAULT_UTILITY: NavLink[] = [{ label: "Ayuda" }, { label: "Castellano" }];
 
-/** Oculta al bajar y reaparece al subir. */
+const Caret = ({ open }: { open?: boolean }): ReactNode => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+    style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform .2s ease" }}>
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+);
+
+/** Ítem de menú (placeholder del futuro componente Navigation): texto transparente,
+ *  caret si tiene submenú, y pill gris (Backgrounds/Neutral-1) cuando está activo. */
+function NavItem({ label, hasCaret, active, expanded, onClick }: {
+  label: string; hasCaret?: boolean; active?: boolean; expanded?: boolean; onClick?: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={hasCaret ? expanded : undefined}
+      aria-current={active ? "page" : undefined}
+      className={[
+        "type-cta-01 inline-flex h-10 items-center gap-[var(--space-1)] rounded-[var(--radius-rounded)] px-[var(--space-4)] transition-colors",
+        "text-sem-texts-base hover:bg-sem-backgrounds-neutral-1",
+        active ? "bg-sem-backgrounds-neutral-1" : "bg-transparent",
+      ].join(" ")}
+    >
+      {label}
+      {hasCaret && <Caret open={expanded} />}
+    </button>
+  );
+}
+
 function useHideOnScroll(enabled: boolean) {
   const [hidden, setHidden] = useState(false);
   useEffect(() => {
@@ -42,10 +71,10 @@ function useHideOnScroll(enabled: boolean) {
 }
 
 /**
- * Navegación principal (desktop) — Figma `Navigation`. Ítems con dropdown (megamenú)
- * que abre al hacer click (uno a la vez), ítem activo resaltado y barra sticky que
- * se oculta al bajar y reaparece al subir. Mode-driven (`Backgrounds/Base`).
- * Nota: los ítems usan `ActionButton` como placeholder (se sustituirán por `Navigation`).
+ * Navegación principal (desktop) — Figma `Navigation`. Ítems de texto con dropdown
+ * (megamenú) al click (uno a la vez, `aria-expanded`, cierra con Esc/clic fuera);
+ * ítem activo con pill gris. Barra sticky que se oculta al bajar y reaparece al subir.
+ * Mode-driven (`Backgrounds/Base`).
  */
 export function Nav({
   items = DEFAULT_ITEMS,
@@ -69,7 +98,6 @@ export function Nav({
 
   useEffect(() => { if (hidden) setOpenIndex(null); }, [hidden]);
 
-  const toggle = (i: number, hasSub: boolean) => { if (hasSub) setOpenIndex((cur) => (cur === i ? null : i)); else setOpenIndex(null); };
   const open = openIndex !== null ? items[openIndex] : null;
 
   return (
@@ -80,20 +108,18 @@ export function Nav({
       style={{ transform: hidden ? "translateY(-100%)" : "translateY(0)" }}
     >
       <div className="flex h-[72px] items-center justify-between gap-[var(--gutter)] px-[var(--wrapper-default)]">
-        <div className="flex items-center gap-[var(--space-3)]">
+        <div className="flex items-center gap-[var(--space-5)]">
           <span className="type-title-01 select-none text-sem-texts-accent-base" aria-label="EURO 6000">EURO 6000</span>
           <ul className="flex items-center gap-[var(--space-1)]">
             {items.map((it, i) => (
               <li key={it.label}>
-                <ActionButton
-                  variant="primary"
-                  size="xs"
-                  selected={it.label === activeLabel || openIndex === i}
-                  aria-expanded={it.submenu ? openIndex === i : undefined}
-                  onClick={() => toggle(i, !!it.submenu)}
-                >
-                  {it.label}
-                </ActionButton>
+                <NavItem
+                  label={it.label}
+                  hasCaret={!!it.submenu}
+                  active={it.label === activeLabel}
+                  expanded={openIndex === i}
+                  onClick={() => (it.submenu ? setOpenIndex((c) => (c === i ? null : i)) : setOpenIndex(null))}
+                />
               </li>
             ))}
           </ul>
@@ -101,7 +127,7 @@ export function Nav({
         <ul className="flex items-center gap-[var(--space-2)]">
           {utility.map((u) => (
             <li key={u.label}>
-              <ActionButton variant="terciary" size="xs">{u.label}</ActionButton>
+              <ActionButton variant="secondary" size="xs">{u.label}</ActionButton>
             </li>
           ))}
         </ul>
