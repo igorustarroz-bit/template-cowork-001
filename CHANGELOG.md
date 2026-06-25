@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Guía Design-to-Code** (`docs/design-to-code-guide.md`): playbook único con pasos
+  0-7 y checklists (ver el diseño con `get_screenshot` base64, `get_design_context`,
+  resolver propiedades reales, modo-por-componente, tokens/spacers medidos, R-TK1,
+  verificación). Es la guía para crear cada componente nuevo.
+- **Footer** pulido a fondo (cabeceras Body/03, sociales con modo propio Light-White
+  → blanco + icono rojo outline, gap Spacers/18, logo como slot).
 - **Aprendizajes design-to-code** (`docs/design-to-code-learnings.md`): causas raíz de
   las desviaciones (nav/footer) — build sin verdad visual e inferir desde nombres de
   variante en vez de propiedades resueltas (fill/rotation/radius/overrides). Checklist
