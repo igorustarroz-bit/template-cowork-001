@@ -50,11 +50,7 @@ export function Footer({
                 i > 0 ? "border-l border-sem-strokes-icons-neutral-3 pl-[var(--gutter)]" : "",
               ].join(" ")}
             >
-              {i === 0 ? (
-                <span className="text-sem-texts-base">{logo ?? <span className="type-title-01" aria-label={col.title}>{col.title}</span>}</span>
-              ) : (
-                <span className="type-cta-02 text-sem-texts-base">{col.title}</span>
-              )}
+              <span className="type-cta-02 text-sem-texts-base">{col.title}</span>
               <ul className="flex flex-col gap-[var(--space-3)]">
                 {col.links.map((l) => (
                   <li key={l}><a href="#" className="type-body-03 text-sem-texts-neutral-1 transition-colors hover:text-sem-texts-base">{l}</a></li>
@@ -64,17 +60,20 @@ export function Footer({
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-[var(--space-4)]">
-          <ul className="flex items-center gap-[var(--space-4)]">
+        <div className="flex flex-wrap items-center justify-between gap-[var(--space-7)]">
+          <div className="flex items-center gap-[var(--space-5)]">
+            {logo ?? <span className="type-title-02 text-sem-texts-accent-base" aria-label="EURO 6000">6:</span>}
+            <span className="type-body-02 text-sem-texts-neutral-1">{copyright}</span>
+          </div>
+          <ul className="flex items-center gap-[var(--space-2)]">
             {SOCIAL.map((s) => (
               <li key={s.name}>
-                <a href="#" aria-label={s.name} className="flex h-11 w-11 items-center justify-center rounded-full bg-sem-backgrounds-inverse text-sem-texts-inverted transition-opacity hover:opacity-90">
+                <a href="#" aria-label={s.name} className="flex h-11 w-11 items-center justify-center rounded-full bg-sem-backgrounds-inverse text-sem-backgrounds-accent-base transition-opacity hover:opacity-90">
                   <span className="h-5 w-5">{s.icon}</span>
                 </a>
               </li>
             ))}
           </ul>
-          <span className="type-body-02 text-sem-texts-neutral-1">{copyright}</span>
         </div>
       </div>
     </footer>
