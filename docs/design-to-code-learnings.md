@@ -5,9 +5,10 @@ image+texto) y cómo evitarlo. Para incorporar al proceso y a la futura skill.
 
 ## Causas raíz
 
-1. **Build "a ciegas".** El agente no ve las capturas (no puede descargarlas), así
-   que infiere el layout desde el JSON de estructura/tokens. Se pierden detalles
-   visuales (contenedor *pill*, líneas verticales, botones circulares).
+1. **Build "a ciegas".** El agente infería el layout desde el JSON de estructura/tokens.
+   **SOLUCIÓN (resuelto):** `get_screenshot` con `enableBase64Response: true` devuelve
+   la imagen **inline en base64**, que el agente SÍ puede ver de forma nativa (la URL
+   normal no se descarga en el sandbox). Usarlo siempre antes de construir y para verificar.
 2. **Inferir desde nombres de variante/tipo, no desde propiedades resueltas.**
    Ejemplos reales:
    - Nav: ítems "ActionButton **Primary** XS" → se asumieron pills rojas, pero el
@@ -48,7 +49,9 @@ Por cada **componente interactivo**:
 
 ## Cambios de proceso
 
-1. **Usar `get_design_context`** como fuente principal (código + screenshot del nodo)
+0. **Ver el diseño**: `get_screenshot` con `enableBase64Response: true` (imagen inline)
+   antes de construir y para verificar el resultado.
+1. **Usar `get_design_context`** como fuente del layout (código React+Tailwind del nodo)
    y complementar con lecturas de tokens dirigidas. No construir solo desde geometría.
 2. **No inferir desde nombres**: resolver siempre fill/stroke/rotation/radius reales.
 3. **Logos y marcas = slot vector**, por defecto.
