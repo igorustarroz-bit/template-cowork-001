@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ImageTexto } from "./ImageTexto";
 import { SearchBar } from "./SearchBar";
 import { semanticThemes, type SemanticTheme } from "../../tokens/semantic-colors";
+import imgBelleza from "@/assets/images/imagetexto-belleza.webp";
 
 const THEME_OPTIONS: string[] = ["inherit", ...semanticThemes.map((t) => t.slug)];
 const norm = (v?: string): SemanticTheme | undefined => (!v || v === "inherit" ? undefined : (v as SemanticTheme));
@@ -41,6 +42,7 @@ export const Invertido: Story = {
   render: () => (
     <ImageTexto
       reverse
+      image={imgBelleza}
       title="Un cajero siempre cerca de ti"
       description="Con la red de cajeros EURO 6000 puedes retirar dinero y realizar operaciones diarias desde miles de puntos distribuidos por toda España."
       buttonLabel="Localizar cajeros"

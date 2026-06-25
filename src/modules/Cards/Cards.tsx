@@ -2,8 +2,11 @@ import { useState } from "react";
 import { ActionButton } from "../../components/ActionButton";
 import { Card } from "./Card";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
+import imgTarjeta from "@/assets/images/cards-tarjeta.webp";
+import imgPersonas from "@/assets/images/cards-personas.webp";
+import imgHombre from "@/assets/images/cards-hombre.webp";
 
-export interface CardData { title: string; description?: string; theme?: SemanticTheme; }
+export interface CardData { title: string; description?: string; theme?: SemanticTheme; image?: string; }
 export interface CardsProps {
   heading?: string;
   buttonLabel?: string;
@@ -14,9 +17,9 @@ export interface CardsProps {
 }
 
 const DEFAULT_CARDS: CardData[] = [
-  { title: "Solución destacada", description: "Descripción de la tarjeta destacada con un poco más de detalle." },
-  { title: "Título de la card", description: "Detalle de la segunda tarjeta." },
-  { title: "Título de la card", description: "Detalle de la tercera tarjeta." },
+  { title: "Solución destacada", description: "Descripción de la tarjeta destacada con un poco más de detalle.", image: imgTarjeta },
+  { title: "Título de la card", description: "Detalle de la segunda tarjeta.", image: imgPersonas },
+  { title: "Título de la card", description: "Detalle de la tercera tarjeta.", image: imgHombre },
 ];
 
 /**
@@ -39,6 +42,7 @@ export function Cards({ heading = "Tarjetas y soluciones de pago", buttonLabel =
             key={i}
             title={c.title}
             description={c.description}
+            image={c.image}
             expanded={i === expanded}
             onToggle={() => setExpanded(i)}
             theme={c.theme}

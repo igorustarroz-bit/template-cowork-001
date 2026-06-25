@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
-import IconAtmCard from "@/assets/icons/atm-card.svg?react";
+import { IlloCajero } from "@/assets/illustrations";
 
-// Icono por defecto = asset SVG (SVGR). Hereda el color por `currentColor`.
-const DefaultIcon: ReactNode = <IconAtmCard className="h-full w-auto" />;
+// Icono por defecto = ilustración SVG (SVGR). Hereda el color por `currentColor`.
+const DefaultIcon: ReactNode = <IlloCajero className="h-full w-auto" />;
 
 export interface HeroCardProps {
   title: string;

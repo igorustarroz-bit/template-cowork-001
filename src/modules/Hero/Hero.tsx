@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { HeroCard } from "./HeroCard";
+import { IlloCajero, IlloServicios, IlloCompras } from "@/assets/illustrations";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
 
 export interface HeroSlide { image?: string; cardTitle: string; cardIcon?: ReactNode; }
@@ -12,10 +13,11 @@ export interface HeroProps {
   autoplayMs?: number;
 }
 
+const iconCls = "h-full w-auto";
 const DEFAULT_SLIDES: HeroSlide[] = [
-  { cardTitle: "Una amplia red\nde cajeros en toda\nEspaña" },
-  { cardTitle: "Saca dinero sin\ncomisiones" },
-  { cardTitle: "La seguridad de tu\nbanco de siempre" },
+  { cardTitle: "Una amplia red\nde cajeros en toda\nEspaña", cardIcon: <IlloCajero className={iconCls} /> },
+  { cardTitle: "Servicios y ventajas\npara el día a día", cardIcon: <IlloServicios className={iconCls} /> },
+  { cardTitle: "Compra y ahorra\ncon EURO 6000 Plus", cardIcon: <IlloCompras className={iconCls} /> },
 ];
 
 /**

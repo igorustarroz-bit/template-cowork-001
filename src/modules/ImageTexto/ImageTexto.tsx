@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ActionButton } from "../../components/ActionButton";
 import { CashbackCard } from "./CashbackCard";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
+import imgCajero from "@/assets/images/imagetexto-cajero.webp";
 
 export interface ImageTextoProps {
   title?: string;
@@ -25,7 +26,7 @@ export function ImageTexto({
   title = "Programa EURO 6000 Plus: compra como siempre, ahorra como nunca",
   description = "Activa el Programa EURO 6000 Plus y disfruta de descuentos y cashback en cientos de marcas y tiendas que utilizas cada día.",
   buttonLabel = "Activar programa",
-  image,
+  image = imgCajero,
   theme,
   cashbackTheme = "dark-red-primary",
   reverse = false,

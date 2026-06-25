@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-25
 
+- **Assets reales cableados en los módulos.** Importados los assets exportados de
+  Figma: 3 ilustraciones (`cajero`, `servicios`, `compras`) **normalizadas a
+  `currentColor`** (venían con `#FF0D2D` hardcodeado) y 5 fotos convertidas a **WebP**.
+  Cableado: **Hero** (un icono por slide), **Cards** (3 fotos de fondo; `CardData.image`),
+  **Image+Texto** (foto por defecto + retrato en la story invertida). Eliminado el
+  placeholder `atm-card.svg`. `tsc` + build de Storybook OK.
 - **Flujo de assets (Figma → código).** Estructura `src/assets/`
   (`icons/`, `logos/{brand,entities}/`, `illustrations/`, `images/`) con barrels y
   `README`. **Vectores vía SVGR** (`vite-plugin-svgr` en `vite.config.ts`, tipos en
