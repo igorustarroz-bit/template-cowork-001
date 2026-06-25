@@ -36,10 +36,8 @@ export function ImageTexto({
   const textCol = reverse ? "lg:col-start-8 lg:col-span-4" : "lg:col-start-2 lg:col-span-4";
   const imgCol = reverse ? "lg:col-start-1 lg:col-span-6" : "lg:col-start-7 lg:col-span-6";
   return (
-    <section
-      data-theme={theme}
-      className="flex flex-col gap-[var(--space-9)] bg-sem-backgrounds-base px-[var(--wrapper-default)] py-[var(--space-13)] lg:grid lg:grid-cols-12 lg:items-center lg:gap-[var(--gutter)]"
-    >
+    <section data-theme={theme} className="bg-sem-backgrounds-base py-[var(--space-13)]">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-[var(--space-9)] px-[var(--wrapper-default)] lg:grid-cols-12 lg:items-center lg:gap-[var(--gutter)]">
       <div className={`flex flex-col ${textCol}`}>
         <div className="flex flex-col gap-[var(--space-6)]">
           <h2 className="type-title-04 text-sem-texts-base">{title}</h2>
@@ -61,6 +59,7 @@ export function ImageTexto({
             <CashbackCard theme={cashbackTheme} />
           </div>
         )}
+      </div>
       </div>
     </section>
   );
