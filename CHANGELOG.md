@@ -7,6 +7,12 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-06-20
 
+- **Aprendizajes design-to-code** (`docs/design-to-code-learnings.md`): causas raíz de
+  las desviaciones (nav/footer) — build sin verdad visual e inferir desde nombres de
+  variante en vez de propiedades resueltas (fill/rotation/radius/overrides). Checklist
+  de lectura previa + usar `get_design_context`; logos = slot vector.
+- **Footer + Entidades** en código; componentes internos (Card, CashbackCard, SearchBar,
+  LogoCard) expuestos en Storybook; Image+Texto con `max-width` y orden DOM por `reverse`.
 - **Módulo Navegación (desktop) en código.** `src/modules/Nav`: barra sticky que se
   oculta al bajar y reaparece al subir; ítems con dropdown/megamenú **al click** (uno
   a la vez, `aria-expanded`, cierra con Esc/clic fuera); ítem activo resaltado.
