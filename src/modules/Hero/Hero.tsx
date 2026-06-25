@@ -51,7 +51,7 @@ export function Hero({
           className="relative mt-[var(--space-15)] aspect-[1376/838] w-full overflow-hidden rounded-[var(--radius-xl)] bg-sem-backgrounds-neutral-2"
           style={slide.image ? { backgroundImage: `url(${slide.image})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
         >
-          <div className="absolute left-[6%] top-1/2 h-[72%] w-[min(446px,42%)] -translate-y-1/2">
+          <div className="absolute left-1/2 top-1/2 h-[71.6%] w-[32.4%] -translate-x-1/2 -translate-y-1/2">
             <HeroCard title={slide.cardTitle} icon={slide.cardIcon} />
           </div>
         </div>

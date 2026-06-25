@@ -87,6 +87,14 @@ lo que depende de ellas.
 
 ---
 
+## PENDIENTE — REGLAS
+
+- [ ] **Redefinir los criterios de tokenización** (con Paco). Las reglas actuales del
+  paso 5 de `design-to-code-guide.md` se quedan cortas: definir mejor qué hacer ante
+  capas hardcodeadas / sin estilo (marcar como issue del gate vs improvisar mapeo),
+  aplicar con rigor la lista de exclusión, y el contexto correcto por tipo de capa.
+  Al cerrar, actualizar `design-to-code-guide.md` como regla canónica.
+
 ## FASE 4 — DOCUMENTACIÓN
 
 - [ ] **S01 · Story base por cada token** (color, tipografía, spacing)
