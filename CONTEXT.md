@@ -75,6 +75,17 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   (tipografía → selector de breakpoint, listando todos los estilos) y T04
   (spacing/grids/cols → selector de breakpoint). Resaltar el valor activo.
 
+## Assets (imágenes y vectores)
+
+Todo bajo `src/assets/` (procesado por Vite): `icons/`, `logos/{brand,entities}/`,
+`illustrations/`, `images/`. **Vectores = SVG con `currentColor`** importados como
+componentes React vía **SVGR** (`vite-plugin-svgr`, `import X from "./x.svg?react"`),
+para que el color lo ponga el token (regla *vector = slot*); se re-exportan en el
+`index.ts` de cada carpeta. **Fotos = WebP** importadas directamente (URL con hash).
+Flujo de export desde Figma y convenciones en `docs/assets-workflow.md` y
+`src/assets/README.md`. Nota: desde el sandbox de Cowork `figma.com` está bloqueado,
+así que el binario se guarda con el export nativo de Figma (ver el doc).
+
 ## Flujo de trabajo
 
 1. `git pull` al empezar; `git push` al terminar (Git es la fuente de verdad).

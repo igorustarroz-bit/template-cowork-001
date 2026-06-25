@@ -1,12 +1,9 @@
 import type { ReactNode } from "react";
 import type { SemanticTheme } from "../../tokens/semantic-colors";
+import IconAtmCard from "@/assets/icons/atm-card.svg?react";
 
-const DefaultIcon: ReactNode = (
-  <svg viewBox="0 0 64 80" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="h-full w-auto">
-    <rect x="20" y="6" width="30" height="44" rx="4" /><path d="M27 16h16M27 24h16M27 32h10" />
-    <path d="M14 74c0-10 6-16 16-18l8-2 4 6" />
-  </svg>
-);
+// Icono por defecto = asset SVG (SVGR). Hereda el color por `currentColor`.
+const DefaultIcon: ReactNode = <IconAtmCard className="h-full w-auto" />;
 
 export interface HeroCardProps {
   title: string;

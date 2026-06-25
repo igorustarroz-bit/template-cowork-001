@@ -5,6 +5,21 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ## [No publicado]
 
+### 2026-06-25
+
+- **Flujo de assets (Figma → código).** Estructura `src/assets/`
+  (`icons/`, `logos/{brand,entities}/`, `illustrations/`, `images/`) con barrels y
+  `README`. **Vectores vía SVGR** (`vite-plugin-svgr` en `vite.config.ts`, tipos en
+  `src/vite-env.d.ts`): SVG con `currentColor` importados como componentes React
+  (`?react`) para que el color lo ponga el token. **Fotos** como WebP importadas
+  (bundled por Vite). Proceso de export documentado en `docs/assets-workflow.md`,
+  incluida la limitación del sandbox de Cowork (`figma.com` bloqueado → usar el export
+  nativo de Figma para guardar el binario). Verificado end-to-end: icono `atm-card.svg`
+  cableado en `HeroCard`, `tsc` + build de Storybook OK.
+- **Hero:** `HeroCard` centrada sobre la imagen (32,4% × 71,6%, escala con la imagen;
+  antes estaba a `left-6%`). Pendiente: **redefinir criterios de tokenización**
+  (apuntado en `PLAN.md`).
+
 ### 2026-06-20
 
 - **Guía Design-to-Code** (`docs/design-to-code-guide.md`): playbook único con pasos
