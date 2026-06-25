@@ -8,6 +8,8 @@ export interface FooterProps {
   columns?: FooterColumn[];
   copyright?: string;
   theme?: SemanticTheme;
+  /** Modo propio del grupo de redes (en Figma: Light-White → botones blancos + icono rojo). */
+  socialTheme?: SemanticTheme;
 }
 
 const DEFAULT_COLUMNS: FooterColumn[] = [
@@ -40,6 +42,7 @@ export function Footer({
   columns = DEFAULT_COLUMNS,
   copyright = "Todos los derechos reservados ® EURO 6000 2026",
   theme = "dark-black-neutral",
+  socialTheme = "light-white",
 }: FooterProps) {
   return (
     <footer data-theme={theme} className="bg-sem-backgrounds-base pb-[var(--space-7)] pt-[var(--space-10)] text-sem-texts-base">
@@ -68,7 +71,7 @@ export function Footer({
             {logo ?? <span className="type-title-02 text-sem-texts-accent-base" aria-label="EURO 6000">6:</span>}
             <span className="type-body-02 text-sem-texts-neutral-1">{copyright}</span>
           </div>
-          <ul className="flex items-center gap-[var(--space-2)]">
+          <ul data-theme={socialTheme} className="flex items-center gap-[var(--space-2)]">
             {SOCIAL.map((s) => (
               <li key={s.name}>
                 <a href="#" aria-label={s.name} className="flex h-11 w-11 items-center justify-center rounded-full bg-sem-backgrounds-base text-sem-strokes-icons-accent-base transition-opacity hover:opacity-80">
