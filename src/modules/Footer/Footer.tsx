@@ -3,10 +3,10 @@ import type { SemanticTheme } from "../../tokens/semantic-colors";
 
 export interface FooterColumn { title: string; links: string[]; }
 export interface FooterProps {
-  brand?: string;
+  /** Logo de marca (slot · vector). Si no se pasa, placeholder de texto. */
+  logo?: ReactNode;
   columns?: FooterColumn[];
   copyright?: string;
-  /** Modo de color del footer (por defecto oscuro, como en Figma). */
   theme?: SemanticTheme;
 }
 
@@ -27,12 +27,13 @@ const SOCIAL: { name: string; icon: ReactNode }[] = [
 ];
 
 /**
- * Footer — Figma `Footer`. Oscuro (modo Dark-Black-Neutral), marca + columnas de
- * enlaces con separador superior, y barra inferior con redes sociales + copyright.
- * max-width 1440. Mode-driven (texto/fondo por tokens semánticos).
+ * Footer — Figma `Footer`. Oscuro (Dark-Black-Neutral). Logo (vector, slot) + columnas
+ * de enlaces separadas por **líneas verticales** (Strokes-Icons/Neutral 3), y barra
+ * inferior con **botones sociales circulares** (44px, Backgrounds/Inverse) + copyright.
+ * max-width 1440. Mode-driven.
  */
 export function Footer({
-  brand = "EURO 6000",
+  logo,
   columns = DEFAULT_COLUMNS,
   copyright = "Todos los derechos reservados ® EURO 6000 2026",
   theme = "dark-black-neutral",
@@ -41,10 +42,19 @@ export function Footer({
     <footer data-theme={theme} className="bg-sem-backgrounds-base pb-[var(--space-7)] pt-[var(--space-10)] text-sem-texts-base">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-[var(--space-13)] px-[var(--wrapper-default)]">
         <div className="flex flex-wrap justify-between gap-[var(--space-9)]">
-          <span className="type-title-01 text-sem-texts-accent-base" aria-label={brand}>{brand}</span>
-          {columns.map((col) => (
-            <nav key={col.title} className="flex min-w-[140px] flex-col gap-[var(--space-3)] border-t border-sem-strokes-icons-neutral-2 pt-[var(--space-3)]">
-              <span className="type-cta-02 text-sem-texts-base">{col.title}</span>
+          {columns.map((col, i) => (
+            <nav
+              key={col.title}
+              className={[
+                "flex min-w-[140px] flex-col gap-[var(--space-3)]",
+                i > 0 ? "border-l border-sem-strokes-icons-neutral-3 pl-[var(--gutter)]" : "",
+              ].join(" ")}
+            >
+              {i === 0 ? (
+                <span className="text-sem-texts-base">{logo ?? <span className="type-title-01" aria-label={col.title}>{col.title}</span>}</span>
+              ) : (
+                <span className="type-cta-02 text-sem-texts-base">{col.title}</span>
+              )}
               <ul className="flex flex-col gap-[var(--space-3)]">
                 {col.links.map((l) => (
                   <li key={l}><a href="#" className="type-body-03 text-sem-texts-neutral-1 transition-colors hover:text-sem-texts-base">{l}</a></li>
@@ -58,8 +68,8 @@ export function Footer({
           <ul className="flex items-center gap-[var(--space-4)]">
             {SOCIAL.map((s) => (
               <li key={s.name}>
-                <a href="#" aria-label={s.name} className="flex h-6 w-6 items-center justify-center text-sem-texts-base transition-opacity hover:opacity-70">
-                  <span className="h-6 w-6">{s.icon}</span>
+                <a href="#" aria-label={s.name} className="flex h-11 w-11 items-center justify-center rounded-full bg-sem-backgrounds-inverse text-sem-texts-inverted transition-opacity hover:opacity-90">
+                  <span className="h-5 w-5">{s.icon}</span>
                 </a>
               </li>
             ))}

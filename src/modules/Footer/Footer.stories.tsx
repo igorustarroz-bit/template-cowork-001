@@ -6,8 +6,8 @@ const meta = {
   title: "Módulos/Footer",
   component: Footer,
   parameters: { layout: "fullscreen" },
-  args: { brand: "EURO 6000", theme: "dark-black-neutral" },
-  argTypes: { brand: { control: "text" }, theme: { control: "select", options: semanticThemes.map((t) => t.slug) } },
+  args: { theme: "dark-black-neutral" },
+  argTypes: { theme: { control: "select", options: semanticThemes.map((t) => t.slug) } },
 } satisfies Meta<typeof Footer>;
 export default meta;
 type Story = StoryObj<typeof meta>;
