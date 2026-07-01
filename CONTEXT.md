@@ -68,6 +68,12 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   `index.css` (incluido `light-white`, que además vive en `:root`), si no, un modo
   anidado hereda el del ancestro. En las stories: toolbar = modo del módulo · controles
   = un selector de modo por componente interior (+ textos editables).
+- **Checkbox/Radio (estado nativo)** → a diferencia de otros componentes (que
+  resuelven variantes con un `data-state` calculado en JS), `Checkbox` usa las
+  pseudo-clases nativas del control (`:checked`, `:indeterminate`, `:disabled`,
+  `:hover`, `:focus-visible`) para pintar el estado — es la fuente de verdad del
+  navegador y funciona igual controlado/no controlado. Aplicar el mismo patrón a
+  Radio Button (C08).
 - **Documentación en Storybook** → toda story de tokens con varios *modos*
   (marca, tema) o valores *responsive* (breakpoints) debe incluir un **selector**
   (arg `control: "select"`) para previsualizar cada modo/breakpoint, igual que el

@@ -5,6 +5,27 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ## [No publicado]
 
+### 2026-07-01
+
+- **PLAN.md — Fase 3 corregida.** El listado especulativo `Mxx` (M01, M24, M38…)
+  nunca coincidió con el código; ahora la Fase 3 refleja los 6 módulos reales
+  (Hero, Cards, Entidades, Footer, ImageTexto hechos; Nav en progreso, falta
+  versión móvil) y el `Mxx` pasa a backlog sin confirmar contra Figma.
+- **C07 · Checkbox + Label en código** (`UI03 - Checkbox + Label`, nodo Figma
+  `50947:31112`). Medium (20px)/Small (16px); estados default/hover/selected/
+  undefined(indeterminate)/disabled/disabled-selected. A diferencia de otros
+  componentes, el estado se resuelve con pseudo-clases **nativas** del checkbox
+  (`:checked`/`:indeterminate`/`:disabled`/`:hover`/`:focus-visible`), no con
+  `data-state` — ver `CONTEXT.md` (Convenciones). Colores desde tokens
+  `Backgrounds/Accent-Base`, `Strokes-Icons/*`, `Texts/Neutral-*` (mode-driven,
+  leídos con `get_variable_defs` sobre el nodo real, no inferidos por nombre).
+  Sin variante "Focus" en Figma: se añadió un anillo `:focus-visible` (a11y)
+  reutilizando el rojo de hover, acordado con Igor antes de construir.
+  **Pendiente:** los iconos check/minus (`src/assets/icons/{check,minus}.svg`)
+  son placeholder dibujados a mano — `download_assets` da 403 en el sandbox de
+  Cowork; sustituir por el export nativo de Figma cuando se pueda. `tsc` +
+  build de Storybook OK.
+
 ### 2026-06-25
 
 - **Assets reales cableados en los módulos.** Importados los assets exportados de

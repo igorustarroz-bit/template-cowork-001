@@ -58,7 +58,11 @@ lo que depende de ellas.
 - [x] **C02 · Action Link Button** — `UI02 - Action Link-Button` (L/M/S/XS · default/hover/focus/disabled)
 - [x] **C05 · Icon Only Button** — `UI01 - Icon Only` (Primary/Secondary/Terciary · XL/L/M/S/XS)
 - [x] **C06 · Input de texto** — `UI02 - Input` (Big/Small · default/hover/focus/filled/error/validated/disabled, label-in + message)
-- [ ] **C07 · Checkbox + Label** — `UI03 - Checkbox + Label`
+- [x] **C07 · Checkbox + Label** — `UI03 - Checkbox + Label` (Medium/Small ·
+      default/hover/selected/undefined/disabled/disabled-selected). Estado nativo
+      (`:checked`/`:indeterminate`/`:disabled`), no `data-state`. Iconos check/minus
+      son placeholder a mano (pendiente export nativo de Figma, ver
+      `src/assets/icons/index.ts`)
 - [ ] **C08 · Radio Button + Label** — `UI04 - Radio Button + Label`
 - [ ] **C09 · Tag** — `UI07 - Tag`
 - [ ] **C10 · Filter Chip** — `UI12 - Filter chip`
@@ -129,10 +133,8 @@ añadirlo o descartarlo:
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
-| 2 · Componentes UI | 15 | 4 |
+| 2 · Componentes UI | 15 | 5 |
 | 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
 | 4 · Docs | 4 | 0 (PoC de MDX en `Cards.mdx`) |
 
-_Última actualización: 2026-07-01 — Fase 3 corregida para reflejar el código
-real (Hero, Cards, Entidades, Footer, ImageTexto hechos; Nav en progreso,
-falta versión móvil); el listado `Mxx` anterior pasa a backlog sin confirmar._
+_Última actualización: 2026-07-01 — C07 Checkbox + Label completado (Fase 2)._

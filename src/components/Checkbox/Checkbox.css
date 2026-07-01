@@ -1,0 +1,98 @@
+/* Checkbox — Figma `UI03 - Checkbox + Label`. Colores desde tokens Backgrounds/*,
+   Strokes-Icons/*, Texts/* (mode-driven). NO editar a mano: regenerar desde Figma. */
+
+.eb-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+}
+
+.eb-checkbox:has(.eb-checkbox__control:disabled) {
+  cursor: not-allowed;
+}
+
+.eb-checkbox__control-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.eb-checkbox--medium .eb-checkbox__control-wrap { width: 20px; height: 20px; }
+.eb-checkbox--small .eb-checkbox__control-wrap { width: 16px; height: 16px; }
+
+.eb-checkbox__control {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.eb-checkbox__control:disabled { cursor: not-allowed; }
+
+.eb-checkbox__box {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid var(--sem-strokes-icons-neutral-3);
+  border-radius: var(--radius-xxs);
+  background: transparent;
+  pointer-events: none;
+  transition: background-color .15s ease, border-color .15s ease, opacity .15s ease;
+}
+
+.eb-checkbox__icon {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  color: var(--sem-strokes-icons-base);
+  opacity: 0;
+  transition: opacity .1s ease;
+}
+
+/* Tipografía: el JSX aplica la utilidad .type-body-03 (Medium) / .type-body-02 (Small)
+   de T03 (Fase 1) — aquí solo se fija el color por token, mode-driven. */
+.eb-checkbox__label {
+  color: var(--sem-texts-neutral-1);
+}
+
+/* Hover (nativo) */
+.eb-checkbox__control:hover:not(:disabled) + .eb-checkbox__box {
+  border-color: var(--sem-strokes-icons-accent-1);
+}
+
+/* Focus (nativo, sin variante propia en Figma: reutiliza el rojo de hover como anillo a11y) */
+.eb-checkbox__control:focus-visible + .eb-checkbox__box {
+  outline: 2px solid var(--sem-strokes-icons-accent-1);
+  outline-offset: 2px;
+}
+
+/* Selected (nativo :checked) */
+.eb-checkbox__control:checked + .eb-checkbox__box,
+.eb-checkbox__control:indeterminate + .eb-checkbox__box {
+  background: var(--sem-backgrounds-accent-base);
+  border-color: var(--sem-backgrounds-accent-base);
+}
+.eb-checkbox__control:checked + .eb-checkbox__box .eb-checkbox__icon--check { opacity: 1; }
+.eb-checkbox__control:indeterminate + .eb-checkbox__box .eb-checkbox__icon--minus { opacity: 1; }
+
+/* Disabled sin marcar — sin token de borde propio en Figma: se aplica opacidad sobre
+   el borde default (ver análisis de comportamiento acordado con Igor, 2026-07-01). */
+.eb-checkbox__control:disabled:not(:checked):not(:indeterminate) + .eb-checkbox__box {
+  opacity: .5;
+}
+
+/* Disabled + seleccionado/indeterminado */
+.eb-checkbox__control:disabled:checked + .eb-checkbox__box,
+.eb-checkbox__control:disabled:indeterminate + .eb-checkbox__box {
+  background: var(--sem-backgrounds-neutral-3);
+  border-color: var(--sem-backgrounds-neutral-3);
+}
+
+.eb-checkbox:has(.eb-checkbox__control:disabled) .eb-checkbox__label {
+  color: var(--sem-texts-neutral-2);
+}
