@@ -72,7 +72,12 @@ lo que depende de ellas.
       Transaction (`#CCDBFF`) no está enlazado a variable en Figma (confirmado
       con `get_variable_defs`) — hardcodeado igual, ver "Pendiente" abajo.
       MDX (`Tag.mdx`, inglés, esquema completo) incluido.
-- [ ] **C10 · Filter Chip** — `UI12 - Filter chip`
+- [ ] **C10 · Filter Chip** — `UI12 - Filter chip`. **No encontrado** en la
+      página `📦 Components` (2026-07-01): revisada su estructura completa
+      (`get_metadata`) — no hay ningún nodo "Filter chip"/"UI12". Puede estar
+      en una página `⛔️ WIP` (Román/Raquel/Cesar/Adrián/Paco/George, sin
+      confirmar como master) o no existir todavía. Antes de construirlo:
+      localizarlo en Figma (Igor) o buscar en las páginas WIP.
 - [ ] **C11 · Marquee** — `UI08 - Marquee` (GSAP, scroll horizontal continuo)
 - [ ] **C12 · Overlay** — `UI09 - Overlay`
 - [ ] **C13 · Video Modal** — `UI11 - Video Modal`
