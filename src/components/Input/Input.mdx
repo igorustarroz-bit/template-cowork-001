@@ -1,0 +1,102 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as InputStories from "./Input.stories";
+
+<Meta of={InputStories} />
+
+# Input
+
+## Intro
+
+Text input field with an inline (floating) label, optional trailing icon and
+helper/error message. Figma: `UI02 - Input`. Two sizes (Big/Small) and a
+validation state (`default` / `error` / `validated`) on top of the native
+`hover`/`focus`/`disabled` states and an automatic `filled` state once the
+field has a value.
+
+## Demo
+
+<Canvas of={InputStories.Playground} />
+
+## Anatomy
+
+1. **Field** — bordered container (`eb-input__field`): fill, border, radius.
+2. **Label** (optional) — `label`, sits above the value inside the field
+   (Label-In).
+3. **Native `<input>`** — `eb-input__control`.
+4. **Trailing icon** (optional) — `icon`, e.g. clear or status.
+5. **Message** (optional) — `message`, helper/error/success text below the field.
+
+## Sub-themes
+
+No `theme` prop — leaf component; colors come from the mode-driven `Forms/*`
+semantic tokens and follow whichever theme (`data-theme`) is active on the
+nearest themed ancestor.
+
+## Behavior
+
+Visual state is resolved with one precedence order, exposed as
+`data-state` on the root element:
+
+**`disabled` > `status` (error/validated) > `filled` (has a value) > `default`**
+
+- **Filled** is automatic: computed from `value`/`defaultValue` length, no
+  extra prop needed.
+- **Hover / Focus** are native (`:hover`, `:focus-within`) and only apply on
+  top of `default`/`filled` — they're suppressed once `status` or `disabled`
+  take over.
+- **Error** sets `aria-invalid="true"` on the native input automatically.
+
+## Variants and sizes
+
+<Canvas of={InputStories.Estados} />
+
+| Size | Field height | Text | Label-In | Message |
+| --- | --- | --- | --- | --- |
+| `big` | 72px | 18/18px | 10/14px | 14/14px |
+| `small` | 56px | 14/14px | 10/14px | 12/12px |
+
+## Tokens
+
+Colors come from the semantic `Forms/<State>/*` collection — never hardcoded:
+
+| Part | Token pattern |
+| --- | --- |
+| Field fill | `Forms/<State>/Fill` |
+| Field border | `Forms/<State>/Stroke` |
+| Value text | `Forms/<State>/Text` |
+| Label-In | `Forms/<State>/Label-In` |
+| Label-Out | `Forms/<State>/Label-Out` |
+| Icon | `Forms/<State>/Icon` |
+| Message | `Forms/<State>/Message` |
+
+`<State>` ∈ `Default · Hover · Focused · Filled · Error · Validated · Disabled`.
+Sizing from `formsLayout` (`m`/`l` in tokens, mapped to `big`/`small` here) in
+`src/tokens/spacing.ts`; border radius `--radius-s`.
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `inputSize` | Field size | `"big"` | inline-radio: big / small |
+| `status` | Validation state | `"default"` | inline-radio: default / error / validated |
+| `disabled` | Native disabled state | `false` | boolean |
+| `label` | Inline (Label-In) text | — | text |
+| `message` | Helper/error/success text below the field | — | text |
+| `icon` | Trailing icon | — | — |
+| `value` / `defaultValue` | Native input value | — | text |
+
+## Accessibility
+
+- Native `<input>` inside a `<label>`-less structure — the visible label is
+  linked via `htmlFor`/`id` (auto-generated with `useId()` when no `id` is
+  passed).
+- `status="error"` sets `aria-invalid="true"` automatically.
+- Focus state (`:focus-within`) is visible on the field container, not just
+  the native input outline.
+- `disabled` uses the native attribute, so it's excluded from the tab order.
+- Pending: link `message` to the input via `aria-describedby` so screen
+  readers announce the helper/error text — flagged for a follow-up pass.
+
+## Related components
+
+`Checkbox` · `Radio` (other form controls sharing the `Forms/*`/mode-driven pattern).

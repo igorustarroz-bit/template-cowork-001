@@ -1,0 +1,83 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as IconButtonStories from "./IconButton.stories";
+
+<Meta of={IconButtonStories} />
+
+# Icon Button
+
+## Intro
+
+Square, icon-only button. Figma: `UI01 - Icon Only`. Same visual types and
+color tokens as `ActionButton` (`Button/<Type>/<State>/*`), but five sizes
+(adds `xl`) and no visible label — an explicit accessible `label` is required.
+
+## Demo
+
+<Canvas of={IconButtonStories.Playground} />
+
+## Anatomy
+
+1. **Container** — `<button>`, square, `border-radius: m`.
+2. **Icon** — `icon` (required), centered, `currentColor` SVG.
+
+## Sub-themes
+
+No `theme` prop — leaf component; inherits the semantic theme (`data-theme`)
+and brand (`data-brand`) from its nearest themed ancestor, same as
+`ActionButton`.
+
+## Behavior
+
+- **Hover / Focus / Disabled** are native pseudo-classes.
+- **Selected** is controlled via the `selected` prop (`data-selected="true"`),
+  same pattern as `ActionButton`.
+
+## Variants and sizes
+
+<Canvas of={IconButtonStories.Matriz} />
+
+| Variant | Sizes | States |
+| --- | --- | --- |
+| `primary` | `xl` `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+| `secondary` | `xl` `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+| `terciary` | `xl` `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+
+Box size / icon size (px): `xl` 104/32 · `l` 64/24 · `m` 56/24 · `s` 48/20 ·
+`xs` 40/16.
+
+## Tokens
+
+Same pattern as `ActionButton`, but without a `Text` token (no label):
+
+| Part | Token pattern |
+| --- | --- |
+| Background | `Button/<Type>/<State>/Fill` |
+| Border | `Button/<Type>/<State>/Stroke` |
+| Icon | `Button/<Type>/<State>/Icon` |
+
+Border radius: `--radius-m`.
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `variant` | Visual type | `"primary"` | inline-radio: primary / secondary / terciary |
+| `size` | Button size | `"l"` | inline-radio: xl / l / m / s / xs |
+| `selected` | Selected state | `false` | boolean |
+| `disabled` | Native disabled state | `false` | boolean |
+| `icon` | Icon content (required) | — | — |
+| `label` | Accessible label (`aria-label`, required) | — | text |
+| `htmlType` | Native `<button>` type | `"button"` | — |
+
+## Accessibility
+
+- **`label` is required** — it becomes the button's `aria-label` since there
+  is no visible text; always pass a descriptive action name (e.g. "Expand
+  card", not "Icon").
+- Icon is `aria-hidden="true"` so it doesn't duplicate the announced name.
+- Native `<button>`: keyboard-operable, visible `:focus-visible` ring,
+  `disabled` uses the native attribute.
+
+## Related components
+
+`ActionButton` (with label) · `ActionLinkButton`.

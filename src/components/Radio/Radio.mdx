@@ -1,0 +1,99 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as RadioStories from "./Radio.stories";
+
+<Meta of={RadioStories} />
+
+# Radio Button
+
+## Intro
+
+Radio button with an optional label, for single-choice selection within a
+named group. Figma: `UI04 - Radio Button + Label`. Two sizes (Medium/Small)
+and Default/Hover/Selected/Disabled/Disabled+Selected states — no
+indeterminate state (radios don't have one).
+
+Same pattern as `Checkbox` (see `CONTEXT.md` → Conventions → "Checkbox/Radio
+(native state)"): state is resolved from the native pseudo-classes
+(`:checked`, `:disabled`, `:hover`, `:focus-visible`), not a computed
+`data-state`. Unlike `Checkbox`, the filled circle has no icon — the dot
+**is** the box's own `background` (`Backgrounds/Accent-Base`).
+
+## Demo
+
+<Canvas of={RadioStories.Playground} />
+
+## Anatomy
+
+1. **Native `<input type="radio">`** — visually hidden, positioned over the box.
+2. **Box** (`eb-radio__box`) — circular (`border-radius: 50%`); its own fill
+   is the selected "dot", no separate icon element.
+3. **Label** (optional) — `label`, typography `.type-body-03` (Medium) /
+   `.type-body-02` (Small).
+
+## Sub-themes
+
+No `theme` prop — leaf component. Colors come from the mode-driven
+`Backgrounds/*`, `Strokes-Icons/*` and `Texts/*` semantic tokens and follow
+whichever theme (`data-theme`) is active on the nearest themed ancestor.
+
+## Behavior
+
+- **Selected** = native `:checked`, set via `checked`/`defaultChecked`.
+- Single-selection within a group is delegated entirely to the native `name`
+  attribute — give every `Radio` in a group the same `name` (see the
+  `Grupo` story).
+- **Hover / Focus** are native and suppressed while disabled.
+- **Disabled + unselected**: same approximation as `Checkbox` — `opacity: .5`
+  on the default border, since Figma has no dedicated token for this
+  combination (agreed with Igor, 2026-07-01).
+- **Disabled + selected**: uses `Backgrounds/Neutral-3` for fill and border.
+
+## Variants and sizes
+
+<Canvas of={RadioStories.Estados} />
+<Canvas of={RadioStories.Grupo} />
+<Canvas of={RadioStories.Tamanos} />
+
+| Size | Box | Label typography |
+| --- | --- | --- |
+| `medium` | 20×20px | `.type-body-03` |
+| `small` | 16×16px | `.type-body-02` |
+
+## Tokens
+
+| Part | State | Token |
+| --- | --- | --- |
+| Box border (default) | any | `Strokes-Icons/Neutral 2` |
+| Box border (hover) | hover | `Strokes-Icons/Accent-1` |
+| Box fill + border (checked) | selected | `Backgrounds/Accent-Base` |
+| Box fill + border (disabled + checked) | disabled+selected | `Backgrounds/Neutral-3` |
+| Label | default | `Texts/Neutral 1` |
+| Label | disabled | `Texts/Neutral 2` |
+| Focus ring | focus-visible | `Strokes-Icons/Accent-1` (reused; no dedicated focus token in Figma for this component) |
+
+Border radius: `50%` (circle, not a token — Figma defines the radio as a
+perfect circle regardless of breakpoint).
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `size` | Box size | `"medium"` | inline-radio: medium / small |
+| `label` | Label text (omitted if empty) | — | text |
+| `disabled` | Native disabled state | `false` | boolean |
+| `name` | Native group name (required for single-select groups) | — | text |
+| `checked` / `defaultChecked` | Native checked state | — | boolean |
+
+## Accessibility
+
+- Native `<input type="radio">` wrapped by a `<label>` — clicking anywhere in
+  the label selects the control.
+- Group radios with the shared native `name` attribute so screen readers and
+  keyboard arrow-key navigation treat them as one group; wrap the group in a
+  `<fieldset>`/`<legend>` for an accessible group label (see the `Grupo` story).
+- Visible focus ring via `:focus-visible` on the box.
+- `disabled` uses the native attribute, excluding it from the tab order.
+
+## Related components
+
+`Checkbox` (same native-state pattern, multi-select) · `Input`.

@@ -1,0 +1,103 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as ActionButtonStories from "./ActionButton.stories";
+
+<Meta of={ActionButtonStories} />
+
+# Action Button
+
+## Intro
+
+Standard call-to-action button. Figma: `UI01 - Action-Button`. Three visual
+types (Primary/Secondary/Terciary), four sizes, and Default/Hover/Selected/
+Disabled states — Hover and Disabled are resolved with native pseudo-classes
+(`:hover`, `:disabled`); Selected is a component prop (`data-selected`)
+because it isn't a native input state.
+
+## Demo
+
+<Canvas of={ActionButtonStories.Playground} />
+
+## Anatomy
+
+1. **Container** — `<button>`, pill-shaped (`border-radius: rounded`).
+2. **Icon left** (optional) — `iconLeft`, `currentColor` SVG.
+3. **Label** — `children`.
+4. **Icon right** (optional) — `iconRight`, `currentColor` SVG.
+
+<Canvas of={ActionButtonStories.WithIcons} />
+
+## Sub-themes
+
+`ActionButton` has no `theme` prop of its own — it is a leaf/base component
+and always renders with whichever semantic theme (`data-theme`) and brand
+(`data-brand`) are active on its nearest themed ancestor (typically the module
+or page it's placed in). To force a specific theme for one button, wrap it in
+a themed container (e.g. a module's own `theme` override) rather than styling
+it directly.
+
+## Behavior
+
+- **Hover / Focus / Disabled** are native (`:hover`, `:focus-visible`,
+  `:disabled`) — no JS state tracking needed.
+- **Selected** is controlled via the `selected` prop (`data-selected="true"`),
+  since Figma's `State=Selected` isn't a native DOM state.
+- Selected takes visual precedence over Hover (hover styles are suppressed
+  while `data-selected="true"`).
+
+## Variants and sizes
+
+<Canvas of={ActionButtonStories.Matriz} />
+
+| Variant | Sizes | States |
+| --- | --- | --- |
+| `primary` | `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+| `secondary` | `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+| `terciary` | `l` `m` `s` `xs` | default · hover · focus · selected · disabled |
+
+Size layout (height / horizontal padding / min-width, px): `l` 64/32/168 ·
+`m` 56/24/110 · `s` 48/20/96 · `xs` 40/16/56.
+
+## Tokens
+
+Colors come exclusively from the semantic `Button/<Type>/<State>/*` collection
+(`Tokens/Colores semánticos`) — never hardcoded:
+
+| Part | Token pattern |
+| --- | --- |
+| Background | `Button/<Type>/<State>/Fill` |
+| Border | `Button/<Type>/<State>/Stroke` |
+| Label | `Button/<Type>/<State>/Text` |
+| Icon | `Button/<Type>/<State>/Icon` |
+
+Sizing comes from `buttonLayout` in `src/tokens/spacing.ts` (`l`/`m`/`s`/`xs`);
+border radius uses `--radius-rounded` (pill).
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `variant` | Visual type | `"primary"` | inline-radio: primary / secondary / terciary |
+| `size` | Button size | `"l"` | inline-radio: l / m / s / xs |
+| `selected` | Selected state (Figma `State=Selected`) | `false` | boolean |
+| `disabled` | Native disabled state | `false` | boolean |
+| `iconLeft` | Icon rendered before the label | — | — |
+| `iconRight` | Icon rendered after the label | — | — |
+| `htmlType` | Native `<button>` type | `"button"` | — |
+| `children` | Button label | — | text |
+
+## Accessibility
+
+- Renders a native `<button>` — keyboard-operable (Space/Enter) and focusable
+  by default.
+- Visible focus ring via `:focus-visible` (`outline: 2px solid`), not removed
+  on mouse focus thanks to `:focus-visible` (vs. `:focus`).
+- `disabled` uses the native attribute, so it's excluded from the tab order
+  and announced correctly by screen readers.
+- Icons are `aria-hidden="true"`; the accessible name comes from the text
+  label. If a button has icon-only content, use `IconButton` instead (it
+  requires an explicit `label`).
+
+## Related components
+
+`ActionLinkButton` (text-only variant, no fill) · `IconButton` (icon-only,
+same token pattern) · `Componentes/Icon Button`.

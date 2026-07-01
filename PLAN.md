@@ -122,9 +122,21 @@ añadirlo o descartarlo:
 
 ## FASE 4 — DOCUMENTACIÓN
 
-- [ ] **S01 · Story base por cada token** (color, tipografía, spacing)
-- [ ] **S02 · Story por cada componente UI** (C01–C17)
-- [ ] **S03 · Story por cada módulo** (M01–M48)
+> Idioma: **Inglés** (punto 1 de las instrucciones del proyecto). Esquema por
+> tipo (punto 16): Tokens → Intro/Demo/Tokens · Componentes/Módulos →
+> Intro/Demo/Anatomía/Subtemas/Comportamiento/Variantes y tamaños/Tokens/
+> Propiedades/Accesibilidad/Componentes relacionados.
+
+- [x] **S01 · MDX por cada token publicado** — `colors.mdx`, `semantic-colors.mdx`,
+      `typography.mdx`, `spacing.mdx` (T01–T04, en inglés, esquema completo)
+- [~] **S02 · MDX por cada componente UI publicado** — `ActionButton.mdx`,
+      `ActionLinkButton.mdx`, `IconButton.mdx`, `Input.mdx`, `Checkbox.mdx`,
+      `Radio.mdx` (C01, C02, C05, C06, C07, C08 — en inglés, esquema completo).
+      Pendiente: C09–C17 en cuanto se construyan.
+- [~] **S03 · MDX por cada módulo publicado** — solo `Cards.mdx` (PoC, **en
+      español** — excepción heredada de antes de fijar el idioma del punto 1;
+      revisar si se traduce al cerrar esta fase). Pendiente: Hero, Entidades,
+      Footer, ImageTexto, Nav.
 - [ ] **S04 · README de contribución**
 
 ---
@@ -137,6 +149,8 @@ añadirlo o descartarlo:
 | 1 · Tokens | 4 | 4 |
 | 2 · Componentes UI | 15 | 6 |
 | 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
-| 4 · Docs | 4 | 0 (PoC de MDX en `Cards.mdx`) |
+| 4 · Docs | 4 | 1 hecho (S01), 2 en progreso (S02, S03) |
 
-_Última actualización: 2026-07-01 — C07 Checkbox + C08 Radio Button completados (Fase 2)._
+_Última actualización: 2026-07-01 — MDX en inglés para los 4 tokens (T01–T04) y
+los 6 componentes publicados (C01, C02, C05, C06, C07, C08); Storybook build
+verificado sin errores (Fase 4)._

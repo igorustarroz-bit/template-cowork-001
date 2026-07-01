@@ -1,0 +1,67 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as SpacingStories from "./spacing.stories";
+
+<Meta of={SpacingStories} />
+
+# Spacing, Radii and Breakpoints
+
+## Intro
+
+Layout tokens for the Euro6000 Design System: viewport breakpoints, responsive
+spacers, grid wrappers/gutters, column widths, a fixed spacing scale (`fx-*`)
+and corner radii. Source: Figma's `Responsive` variable collection plus the
+`fixed/fx-*` primitives. Breakpoints are **mobile-first** — `xs` is the base
+value and larger breakpoints override it via media queries. Exposed as CSS
+custom properties (`--space-*`, `--wrapper-*`, `--radius-*`) and Tailwind
+utilities (`sp-*`, `gutter`, `wrapper-*`, `rounded-*`).
+
+Do not edit these values by hand — regenerate from Figma if a spacing value changes.
+
+## Demo
+
+Use the **"Breakpoint"** control below to preview every responsive token
+(spacers, grids, column widths) at each of the 7 breakpoints.
+
+<Canvas of={SpacingStories.Default} />
+<Controls of={SpacingStories.Default} />
+
+## Tokens
+
+### Breakpoints (viewport widths, px)
+
+| `xs` | `sm` | `m` | `lg` | `xl` | `xxl` | `xxxl` |
+| --- | --- | --- | --- | --- | --- | --- |
+| 375 | 480 | 768 | 1024 | 1440 | 1620 | 1920 |
+
+### Spacers (responsive, px) — `spacers["0"…"18"]`
+
+19 steps, mobile-first. Example: `spacers["9"]` = 32px (xs/sm) → 48px (xl/xxl/xxxl).
+Full table visible in the Demo above.
+
+### Grids — wrappers and gutter (responsive, px)
+
+| Token | Purpose |
+| --- | --- |
+| `wrapper-default` | Default page-margin wrapper |
+| `wrapper-header` | Header-specific wrapper |
+| `wrapper-modal` | Modal-specific wrapper |
+| `wrapper-full` | Full-bleed (0 at every breakpoint) |
+| `gutter` | Gap between the 12 grid columns |
+
+### Column widths (12-col grid, px)
+
+Precomputed widths for 12, 6, 3 and 1-column spans (`colsSize`), per breakpoint.
+
+### Fixed scale (`fx-0`…`fx-9`, px — constant across breakpoints)
+
+`fx-0` 2 · `fx-1` 4 · `fx-2` 8 · `fx-3` 12 · `fx-4` 16 · `fx-5` 20 ·
+`fx-6` 24 · `fx-7` 28 · `fx-8` 32 · `fx-9` 40
+
+### Radii (`radii`, responsive px, `rounded` = pill/9999)
+
+`xxs` 2 · `xs` 4 · `s` 6 · `m` 8 · `l` 12–18 · `xl` 16–40 (varies by breakpoint) ·
+`rounded` 9999 · `none` 0
+
+## Related tokens
+
+`Tokens/Tipografía` (shares the same breakpoint scale).

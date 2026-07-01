@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as ActionLinkButtonStories from "./ActionLinkButton.stories";
+
+<Meta of={ActionLinkButtonStories} />
+
+# Action Link Button
+
+## Intro
+
+Link-styled button: no fill or border, just colored, weighted text with an
+optional icon. Figma: `UI02-Action Link-Button`. Unlike `ActionButton`, it has
+a single visual type (`Link Primary`) — only size varies — and no `selected`
+state.
+
+## Demo
+
+<Canvas of={ActionLinkButtonStories.Playground} />
+
+## Anatomy
+
+1. **Container** — `<button>`, transparent background, no border, no padding.
+2. **Icon left** (optional) — `iconLeft`.
+3. **Label** — `children`.
+4. **Icon right** (optional) — `iconRight`.
+
+## Sub-themes
+
+No `theme` prop — like `ActionButton`, it's a leaf component that inherits the
+semantic theme (`data-theme`) and brand (`data-brand`) from its nearest
+themed ancestor.
+
+## Behavior
+
+- **Hover / Focus / Disabled** are native pseudo-classes; no `selected` state
+  exists for this component (Figma doesn't define one for `Link Primary`).
+- Only the text/icon color changes across states — no background or border at
+  any state.
+
+## Variants and sizes
+
+<Canvas of={ActionLinkButtonStories.Sizes} />
+
+| Size | Font size / line-height | Weight | Icon |
+| --- | --- | --- | --- |
+| `l` | 18/18px | 500 | 24px |
+| `m` | 16/16px | 600 | 24px |
+| `s` | 14/14px | 600 | 20px |
+| `xs` | 12/12px | 600 | 20px |
+
+## Tokens
+
+| Part | Token pattern |
+| --- | --- |
+| Label / icon (default) | `Button/Link Primary/Default/Text`, `.../Icon` |
+| Hover | `Button/Link Primary/Hover/Text`, `.../Icon` |
+| Focus | `Button/Link Primary/Focused/Text`, `.../Icon` |
+| Disabled | `Button/Link Primary/Disabled/Text`, `.../Icon` |
+
+Letter-spacing uses `--letter-spacing-cta` (Tokens/Tipografía); border radius
+`--radius-xxs` (focus ring only, since there's no visible border).
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `size` | Link size | `"l"` | inline-radio: l / m / s / xs |
+| `disabled` | Native disabled state | `false` | boolean |
+| `iconLeft` | Icon before the label | — | — |
+| `iconRight` | Icon after the label | — | — |
+| `htmlType` | Native `<button>` type | `"button"` | — |
+| `children` | Link label | — | text |
+
+## Accessibility
+
+- Native `<button>` — keyboard-operable and focusable by default.
+- Visible focus ring via `:focus-visible`.
+- `disabled` uses the native attribute.
+- Icons are `aria-hidden="true"`; accessible name comes from the label text.
+
+## Related components
+
+`ActionButton` (filled variant) · `IconButton`.

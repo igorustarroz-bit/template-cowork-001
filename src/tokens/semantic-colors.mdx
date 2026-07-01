@@ -1,0 +1,62 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as SemanticColorsStories from "./semantic-colors.stories";
+
+<Meta of={SemanticColorsStories} />
+
+# Colors — Semantic
+
+## Intro
+
+Semantic color tokens give every visual role in the UI (background, text, icon,
+button state, form state…) a purpose-driven name instead of a raw color value.
+Each semantic token resolves to a primitive color, or to another semantic token,
+via CSS custom properties `--sem-*` defined in `src/index.css`.
+
+Source: the **`Semantic-Color`** collection in the Euro6000 — Library Figma
+file — 214 tokens across 6 themes (modes). Components should always consume
+`--sem-*` variables, never a fixed color, so they inherit whichever theme is
+active on their nearest ancestor.
+
+Do not edit these values by hand — regenerate from Figma if the semantic
+mapping changes.
+
+## Demo
+
+Use the **"Modo de color"** (theme) and **"Marca"** (brand) selectors in the
+toolbar above to preview the palette in every combination.
+
+<Canvas of={SemanticColorsStories.Default} />
+
+## Tokens
+
+### Themes (modes)
+
+Applied at the root (or at any container) with `<html data-theme="...">` /
+`<div data-theme="...">`. A nested element can override its ancestor's theme
+by setting its own `data-theme`.
+
+| Slug | Label |
+| --- | --- |
+| `light-white` | Light · White (default) |
+| `light-grey` | Light · Grey |
+| `dark-red-primary` | Dark · Red · Primary |
+| `dark-secondary-blue` | Dark · Secondary · Blue |
+| `dark-black-brand` | Dark · Black · Brand |
+| `dark-black-neutral` | Dark · Black · Neutral |
+
+### Categories
+
+| Category | Example tokens | Approx. count |
+| --- | --- | --- |
+| `Backgrounds/*` | Base, Neutral-1/2/3, Accent-Base…4, Success/Error/Warning-1/2/3, Overlay, Hover, Disabled, Selected | 26 |
+| `Texts/*` | Base, Neutral 1/2/3, Accent-Base/1/2, Secondary-Base/1/2, Error, Success, Warning, Link, Disabled | 18 |
+| `Strokes-Icons/*` | Base, Neutral 1–4, Accent-Base…4, Secondary-Base…4, Success/Error/Warning-1/2/3 | 24 |
+| `Button/<Type>/<State>/*` | Primary, Secondary, Terciary, Link Primary × Default/Hover/Focused/Selected/Disabled × Fill/Stroke/Text/Icon | ~85 |
+| `Forms/<State>/*` | Default, Hover, Focused, Filled, Error, Validated, Disabled, Selected, Undefined × Fill/Stroke/Text/Label-In/Label-Out/Icon/Message | ~60 |
+
+Naming convention: `cssVar("Button/Primary/Default/Fill")` →
+`var(--sem-button-primary-default-fill)` (see `cssVar()` in `semantic-colors.ts`).
+
+## Related tokens
+
+`Tokens/Colores primitivos` (the primitives these tokens map onto).

@@ -1,0 +1,106 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as CheckboxStories from "./Checkbox.stories";
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+## Intro
+
+Checkbox with an optional label. Figma: `UI03 - Checkbox + Label`. Two sizes
+(Medium/Small) and Default/Hover/Selected/Indeterminate/Disabled/
+Disabled+Selected states.
+
+Unlike other components in this system (which resolve variants via a
+JS-computed `data-state`), `Checkbox` paints its state entirely from the
+control's **native** pseudo-classes — `:checked`, `:indeterminate`,
+`:disabled`, `:hover`, `:focus-visible`. The browser is the single source of
+truth, so it behaves identically whether the checkbox is controlled or
+uncontrolled by React.
+
+## Demo
+
+<Canvas of={CheckboxStories.Playground} />
+
+## Anatomy
+
+1. **Native `<input type="checkbox">`** — visually hidden (`opacity: 0`),
+   positioned over the box; it's what actually receives focus/clicks.
+2. **Box** (`eb-checkbox__box`) — the visible square, painted via sibling
+   selectors off the native input's state.
+3. **Icon** — `IconCheck` (checked) or `IconMinus` (indeterminate), toggled
+   with `opacity`.
+4. **Label** (optional) — `label`, typography `.type-body-03` (Medium) /
+   `.type-body-02` (Small) from `Tokens/Tipografía`.
+
+## Sub-themes
+
+No `theme` prop — leaf component. Colors come from the mode-driven
+`Backgrounds/*`, `Strokes-Icons/*` and `Texts/*` semantic tokens and follow
+whichever theme (`data-theme`) is active on the nearest themed ancestor.
+
+## Behavior
+
+- **Selected** = native `:checked` — set via `checked`/`defaultChecked`, not a
+  custom prop.
+- **Indeterminate** is a DOM-only property (not an HTML attribute), so it's
+  applied imperatively via a `ref` + `useEffect` on the `indeterminate` prop.
+  It paints the same way as `:checked` (via `:indeterminate`) but shows the
+  minus icon instead of the check icon.
+- **Hover / Focus** are native and suppressed while disabled.
+- **Disabled + unchecked**: Figma has no dedicated border token for this
+  combination, so it's approximated with `opacity: .5` on the default border
+  (decision agreed with Igor, 2026-07-01).
+- **Disabled + checked/indeterminate**: uses `Backgrounds/Neutral-3` for both
+  fill and border (a muted version of the accent fill).
+- Check/minus icons are placeholder hand-drawn SVGs pending a native icon
+  export from Figma — see `src/assets/icons/index.ts`.
+
+## Variants and sizes
+
+<Canvas of={CheckboxStories.Estados} />
+<Canvas of={CheckboxStories.Tamanos} />
+
+| Size | Box | Label typography |
+| --- | --- | --- |
+| `medium` | 20×20px | `.type-body-03` |
+| `small` | 16×16px | `.type-body-02` |
+
+## Tokens
+
+| Part | State | Token |
+| --- | --- | --- |
+| Box border (default) | any | `Strokes-Icons/Neutral 3` |
+| Box border (hover) | hover | `Strokes-Icons/Accent-1` |
+| Box fill + border (checked/indeterminate) | selected | `Backgrounds/Accent-Base` |
+| Box fill + border (disabled + checked/indeterminate) | disabled+selected | `Backgrounds/Neutral-3` |
+| Icon | checked/indeterminate | `Strokes-Icons/Base` |
+| Label | default | `Texts/Neutral 1` |
+| Label | disabled | `Texts/Neutral 2` |
+| Focus ring | focus-visible | `Strokes-Icons/Accent-1` (reused; no dedicated focus token in Figma for this component) |
+
+Border radius: `--radius-xxs`.
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `size` | Box size | `"medium"` | inline-radio: medium / small |
+| `label` | Label text (omitted if empty) | — | text |
+| `indeterminate` | Indeterminate state (DOM property, applied via ref) | `false` | boolean |
+| `disabled` | Native disabled state | `false` | boolean |
+| `checked` / `defaultChecked` | Native checked state | — | boolean |
+
+## Accessibility
+
+- Native `<input type="checkbox">` wrapped by a `<label>` — clicking anywhere
+  in the label toggles the control; no separate `aria-label` needed when
+  `label` is provided.
+- `indeterminate` is exposed to assistive tech via the native DOM property
+  (screen readers announce "partially checked").
+- Visible focus ring via `:focus-visible` on the box.
+- `disabled` uses the native attribute, excluding it from the tab order.
+
+## Related components
+
+`Radio` (same native-state pattern, single-select) · `Input`.

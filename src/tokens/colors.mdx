@@ -1,0 +1,49 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as ColorsStories from "./colors.stories";
+
+<Meta of={ColorsStories} />
+
+# Colors — Primitives
+
+## Intro
+
+Primitive color tokens for the Euro6000 Design System. These are the raw color
+values the rest of the system builds on — semantic tokens (`Tokens/Semantic
+colors`) reference these primitives rather than hardcoded hex values.
+
+Source: the **`Primitives`** collection in the Euro6000 — Library Figma file.
+The collection has two brand modes, **Euro6000** (default) and **Bankinter**;
+the only value that differs between them is `Primary-1/50` (Euro6000 red vs.
+Bankinter orange). Switch brand at the root with `<html data-brand="bankinter">`.
+
+Do not edit these values by hand — regenerate from Figma if the primitives change.
+
+## Demo
+
+<Canvas of={ColorsStories.Default} />
+
+## Tokens
+
+Each group below is exposed as a CSS custom property `--color-<group>-<step>`
+(e.g. `--color-primary-1-50`) and as a TypeScript object in `src/tokens/colors.ts`
+(`primitiveColors`).
+
+| Group | Figma collection | Steps | Notes |
+| --- | --- | --- | --- |
+| Neutral | `Color/Grayscale` | white, 98…10, black | Grayscale ramp |
+| Primary-1 | `Color/Primary-1` | 100…0 | Brand red; `50` overridden for Bankinter |
+| Secondary-1 | `Color/Secondary-1` | 100…0 | Blue ramp |
+| Secondary-2 | `Color/Secondary-2` | 100…0 | Green ramp |
+| Secondary-3 | `Color/Secondary-3` | 100…0 | Yellow/orange ramp |
+| Opacity / Black | `Color/Opacity-Black` | 100…0 | Black at varying alpha |
+| Opacity / White | `Color/Opacity-White` | 100…0 | White at varying alpha |
+| System / Error | `Color/System-Error` | 01–03 | Error state colors |
+| System / Success | `Color/System-Success` | 01–03 | Success state colors |
+| System / Warning | `Color/System-Warning` | 01–03 | Warning state colors |
+
+**Brand override:** `brandColorOverrides.bankinter` in `colors.ts` redefines only
+`--color-primary-1-50`; every other primitive is shared across brands.
+
+## Related tokens
+
+`Tokens/Semantic colors` (maps these primitives to themed, purpose-driven tokens).

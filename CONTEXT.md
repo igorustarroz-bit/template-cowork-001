@@ -80,6 +80,14 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   selector de tema en colores semánticos. Aplica a: T02 (tema + marca), T03
   (tipografía → selector de breakpoint, listando todos los estilos) y T04
   (spacing/grids/cols → selector de breakpoint). Resaltar el valor activo.
+- **Idioma de la documentación (MDX)** → **Inglés** (punto 1 de las instrucciones
+  del proyecto). Cada token/componente/módulo publicado lleva un `Nombre.mdx`
+  junto a su `Nombre.stories.tsx`, con el esquema del punto 16: tokens →
+  Intro/Demo/Tokens; componentes/módulos → Intro/Demo/Anatomía/Subtemas/
+  Comportamiento/Variantes y tamaños/Tokens/Propiedades/Accesibilidad/
+  Componentes relacionados. Excepción conocida: `Cards.mdx` (PoC inicial) está
+  en español, de antes de fijar el idioma — pendiente traducir o dejar como
+  excepción documentada al cerrar Fase 4.
 
 ## Assets (imágenes y vectores)
 
