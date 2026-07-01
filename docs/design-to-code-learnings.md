@@ -47,6 +47,17 @@ Por cada **componente interactivo**:
 - Leer las **variantes del component set** (`State=…`) para inferir comportamiento
   (hover, expand/collapse, selección única) ANTES de construir.
 
+6. **Librería no publicada → `search_design_system` no sirve.** Da timeout exacto a
+   los 180s con cualquier query/filtro (probado con dos términos distintos): no es
+   lentitud por tamaño, es una petición colgada porque busca en librerías Figma
+   **publicadas** y `Euro6000 — Library` no lo está. `get_metadata` sin `nodeId`
+   tampoco ayuda: solo ve la página abierta en Figma desktop, no las 30 del archivo.
+   **Solución (2026-07-01, ver `design-to-code-guide.md` § 0bis):** `use_figma` en
+   modo lectura — `figma.root.children` ya trae las 30 páginas sin necesidad de
+   `loadAllPagesAsync` (que además no está soportado en este runtime). Pedir los
+   hijos de **una página a la vez**; pedir varias páginas en la misma llamada también
+   da timeout a los 180s.
+
 ## Cambios de proceso
 
 0. **Ver el diseño**: `get_screenshot` con `enableBase64Response: true` (imagen inline)

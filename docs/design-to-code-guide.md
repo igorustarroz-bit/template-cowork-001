@@ -13,6 +13,59 @@ orden**. Nace de los aprendizajes reales (ver `docs/design-to-code-learnings.md`
 - [ ] Leer `CONTEXT.md` y `PLAN.md`.
 - [ ] ¿Es **módulo** (100% ancho) o **componente**? Confirmar.
 
+## 0bis. Localizar el nodo (si no hay link de Figma)
+
+La librería **no está publicada** (confirmado con Igor, 2026-07-01), así que estas dos
+vías NO sirven para encontrar un componente por nombre:
+- `search_design_system` → siempre da **timeout a los 180s**, exacto, con cualquier
+  query o combinación de `includeComponents/Variables/Styles` (probado con "Radio",
+  "Action Button" con filtros distintos: mismo timeout exacto → la petición se queda
+  colgada esperando la librería publicada, no es que tarde por el tamaño).
+- `get_metadata` **sin** `nodeId` → solo devuelve la página que está abierta en ese
+  momento en Figma desktop (p. ej. `🌁 Cover`), no las 30 páginas del documento.
+
+**Solución que SÍ funciona: `use_figma` (lectura pura, sin skill `figma-use` cargada
+— no está disponible en este entorno; por eso el código de abajo NUNCA crea, mueve
+ni borra nada).**
+
+1. `figma.loadAllPagesAsync()` **no está soportado** en este runtime (tira error
+   `"loadAllPagesAsync" is not a supported API`) — **no la llames**.
+2. `figma.root.children` **ya devuelve las páginas** sin necesidad de cargarlas
+   (probado: 30 páginas del archivo, incluida `📦 Components`, en una sola llamada).
+3. Primera pasada — **barrido ligero de TODAS las páginas** (solo nombre + nº de
+   hijos, sin recorrer el árbol) para localizar la página candidata:
+
+   ```js
+   return figma.root.children.map((page) => ({
+     id: page.id,
+     name: page.name,
+     childCount: (page.children || []).length,
+   }));
+   ```
+
+4. Segunda pasada — **una sola página a la vez** (id concreto), para listar sus hijos
+   de primer nivel (nombre, tipo, tamaño) y localizar el frame `UIxx -`/`Mxx -`:
+
+   ```js
+   const page = figma.root.children.find((p) => p.id === "<pageId>");
+   if (!page) return { error: "not found" };
+   return (page.children || []).map((n) => ({
+     id: n.id, name: n.name, type: n.type,
+     width: Math.round(n.width || 0), height: Math.round(n.height || 0),
+   }));
+   ```
+
+   ⚠️ **No pidas varias páginas a la vez en el mismo `use_figma`** (probado: pedir 5
+   páginas en un solo `.map`/`for` dio timeout a los 180s dos veces, aunque cada una
+   por separado responde en segundos). Una página por llamada.
+
+5. Con el `id` del frame ya localizado, sigue el flujo normal (pasos 1-2 de esta guía:
+   `get_screenshot`, `get_metadata`, `get_design_context`, `get_variable_defs`).
+
+Los componentes/módulos de Euro6000 viven en la página **`📦 Components`**
+(`5027:345`); el resto de páginas del archivo (`🏷️ Brand Assets`, `⛔️ WIP *`, etc.)
+son de otros proyectos de la librería compartida de la agencia — ignorarlas.
+
 ## 1. Ver el diseño  *(no construir a ciegas)*
 - [ ] `get_screenshot` con **`enableBase64Response: true`** → imagen inline visible.
 - [ ] Ver el nodo y **todos sus estados/variantes**.
