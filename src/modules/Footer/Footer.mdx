@@ -1,0 +1,93 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as FooterStories from "./Footer.stories";
+
+<Meta of={FooterStories} />
+
+# Footer
+
+## Intro
+
+Full-width site footer. Figma: `Footer` (default theme `Dark-Black-Neutral`).
+A row of link columns separated by vertical dividers, followed by a bottom
+bar with the brand logo + copyright on the left and social icons on the
+right. Container max-width: 1440px.
+
+## Demo
+
+<Canvas of={FooterStories.Default} />
+
+## Anatomy
+
+1. **Columns** — up to 5 `<nav>` groups (`FooterColumn[]`), each with a
+   `Body/03` title and a list of `Body/03` links; every column after the
+   first has a left border divider + `gutter` padding.
+2. **Bottom bar** — split into two groups:
+   - **Left**: logo (slot, falls back to a text placeholder) + copyright text.
+   - **Right**: social icon buttons (circular, `Backgrounds/Base` fill,
+     outline icon in `Strokes-Icons/Accent-Base`).
+
+## Sub-themes
+
+- The module's own theme defaults to `dark-black-neutral` (`theme` prop).
+- The **social icon group** carries its **own** nested theme via
+  `socialTheme` (default `light-white`) — this is the documented
+  "dark footer + light-white social buttons" pattern from `CONTEXT.md`: the
+  circular buttons render as white/light regardless of the module's dark
+  theme, because they run their own `data-theme`.
+
+## Behavior
+
+- Purely presentational/navigational: columns and social links are plain
+  anchors (`href="#"` placeholders in the demo — replace with real URLs in
+  production).
+- Layout wraps responsively (`flex-wrap`) — columns and the bottom-bar groups
+  stack when they don't fit the available width.
+
+## Variants and sizes
+
+No explicit size prop. Content is data-driven: pass 1–5 `columns`, a custom
+`logo`, `copyright` text, and up to 5 `SOCIAL` icons are built in (YouTube,
+Instagram, Facebook, Twitter/X, LinkedIn) — the icon set itself isn't a prop
+yet (flagged as a possible future `socialLinks` prop if entities need to vary
+their networks).
+
+## Tokens
+
+| Part | Token / value |
+| --- | --- |
+| Module background / text | `Backgrounds/Base`, `Texts/Base` (mode-driven) |
+| Module top / bottom padding | `Spacers/10` / `Spacers/7` |
+| Columns ↔ bottom bar gap | `Spacers/18` |
+| Column divider | `Strokes-Icons/Neutral 3` |
+| Column title / link style | `.type-body-03` |
+| Link color (default / hover) | `Texts/Neutral 1` / `Texts/Base` |
+| Copyright style | `.type-body-02`, `Texts/Neutral 1` |
+| Logo placeholder style | `.type-title-02`, `Texts/Accent-Base` |
+| Social button fill | `Backgrounds/Base` (own `light-white` mode) |
+| Social icon color | `Strokes-Icons/Accent-Base` |
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `logo` | Brand logo slot | text placeholder | — |
+| `columns` | Array of `{ title, links: string[] }` | 5 sample columns (EURO 6000, network, Plus program, help, legal) | — |
+| `copyright` | Copyright line | "Todos los derechos reservados ® EURO 6000 2026" | text |
+| `theme` | Module semantic theme | `"dark-black-neutral"` | select |
+| `socialTheme` | Semantic theme applied only to the social icon group | `"light-white"` | — |
+
+## Accessibility
+
+- Every social icon button has a descriptive `aria-label` (network name);
+  the icon itself is decorative.
+- Links use real `<a>` elements — keyboard-focusable and screen-reader
+  friendly by default; replace the demo's `href="#"` placeholders with real
+  destinations in production.
+- Column dividers are purely visual (border), not exposed to assistive tech
+  — column grouping should also be conveyed via the `<nav>` + heading text,
+  which it already is.
+
+## Related components
+
+`ActionLinkButton` (similar link styling) · `Entidades` (shares the
+`Body/03` typography scale for supporting text).

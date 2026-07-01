@@ -1,0 +1,110 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as HeroStories from "./Hero.stories";
+
+<Meta of={HeroStories} />
+
+# Hero
+
+## Intro
+
+Full-width hero module. Figma: `Hero` (default theme `Dark-Red-Primary`).
+Centered heading (title + subtitle), a single-image carousel with an
+overlaid `HeroCard`, and a clickable dot pager. Only the image and the
+`HeroCard` content change between slides — the title and subtitle stay fixed.
+Container max-width: 1440px.
+
+## Demo
+
+<Canvas of={HeroStories.Default} />
+
+## Anatomy
+
+1. **Heading** — `<h1>` (`.type-title-06`) + `<p>` subtitle (`.type-body-03`),
+   centered, max-width 908px / 676px respectively.
+2. **Carousel viewport** — 1376:838 aspect ratio, rounded (`--radius-xl`),
+   background image per slide (`backgroundSize: cover`).
+3. **`HeroCard` overlay** — centered over the image at 32.4% × 71.6% of the
+   viewport; title + icon (illustration slot).
+4. **Dot pager** — one dot per slide (`role="tablist"`), active dot wider and
+   dark, inactive dots white.
+
+## Sub-themes
+
+- The module's own theme (`data-theme` on the `<section>`) defaults to
+  `dark-red-primary` and can be overridden via the `theme` prop.
+- `HeroCard` carries its **own** nested theme (`dark-black-brand` by
+  default, independent prop) that overrides whatever the module is set to —
+  this is why the card reads as near-black even on the red module background.
+- When a `Nav` is placed above the Hero (see the `ConNavegacion` story), the
+  nav typically runs its own `light-white` theme regardless of the Hero's.
+
+## Behavior
+
+- **Autoplay**: advances to the next slide every `autoplayMs` (default
+  5000ms) via `setInterval`; passing `0` disables autoplay. Stops/restarts
+  automatically if `autoplayMs` or the slide count changes.
+- **Manual navigation**: clicking a dot (`role="tab"`, `aria-selected`) jumps
+  directly to that slide and resets the autoplay timer (new `setInterval`
+  scope).
+- Only the background image and the `HeroCard` (title + icon) swap per
+  slide — layout, heading and dot count are stable.
+
+<Canvas of={HeroStories.ConNavegacion} />
+
+## Variants and sizes
+
+No explicit size variants — the module always spans the full container
+(max-width 1440px) and scales with `autoplayMs` / `slides` data, not with a
+`size` prop. Default content ships 3 illustrated slides (cashpoint network,
+services, EURO 6000 Plus).
+
+## Tokens
+
+| Part | Token / value |
+| --- | --- |
+| Module background / text | `Backgrounds/Base`, `Texts/Base` (mode-driven) |
+| Module vertical padding | `Spacers/13` |
+| Heading ↔ carousel gap | `Spacers/15` |
+| Carousel ↔ dots gap | `Spacers/6` |
+| Heading gap (title/subtitle) | `Spacers/7` |
+| Carousel radius | `--radius-xl` |
+| Title style | `.type-title-06` |
+| Subtitle style | `.type-body-03` |
+| `HeroCard` background / text | `Backgrounds/Base`, `Texts/Base` (its own `dark-black-brand` mode) |
+| `HeroCard` title style | `.type-title-02` |
+| `HeroCard` icon color | `Backgrounds/Accent-Base` |
+| Dot active / inactive | `--color-neutral-black` / `--color-neutral-white` (fixed — not yet linked to a semantic token; flagged for review) |
+
+## Properties
+
+**`Hero`**
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `title` | Heading text | Spanish sample copy | text |
+| `subtitle` | Subheading text | Spanish sample copy | text |
+| `slides` | Array of `{ image?, cardTitle, cardIcon? }` | 3 illustrated slides | — |
+| `theme` | Module semantic theme | `"dark-red-primary"` | — |
+| `autoplayMs` | Autoplay interval in ms (`0` disables) | `5000` | number |
+
+**`HeroCard`** (overlay, also exported standalone)
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `title` | Card title (required) | — | text |
+| `icon` | Icon/illustration slot | default cashpoint illustration | — |
+| `theme` | Card's own semantic theme (overrides the module) | `"dark-black-brand"` | — |
+
+## Accessibility
+
+- Dots use `role="tablist"` / `role="tab"` with `aria-selected` and a
+  descriptive `aria-label` ("Ir al slide N") — screen readers can identify
+  and jump to any slide.
+- Autoplay has no pause-on-hover/focus control yet — flagged as a follow-up
+  (WCAG 2.2.2 recommends a way to pause auto-advancing content).
+- Background images are decorative (no `alt`); the meaningful content is the
+  `HeroCard` heading text.
+
+## Related components
+
+`Nav` (often placed above the Hero) · `ActionButton`.

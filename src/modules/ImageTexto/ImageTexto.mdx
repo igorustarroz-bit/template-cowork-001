@@ -1,0 +1,121 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as ImageTextoStories from "./ImageTexto.stories";
+
+<Meta of={ImageTextoStories} />
+
+# Image + Text
+
+## Intro
+
+Full-width, two-zone promotional module: a text block (title, description,
+CTA) next to a square image with an overlay. Figma: `Image+Texto` (plus a
+mirrored/inverted variant). Container max-width: 1440px, 12-column grid
+(`items-center`).
+
+## Demo
+
+<Canvas of={ImageTextoStories.Default} />
+
+## Anatomy
+
+1. **Text zone** — heading (`.type-title-04`) + description (`.type-body-03`)
+   + `ActionButton` (primary, S). Occupies columns 2–5 by default.
+2. **Image zone** — square image (`aspect-square`, rounded `--radius-l`).
+   Occupies columns 7–12 by default.
+3. **Overlay** — either the built-in `CashbackCard` (bottom-right corner,
+   default) or a custom `overlay` node centered over the image (e.g. a
+   `SearchBar`, used in the inverted variant).
+
+## Sub-themes
+
+- The module's own theme is inherited by default (no explicit default —
+  `theme` prop, unset unless passed).
+- The built-in `CashbackCard` overlay carries its **own** nested theme via
+  `cashbackTheme` (default `dark-red-primary`) — mode-driven, so switching it
+  to `light-white` would render a white card with dark text instead of red.
+- A custom `overlay` (like `SearchBar` in the `Invertido` story) is *not*
+  theme-wrapped by the module — it inherits whatever ambient theme is active,
+  since `SearchBar` has no `theme` prop of its own.
+
+## Behavior
+
+- **`reverse`** swaps both the visual side (text right / image left via grid
+  column placement) **and** the DOM order, so text and image still land on
+  the same grid row regardless of source order.
+- **`overlay`** replaces the default `CashbackCard` entirely when provided —
+  it's rendered centered over the image instead of anchored bottom-right.
+- Below the `lg` breakpoint the grid collapses to a single column
+  (`grid-cols-1`), stacking text above image.
+
+<Canvas of={ImageTextoStories.Invertido} />
+
+## Variants and sizes
+
+No explicit size prop — the module always spans the full container. The two
+documented variants are:
+
+| Variant | `reverse` | Overlay |
+| --- | --- | --- |
+| Default | `false` | `CashbackCard` (bottom-right) |
+| Inverted | `true` | Custom `overlay` (e.g. `SearchBar`, centered) |
+
+## Tokens
+
+| Part | Token / value |
+| --- | --- |
+| Module background / text | `Backgrounds/Base`, `Texts/Base` (mode-driven) |
+| Module vertical padding | `Spacers/13` |
+| Text ↔ image gap (stacked) / grid gap (desktop) | `Spacers/9` / `Gutter` |
+| Heading ↔ description gap | `Spacers/6` |
+| Description ↔ CTA gap | `Spacers/7` |
+| Image radius | `--radius-l` |
+| Heading style | `.type-title-04` |
+| Description style | `.type-body-03` |
+| `CashbackCard` background / text | `Backgrounds/Base`, `Texts/Base` (own mode) |
+| `CashbackCard` radius / padding | `--radius-l` / `Spacers/6` |
+| `SearchBar` background | `Backgrounds/Base`, radius `--radius-rounded` |
+
+## Properties
+
+**`ImageTexto`**
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `title` | Heading text | Spanish sample copy | text |
+| `description` | Body text | Spanish sample copy | text |
+| `buttonLabel` | CTA label | "Activar programa" | text |
+| `image` | Background image URL | sample WebP | — |
+| `theme` | Module semantic theme | inherited (unset) | — |
+| `cashbackTheme` | Theme applied to the built-in `CashbackCard` | `"dark-red-primary"` | select |
+| `reverse` | Mirrors layout (image ↔ text sides) and DOM order | `false` | boolean |
+| `overlay` | Custom node replacing the default `CashbackCard` overlay | — | — |
+
+**`CashbackCard`** (also exported standalone)
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `label` | Small caption | "Cashback acumulado" | text |
+| `amount` | Highlighted amount | "+128,40 €" | text |
+| `onAction` | Click handler for the action button | — | — |
+| `theme` | Card's own semantic theme | inherited (unset) | select |
+
+**`SearchBar`** (also exported standalone)
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `placeholder` | Input placeholder | "Buscar un cajero…" | text |
+| `onSearch` | Submit handler, receives the query string | — | — |
+
+## Accessibility
+
+- The image is decorative (`backgroundImage`, no `<img alt>`); the meaningful
+  copy lives in the text zone and the overlay card.
+- `CashbackCard`'s action button has `aria-label="Ver cashback"` since it's
+  icon-only.
+- `SearchBar` uses a real `<form>`/`<input type="search">` with a submit
+  button labeled `aria-label="Buscar"` — works with Enter and is properly
+  announced by screen readers.
+
+## Related components
+
+`ActionButton` · `CashbackCard` · `SearchBar`.

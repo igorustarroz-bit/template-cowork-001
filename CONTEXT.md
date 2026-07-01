@@ -92,9 +92,9 @@ y las decisiones de diseño. Léelo (junto con `PLAN.md`) antes de cada sesión.
   junto a su `Nombre.stories.tsx`, con el esquema del punto 16: tokens →
   Intro/Demo/Tokens; componentes/módulos → Intro/Demo/Anatomía/Subtemas/
   Comportamiento/Variantes y tamaños/Tokens/Propiedades/Accesibilidad/
-  Componentes relacionados. Excepción conocida: `Cards.mdx` (PoC inicial) está
-  en español, de antes de fijar el idioma — pendiente traducir o dejar como
-  excepción documentada al cerrar Fase 4.
+  Componentes relacionados. `Cards.mdx` (PoC inicial en español) ya se
+  tradujo al inglés (2026-07-01) — no queda ninguna excepción de idioma en
+  Storybook.
 
 ## Assets (imágenes y vectores)
 

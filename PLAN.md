@@ -133,10 +133,10 @@ añadirlo o descartarlo:
       `ActionLinkButton.mdx`, `IconButton.mdx`, `Input.mdx`, `Checkbox.mdx`,
       `Radio.mdx` (C01, C02, C05, C06, C07, C08 — en inglés, esquema completo).
       Pendiente: C09–C17 en cuanto se construyan.
-- [~] **S03 · MDX por cada módulo publicado** — solo `Cards.mdx` (PoC, **en
-      español** — excepción heredada de antes de fijar el idioma del punto 1;
-      revisar si se traduce al cerrar esta fase). Pendiente: Hero, Entidades,
-      Footer, ImageTexto, Nav.
+- [x] **S03 · MDX por cada módulo publicado** — `Hero.mdx`, `Cards.mdx`
+      (traducido a inglés, ya no es la excepción en español), `Entidades.mdx`,
+      `Footer.mdx`, `ImageTexto.mdx` (en inglés, esquema completo). Pendiente:
+      `Nav` — se documenta cuando se cierre la versión móvil (hamburguesa).
 - [ ] **S04 · README de contribución**
 
 ---
@@ -149,8 +149,10 @@ añadirlo o descartarlo:
 | 1 · Tokens | 4 | 4 |
 | 2 · Componentes UI | 15 | 6 |
 | 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
-| 4 · Docs | 4 | 1 hecho (S01), 2 en progreso (S02, S03) |
+| 4 · Docs | 4 | 2 hechos (S01, S03), 1 en progreso (S02) |
 
-_Última actualización: 2026-07-01 — MDX en inglés para los 4 tokens (T01–T04) y
-los 6 componentes publicados (C01, C02, C05, C06, C07, C08); Storybook build
-verificado sin errores (Fase 4)._
+_Última actualización: 2026-07-01 — MDX en inglés para los 5 módulos publicados
+(Hero, Cards, Entidades, Footer, ImageTexto; `Cards.mdx` traducido, ya no queda
+ninguna excepción en español) y para los 4 tokens (T01–T04) y 6 componentes
+(C01, C02, C05, C06, C07, C08); tablas Markdown arregladas con `remark-gfm`;
+Storybook build verificado sin errores (Fase 4)._

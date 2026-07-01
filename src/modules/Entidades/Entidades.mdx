@@ -1,0 +1,97 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as EntidadesStories from "./Entidades.stories";
+
+<Meta of={EntidadesStories} />
+
+# Entidades (Member Entities)
+
+## Intro
+
+Full-width module listing the banks/entities associated with EURO 6000.
+Figma: `Entidades`. Centered heading over a wrapping grid of `LogoCard`
+tiles (4 per row on desktop). Container max-width: 1440px.
+
+## Demo
+
+<Canvas of={EntidadesStories.Default} />
+
+## Anatomy
+
+1. **Heading** — `<h2>` (`.type-title-04`), centered, max-width 676px.
+2. **Logo grid** — `LogoCard` tiles in a wrapping flex row, centered,
+   separated by `gutter`.
+3. **`LogoCard`** — square tile (326×326px), rounded (`--radius-xl`), logo
+   slot centered (falls back to the entity name as text if no logo is
+   passed).
+
+## Sub-themes
+
+- The module's own theme (`data-theme` on the `<section>`) is inherited by
+  default (no explicit default set) — it takes whatever theme is active on
+  its ancestor unless a `theme` is passed explicitly.
+- Every `LogoCard` carries its **own** nested theme via the `cardTheme` prop
+  (module-level, applied to all cards uniformly), defaulting to
+  `light-grey` — this is what makes the tiles read as light-grey squares
+  regardless of the module's own theme.
+
+## Behavior
+
+- Purely presentational: no interaction beyond whatever a real `logo` slot
+  might add (e.g. a link, if the consumer wraps it).
+- The grid wraps and centers automatically — no fixed column count is
+  enforced in code; 4-per-row on desktop is a consequence of the 326px tile
+  width plus `gutter` at the `xl` breakpoint's content width, not a `grid`
+  with explicit columns.
+
+## Variants and sizes
+
+No explicit size prop — `LogoCard` is a fixed 326×326px square at every
+breakpoint. Default content ships 12 sample entities.
+
+<Canvas of={EntidadesStories.Default} />
+
+## Tokens
+
+| Part | Token / value |
+| --- | --- |
+| Module background / text | `Backgrounds/Base`, `Texts/Base` (mode-driven) |
+| Module vertical padding | `Spacers/13` |
+| Heading ↔ grid gap | 52px (fixed — not yet mapped to a `Spacers/*` token; flagged for review) |
+| Grid gap (between cards) | `Gutter` |
+| Heading style | `.type-title-04` |
+| `LogoCard` size | 326×326px (fixed) |
+| `LogoCard` radius | `--radius-xl` |
+| `LogoCard` padding | `Spacers/7` |
+| `LogoCard` background | `Backgrounds/Base` (its own `light-grey` mode by default) |
+| `LogoCard` placeholder text style | `.type-cta-02` |
+
+## Properties
+
+**`Entidades`**
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `title` | Heading text | "Entidades asociadas a EURO 6000" | text |
+| `entities` | Array of `{ label, logo? }` | 12 sample entity names | — |
+| `theme` | Module semantic theme | inherited (unset) | — |
+| `cardTheme` | Semantic theme applied to every `LogoCard` | `"light-grey"` | — |
+
+**`LogoCard`** (also exported standalone)
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `label` | Entity name (shown if no `logo`) | — | text |
+| `logo` | Logo slot (vector/image) | — | — |
+| `theme` | Card's own semantic theme | `"light-grey"` | select |
+
+## Accessibility
+
+- Logo tiles have no interactive semantics by default (plain `<div>`); if a
+  `logo` is passed as a link (e.g. to the entity's ATM locator), wrap it with
+  an accessible name.
+- Text placeholder (entity name) is always legible via `Texts/Neutral 1` —
+  acts as a fallback accessible label when no logo image exists yet.
+
+## Related components
+
+`LogoCard` · `Footer` (shares `Body/03`-based link styling conventions).
