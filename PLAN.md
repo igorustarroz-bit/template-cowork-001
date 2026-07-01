@@ -63,7 +63,9 @@ lo que depende de ellas.
       (`:checked`/`:indeterminate`/`:disabled`), no `data-state`. Iconos check/minus
       son placeholder a mano (pendiente export nativo de Figma, ver
       `src/assets/icons/index.ts`)
-- [ ] **C08 · Radio Button + Label** — `UI04 - Radio Button + Label`
+- [x] **C08 · Radio Button + Label** — `UI04 - Radio Button + Label` (Medium/Small ·
+      default/hover/selected/disabled/disabled-selected). Mismo patrón de estado
+      nativo que C07; sin icono (el punto es el propio fill del box)
 - [ ] **C09 · Tag** — `UI07 - Tag`
 - [ ] **C10 · Filter Chip** — `UI12 - Filter chip`
 - [ ] **C11 · Marquee** — `UI08 - Marquee` (GSAP, scroll horizontal continuo)
@@ -133,8 +135,8 @@ añadirlo o descartarlo:
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
-| 2 · Componentes UI | 15 | 5 |
+| 2 · Componentes UI | 15 | 6 |
 | 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
 | 4 · Docs | 4 | 0 (PoC de MDX en `Cards.mdx`) |
 
-_Última actualización: 2026-07-01 — C07 Checkbox + Label completado (Fase 2)._
+_Última actualización: 2026-07-01 — C07 Checkbox + C08 Radio Button completados (Fase 2)._

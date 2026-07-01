@@ -1,0 +1,81 @@
+/* Radio — Figma `UI04 - Radio Button + Label`. Colores desde tokens Backgrounds/*,
+   Strokes-Icons/*, Texts/* (mode-driven). NO editar a mano: regenerar desde Figma. */
+
+.eb-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-base);
+  cursor: pointer;
+}
+
+.eb-radio:has(.eb-radio__control:disabled) {
+  cursor: not-allowed;
+}
+
+.eb-radio__control-wrap {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.eb-radio--medium .eb-radio__control-wrap { width: 20px; height: 20px; }
+.eb-radio--small .eb-radio__control-wrap { width: 16px; height: 16px; }
+
+.eb-radio__control {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.eb-radio__control:disabled { cursor: not-allowed; }
+
+.eb-radio__box {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--sem-strokes-icons-neutral-2);
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  transition: background-color .15s ease, border-color .15s ease, opacity .15s ease;
+}
+
+.eb-radio__label {
+  color: var(--sem-texts-neutral-1);
+}
+
+/* Hover (nativo) */
+.eb-radio__control:hover:not(:disabled) + .eb-radio__box {
+  border-color: var(--sem-strokes-icons-accent-1);
+}
+
+/* Focus (nativo, sin variante propia en Figma: reutiliza el rojo de hover como anillo a11y) */
+.eb-radio__control:focus-visible + .eb-radio__box {
+  outline: 2px solid var(--sem-strokes-icons-accent-1);
+  outline-offset: 2px;
+}
+
+/* Selected (nativo :checked) — el punto es el propio fill del box, sin icono */
+.eb-radio__control:checked + .eb-radio__box {
+  background: var(--sem-backgrounds-accent-base);
+  border-color: var(--sem-backgrounds-accent-base);
+}
+
+/* Disabled sin marcar — sin token de borde propio en Figma: opacidad sobre el borde
+   default (mismo criterio acordado para Checkbox, 2026-07-01). */
+.eb-radio__control:disabled:not(:checked) + .eb-radio__box {
+  opacity: .5;
+}
+
+/* Disabled + seleccionado */
+.eb-radio__control:disabled:checked + .eb-radio__box {
+  background: var(--sem-backgrounds-neutral-3);
+  border-color: var(--sem-backgrounds-neutral-3);
+  opacity: 1;
+}
+
+.eb-radio:has(.eb-radio__control:disabled) .eb-radio__label {
+  color: var(--sem-texts-neutral-2);
+}

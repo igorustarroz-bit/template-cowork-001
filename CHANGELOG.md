@@ -7,6 +7,15 @@ el historial de git; aquí se resume lo relevante por fecha.
 
 ### 2026-07-01
 
+- **C08 · Radio Button + Label en código** (`UI04 - Radio Button + Label`, nodo Figma
+  `49722:20767`, localizado con `use_figma` sin link — ver `docs/design-to-code-guide.md`
+  § 0bis). Medium (20px)/Small (16px); estados default/hover/selected/disabled/
+  disabled-selected (sin indeterminado). Mismo patrón de estado nativo que Checkbox
+  (`:checked`/`:disabled`/`:hover`/`:focus-visible`); a diferencia del Checkbox, el
+  punto seleccionado es el propio `background` del círculo (sin icono). Tokens:
+  borde `Strokes-Icons/Neutral-2`, hover `Strokes-Icons/Accent-1`, seleccionado
+  `Backgrounds/Accent-Base`, seleccionado+disabled `Backgrounds/Neutral-3`.
+  `tsc` + build de Storybook OK.
 - **PLAN.md — Fase 3 corregida.** El listado especulativo `Mxx` (M01, M24, M38…)
   nunca coincidió con el código; ahora la Fase 3 refleja los 6 módulos reales
   (Hero, Cards, Entidades, Footer, ImageTexto hechos; Nav en progreso, falta
