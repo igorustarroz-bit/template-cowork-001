@@ -24,11 +24,21 @@ const VIEWPORTS = {
 const withTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme ?? "light-white";
   const brand = context.globals.brand ?? "euro600";
+  // En Docs, React renderiza el story inline (sin iframe), así que este
+  // wrapper también envuelve cada <Canvas>. "100vh" ahí infla la caja de
+  // demo/variantes muy por encima del contenido real (p.ej. un botón).
+  // Solo forzamos altura de viewport completo en la vista de story aislada
+  // (canvas standalone); en Docs, que la altura la defina el contenido.
+  const isDocs = context.viewMode === "docs";
   return (
     <div
       data-theme={theme}
       data-brand={brand}
-      style={{ background: "var(--sem-backgrounds-base)", color: "var(--sem-texts-base)", minHeight: "100vh" }}
+      style={{
+        background: "var(--sem-backgrounds-base)",
+        color: "var(--sem-texts-base)",
+        minHeight: isDocs ? undefined : "100vh",
+      }}
     >
       <Story />
     </div>
