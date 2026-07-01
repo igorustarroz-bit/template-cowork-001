@@ -74,16 +74,35 @@ lo que depende de ellas.
 
 ## FASE 3 — MÓDULOS
 
-> Prefijo Figma: `Mxx`. Contenedores al 100% del ancho del viewport.
+> Contenedores al 100% del ancho del viewport. El Figma no tiene todos los
+> módulos convertidos a masters, así que se identifican y trabajan **uno a
+> uno** directamente en Figma (`use_figma`/`get_metadata`), sin lista cerrada
+> de antemano.
 
-- [ ] **M01 · Menu / Navegación principal** — `M01 - Menu` (+ Item Menu Desplegado)
-- [ ] **M24 · Highlight Content** — `M24 - Highlight Content`
-- [ ] **M38 · Numbers** — `M38 - Numbers` (Desktop)
-- [ ] **M39 · Logos** — `M39 - Logos`
-- [ ] **M40 · Timeline** — `M40 - Timeline` (GSAP, entrada progresiva)
-- [ ] **M42 · List Links** — `M42 - List links`
-- [ ] **M44 · Steps** — `M44 - Steps` (GSAP, reveal por paso)
-- [ ] **M48 · Panel Lateral** — `M48 - Panel Lateral`
+- [x] **Hero** — carrusel autoplay + dots, `HeroCard` overlay
+- [x] **Cards** — grid 12 col, card destacada + panel expandible (modo por
+      componente en el Panel)
+- [x] **Entidades** — `LogoCard`, `SearchBar`
+- [x] **Footer** — sociales con modo propio (Light-White), logo como slot
+- [~] **Nav** — barra sticky con dropdown/megamenú al click (desktop). Pendiente
+      versión móvil (hamburguesa)
+- [x] **ImageTexto** — texto + imagen, `CashbackCard` overlay (modo por
+      componente)
+
+### Backlog sin confirmar contra Figma
+
+Lista especulativa previa, basada en la numeración `Mxx` de Figma, **sin
+validar** — puede solaparse con los módulos ya hechos arriba (p. ej.
+`M01 - Menu` ≈ `Nav`). Revisar cada uno directamente en Figma antes de
+añadirlo o descartarlo:
+
+- [ ] `M24 - Highlight Content`
+- [ ] `M38 - Numbers` (Desktop)
+- [ ] `M39 - Logos`
+- [ ] `M40 - Timeline` (GSAP, entrada progresiva)
+- [ ] `M42 - List links`
+- [ ] `M44 - Steps` (GSAP, reveal por paso)
+- [ ] `M48 - Panel Lateral`
 
 ---
 
@@ -111,7 +130,9 @@ lo que depende de ellas.
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
 | 2 · Componentes UI | 15 | 4 |
-| 3 · Módulos | 8 (a confirmar con Figma) | 0 |
-| 4 · Docs | 4 | 0 |
+| 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
+| 4 · Docs | 4 | 0 (PoC de MDX en `Cards.mdx`) |
 
-_Última actualización: 2026-06-19 — Fase 2: C01, C02, C05, C06 completados._
+_Última actualización: 2026-07-01 — Fase 3 corregida para reflejar el código
+real (Hero, Cards, Entidades, Footer, ImageTexto hechos; Nav en progreso,
+falta versión móvil); el listado `Mxx` anterior pasa a backlog sin confirmar._
