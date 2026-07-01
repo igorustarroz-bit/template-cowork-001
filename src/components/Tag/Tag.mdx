@@ -1,0 +1,93 @@
+import { Meta, Canvas } from "@storybook/blocks";
+import * as TagStories from "./Tag.stories";
+
+<Meta of={TagStories} />
+
+# Tag
+
+## Intro
+
+Small, non-interactive label for marking status or category (e.g. a
+transaction type, a "new" badge, an aseptic/hygiene indicator). Figma:
+`UI 07 - Tag`. Two sizes (L/XS) and three types (Transaction/New/Aseptic).
+
+## Demo
+
+<Canvas of={TagStories.Playground} />
+
+## Anatomy
+
+1. **Container** — `<span>`, small rounded rectangle (`--radius-xxs`),
+   uppercase text.
+2. **Text** — either the custom `label` (Transaction/Aseptic) or the fixed
+   badge copy `"NUEVO"` (New — matches the Figma copy for this type).
+
+## Sub-themes
+
+No `theme` prop — leaf component. Its three color variants (`transaction`/
+`new`/`aseptic`) are fixed to specific semantic tokens (see Tokens below)
+rather than following the ambient `data-theme`, matching how Figma defines
+this component: the type itself carries the color, not the surrounding mode.
+
+## Behavior
+
+- **`type="new"` always renders the fixed text `"NUEVO"`** — the `label` prop
+  is ignored for this type, matching the Figma source (a "new" badge isn't
+  meant to carry arbitrary copy).
+- **`type="transaction"` / `type="aseptic"`** render whatever `label` is
+  passed (defaults to `"Label"`, a placeholder — always pass a real label in
+  production, e.g. a transaction category name).
+- Purely presentational — no click handling, hover, focus or disabled state
+  exists for this component in Figma.
+
+## Variants and sizes
+
+<Canvas of={TagStories.Matriz} />
+
+| Size | Type | Background | Text |
+| --- | --- | --- | --- |
+| `l` | `transaction` | `#CCDBFF` (not tokenized — see Tokens) | `Texts/Secondary-Base`, Labels/02 (12/16px) |
+| `l` | `new` | `Backgrounds/Accent-1` | `Texts/Base`, Labels/02 (12/16px) |
+| `l` | `aseptic` | `Backgrounds/Neutral-1` | `Texts/Base`, Labels/02 (12/16px) |
+| `xs` | `transaction` | `#CCDBFF` (not tokenized — see Tokens) | `Texts/Secondary-Base`, Labels/01 (10/14px) |
+| `xs` | `new` | `Backgrounds/Accent-1` | `Texts/Base`, Labels/01 (10/14px) |
+| `xs` | `aseptic` | `Backgrounds/Neutral-1` | `Texts/Base`, Labels/01 (10/14px) |
+
+## Tokens
+
+| Part | Token / value |
+| --- | --- |
+| Horizontal padding | `Spacers/2` (8px) |
+| Vertical padding | 3px top / 4px (xs) or 5px (l) bottom — **fixed px, no token**: measured directly from Figma (optical line-height compensation), not mapped to the `Spacers/*` scale |
+| Radius | `Layout/Corners/XXS` → `--radius-xxs` (2px) |
+| Letter-spacing | `Tipography/Letter-Spacing/Label` → `--letter-spacing-label` (0.5px) |
+| `type="new"` background | `Backgrounds/Accent-1` |
+| `type="aseptic"` background | `Backgrounds/Neutral-1` |
+| `type="transaction"` background | **`#CCDBFF` — not bound to any Figma variable** (confirmed via `get_variable_defs`: no token exists for it in the source file). Reproduced as a literal hex value; flagged in `PLAN.md` under "Pendiente · reglas de tokenización" for Figma to formalize as a semantic token. |
+| `new` / `aseptic` text color | `Texts/Base` |
+| `transaction` text color | `Texts/Secondary-Base` |
+
+## Properties
+
+| Name | Description | Default | Control |
+| --- | --- | --- | --- |
+| `size` | Tag size | `"l"` | inline-radio: l / xs |
+| `type` | Visual type (drives color + whether `label` is used) | `"transaction"` | inline-radio: transaction / new / aseptic |
+| `label` | Tag text (ignored for `type="new"`) | `"Label"` | text |
+
+## Accessibility
+
+- Renders as a plain `<span>` — not a live region or a status role by
+  default. If a `Tag` communicates an important state change (e.g. a
+  transaction just completed), wrap it or its container with
+  `role="status"`/`aria-live` at the call-site rather than inside the
+  component itself, since that depends on context.
+- Text is always visible (no icon-only variant), so no extra `aria-label`
+  is needed — the rendered text is the accessible name.
+- Verify color contrast for `transaction` (`Texts/Secondary-Base` on
+  `#CCDBFF`) since that background isn't a token and hasn't gone through the
+  same design-system contrast check as the semantic ones.
+
+## Related components
+
+`ActionButton` · `IconButton` (same semantic-token pattern, but interactive).

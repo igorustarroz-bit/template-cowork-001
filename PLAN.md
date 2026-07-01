@@ -66,7 +66,12 @@ lo que depende de ellas.
 - [x] **C08 · Radio Button + Label** — `UI04 - Radio Button + Label` (Medium/Small ·
       default/hover/selected/disabled/disabled-selected). Mismo patrón de estado
       nativo que C07; sin icono (el punto es el propio fill del box)
-- [ ] **C09 · Tag** — `UI07 - Tag`
+- [x] **C09 · Tag** — `UI 07 - Tag` (nodeId `51315:31428`). Tamaños L/XS ·
+      tipos Transaction/New/Aseptic. `type="new"` fija la copy "NUEVO"
+      (ignora `label`); Transaction/Aseptic muestran `label`. El fondo de
+      Transaction (`#CCDBFF`) no está enlazado a variable en Figma (confirmado
+      con `get_variable_defs`) — hardcodeado igual, ver "Pendiente" abajo.
+      MDX (`Tag.mdx`, inglés, esquema completo) incluido.
 - [ ] **C10 · Filter Chip** — `UI12 - Filter chip`
 - [ ] **C11 · Marquee** — `UI08 - Marquee` (GSAP, scroll horizontal continuo)
 - [ ] **C12 · Overlay** — `UI09 - Overlay`
@@ -119,6 +124,10 @@ añadirlo o descartarlo:
   capas hardcodeadas / sin estilo (marcar como issue del gate vs improvisar mapeo),
   aplicar con rigor la lista de exclusión, y el contexto correcto por tipo de capa.
   Al cerrar, actualizar `design-to-code-guide.md` como regla canónica.
+  - Ejemplo real (C09 · Tag): el fondo `#CCDBFF` del tipo `Transaction` no está
+    enlazado a ninguna variable en Figma (confirmado con `get_variable_defs`) —
+    se reprodujo igual en `Tag.css`/`Tag.mdx`, sin token. Revisar si Figma debe
+    formalizarlo como semántico antes de repetir el patrón en otros componentes.
 
 ## FASE 4 — DOCUMENTACIÓN
 
@@ -131,8 +140,8 @@ añadirlo o descartarlo:
       `typography.mdx`, `spacing.mdx` (T01–T04, en inglés, esquema completo)
 - [~] **S02 · MDX por cada componente UI publicado** — `ActionButton.mdx`,
       `ActionLinkButton.mdx`, `IconButton.mdx`, `Input.mdx`, `Checkbox.mdx`,
-      `Radio.mdx` (C01, C02, C05, C06, C07, C08 — en inglés, esquema completo).
-      Pendiente: C09–C17 en cuanto se construyan.
+      `Radio.mdx`, `Tag.mdx` (C01, C02, C05–C09 — en inglés, esquema completo).
+      Pendiente: C10–C17 en cuanto se construyan.
 - [x] **S03 · MDX por cada módulo publicado** — `Hero.mdx`, `Cards.mdx`
       (traducido a inglés, ya no es la excepción en español), `Entidades.mdx`,
       `Footer.mdx`, `ImageTexto.mdx` (en inglés, esquema completo). Pendiente:
@@ -147,12 +156,13 @@ añadirlo o descartarlo:
 |------|-----------|--------|
 | 0 · Setup | 7 | 7 |
 | 1 · Tokens | 4 | 4 |
-| 2 · Componentes UI | 15 | 6 |
+| 2 · Componentes UI | 15 | 7 |
 | 3 · Módulos | 6 identificados (+ backlog sin confirmar) | 5 hechos, 1 en progreso (Nav) |
 | 4 · Docs | 4 | 2 hechos (S01, S03), 1 en progreso (S02) |
 
-_Última actualización: 2026-07-01 — MDX en inglés para los 5 módulos publicados
-(Hero, Cards, Entidades, Footer, ImageTexto; `Cards.mdx` traducido, ya no queda
-ninguna excepción en español) y para los 4 tokens (T01–T04) y 6 componentes
-(C01, C02, C05, C06, C07, C08); tablas Markdown arregladas con `remark-gfm`;
-Storybook build verificado sin errores (Fase 4)._
+_Última actualización: 2026-07-01 — C09 Tag construido desde Figma (`UI 07 -
+Tag`, nodeId 51315:31428) con su MDX; MDX en inglés para los 5 módulos
+publicados (Hero, Cards, Entidades, Footer, ImageTexto; `Cards.mdx` traducido,
+ya no queda ninguna excepción en español) y para los 4 tokens (T01–T04) y 7
+componentes (C01, C02, C05–C09); tablas Markdown arregladas con `remark-gfm`;
+Storybook build verificado sin errores._

@@ -1,0 +1,50 @@
+/* Tag — Figma `UI 07 - Tag`. Colores desde tokens semánticos, salvo el fondo
+   de `transaction` (#CCDBFF): en Figma es un valor fijo, no está enlazado a
+   ninguna variable (confirmado con get_variable_defs) — se reproduce igual,
+   pendiente de que Figma lo tokenice (ver PLAN.md → Pendiente · reglas de
+   tokenización). NO editar a mano: regenerar desde Figma. */
+
+.eb-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: var(--radius-xxs);
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
+  /* padding-top/bottom asimétrico (3px arriba, 4/5px abajo): así está medido
+     en Figma (compensación óptica del line-height), sin token propio. */
+  padding-top: 3px;
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Tamaños (Labels/01 · Labels/02) */
+.eb-tag--xs {
+  padding-bottom: 4px;
+  font-size: 10px;
+  line-height: 14px;
+}
+.eb-tag--l {
+  padding-bottom: 5px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/* Tipos (colores) */
+.eb-tag--transaction {
+  /* Sin token semántico en Figma para este fondo (ver nota arriba). */
+  background: #ccdbff;
+  color: var(--sem-texts-secondary-base);
+}
+.eb-tag--new {
+  background: var(--sem-backgrounds-accent-1);
+  color: var(--sem-texts-base);
+}
+.eb-tag--aseptic {
+  background: var(--sem-backgrounds-neutral-1);
+  color: var(--sem-texts-base);
+}
